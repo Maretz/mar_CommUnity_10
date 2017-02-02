@@ -34,6 +34,8 @@ while ($row = db_fetch_object($erg)) {
 		  $row->katen = 'include/images/news/'.$row->kate.'.gif';
 		} elseif ( file_exists ( 'include/images/news/'.$row->kate.'.png') ) {
 		  $row->katen = 'include/images/news/'.$row->kate.'.png';
+		} elseif  (file_not_exists) {
+		  $row->katen = 'include/images/news/noimage.png';
 		}
 	echo '<tr>';
 	echo '<td style="vertical-align:middle;min-width:60px;"><img src="'.$row->katen.'" alt=""></td>';
