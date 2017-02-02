@@ -1,0 +1,109 @@
+<div class="com10newsinput slidebuttonin{id}">
+<div class="media">
+  <a class="pull-left newskatimg newskatimgpos" href="index.php?news-{id}">{kate}</a>
+<div class="newskatimgposunter hidden-xsmin"></div>
+  <div>
+<div class="infotextnewspos">
+<h3 class="infotextnews"><span class="infotextnews"><i class="fa fa-user usernewsedit" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{_lang_from} {username}"></i>&nbsp;&nbsp;{datum}</span><br>{title}<span class="in-xsmin"><br><i class="fa fa-caret-right" aria-hidden="true"></i> {kates}</span></h3>
+</div>
+<br>{text}
+<br>
+<hr>
+<span class="hidden-xsmin" rel="tooltip" title="Kategorie: {kates}"><i class="fa fa-caret-right" aria-hidden="true"></i> {kates}</span>
+<div class="pull-right slidebutton{id} slidebuttonmobilout"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info btn-sm userdropspan" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}{newsteilen}{readwholenews}
+</div>
+<div class="pull-right slidebuttonmobil"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info userdropspan btn-sm" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}{newsteilen}{readwholenews}
+</div>
+</div>
+</div>
+<div class="modal fade newsteilen{id}" tabindex="-1" role="dialog" aria-labelledby="newsteilentitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content newsteilenmodal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schlieﬂen"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="newsteilentitle"><i class="fa fa-share-alt" aria-hidden="true"></i> Teilen</h4>
+      </div>
+      <div class="modal-body">
+        <p>{teilenpermalink}
+{teilenbbcode}
+{teilenhtml}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Schlieﬂen</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<style>
+.slidebuttonin{id} .slidebutton{id} {
+opacity: 0;
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+-o-transition: all .2s linear;
+transition: all .2s linear;
+}
+.slidebuttonin{id}:hover .slidebutton{id} {
+opacity: 1; 
+}
+</style>
+{EXPLODE}
+<div class="text-center">{SITELINK}</div>
+{privmsgpopup}
+{EXPLODE}
+<!-- News Kommentare und Mehr lesen -->
+<div class="com10newsinput">
+    <h4>{NAME}</h4>
+    <hr class="hrtop">
+{TEXT}
+<br style="clear:both;"/>
+<br>
+<div class="text-left"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a></div>
+<hr>
+	    {EXPLODE}
+	    <form action="index.php?news-{NID}" method="POST" name="form" class="form-horizontal" role="form">
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+          <legend>{_lang_writecomment}</legend>
+          <input type="text" name="name" class="form-control" value="{uname}" /><br>
+      <!-- 
+<div style="margin-bottom:5px;">
+    <a href="javascript:simple('b')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_bold.png" alt="b" title="{_lang_bold}" border="0"></a>
+    <a href="javascript:simple('i')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_italic.png" alt="i" title="{_lang_italic}" border="0"></a>
+	<a href="javascript:simple('u')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_underline.png" alt="u" title="{_lang_underlined}" border="0"></a>
+<a href="javascript:simple('url')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_url.png" alt="Url" title="{_lang_link}" border="0"></a> 
+</div>
+ -->
+          <textarea class="form-control" rows="3" name="txt" tabindex="2"></textarea><br>
+  	  <div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
+<br>{ANTISPAM}<br>
+ <button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button> <input type="submit" class="btn btn-primary" value="{_lang_enter}"><br>
+      </form>
+</div>
+<div class="com10newsinput">   
+<h4><i class="fa fa-commenting-o" aria-hidden="true"></i> {_lang_commentsfor} {NAME}</h4>
+      {EXPLODE}
+     <div class="well well-sm wellsmnews">
+<div class="row">
+  <div class="col-md-1 newscommentcom10"><strong># {ZAHL}</strong></div>
+  <div class="col-md-11"><small>von {NAME}</small><br>{TEXT}</div>
+</div>
+      </div>
+      {EXPLODE}
+      <br><br><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a>
+</div>
+{EXPLODE}
+<table class="table table-bordered">
+  <tr >
+    <td><b>{NAME}</b></td>
+    <td>{FUER}</td>
+    <td align="right">{DATE}</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2">{TEXT}{MEHR}</td>
+    <td valign="top" rowspan="2" align="center">{KATE}</td>
+  </tr><tr>
+    <td valign="bottom" height="20" colspan="2" align="center">
+      <b>{_lang_from} {UNAME}</b> &nbsp; &nbsp; &nbsp; [ {KOM} <a href="index.php?news-1&amp;nid={ID}">{_lang_comments}</a> ]
+    </td>
+  </tr>
+</table>

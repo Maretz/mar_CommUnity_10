@@ -1,0 +1,42 @@
+<div class="com10newsinput">
+    <div class="row">
+        <div class="col-md-1 hidden-xs"></div>
+        <div class="col-lg-10">
+            <form class="form-inline" action="?contact" method="POST">
+                <fieldset>
+                    <legend>{_lang_whereyouwrite}</legend>
+                    {EXPLODE}
+                    <input id="w{KEY}" {c} type="radio" name="wer" value="{KEY}" style="float:left; " />
+                    <label for="w{KEY}"> &nbsp; {VAL}</label>
+                    <br style="clear:both; " /> {EXPLODE}
+                    <br>
+                    <legend><small>Deine Angaben</small></legend>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-male gbookaddon"></i></span>
+                        <input type="text" value="{name}" class="form-control" placeholder="Name">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope-o gbookaddon"></i></span>
+                        <input type="text" name="mail" value="{mail}" class="form-control" placeholder="E-Mail">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-quote-left gbookaddon"></i></span>
+                        <input type="text" name="subject" value="{subject}" class="form-control" placeholder="Betreff">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-keyboard-o gbookaddon"></i></span>
+                        <textarea class="form-control" cols="80" rows="5" name="txt" placeholder="Deine Nachricht">{text}</textarea>
+                    </div>
+                    <br> {ANTISPAM}<br>
+                    <input class="btn btn-primary" type="submit" value=" Absenden ">
+                    <br>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

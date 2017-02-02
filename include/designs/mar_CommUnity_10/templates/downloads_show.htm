@@ -1,0 +1,88 @@
+<script language="JavaScript" type="text/javascript">
+    <!--
+    function doVote(n1, did) {
+        document.location.href = "index.php?downloads-show-" + did + "-z" + n1;
+    }
+    //-->
+</script>
+<div class="com10newsinput">
+    <table class="table table-bordered">
+        <tr class="active">
+            <th colspan="4" class="text-center"><b>{name} {version}</b></th>
+        </tr>
+        <tr>
+            <td>{_lang_name} (Version)</td>
+            <td>{name} {version_kl}</td>
+            <td colspan="2" rowspan="5" class="hidden-xsmin" style="vertical-align: middle;text-align:center;">
+                <i class="fa fa-star"></i> <span rel="tooltip" title="{vote_wertung} von 10 Punkten" class="badge">{vote_wertung}</span>
+                <br>
+                <br>
+                <button rel="tooltip" title="Download bewerten" class="btn btn-primary" data-toggle="modal" data-target="#votedl">{_lang_voting}</button>
+
+                <div class="modal fade" id="votedl" tabindex="-1" role="dialog" aria-labelledby="meinModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content newsteilenmodal">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                                <h4 class="modal-title">{_lang_voting}</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                    {_lang_voting} <span class="badge">{vote_wertung}</span> von <span class="badge">10</span>
+                                    <br>
+                                    <ul class="pagination pagination-sm">
+                                        <li><a href="#" onClick="doVote(1,{id})" style="cursor:pointer">1</a></li>
+                                        <li><a href="#" onClick="doVote(2,{id})" style="cursor:pointer">2</a></li>
+                                        <li><a href="#" onClick="doVote(3,{id})" style="cursor:pointer">3</a></li>
+                                        <li><a href="#" onClick="doVote(4,{id})" style="cursor:pointer">4</a></li>
+                                        <li><a href="#" onClick="doVote(5,{id})" style="cursor:pointer">5</a></li>
+                                        <li><a href="#" onClick="doVote(6,{id})" style="cursor:pointer">6</a></li>
+                                        <li><a href="#" onClick="doVote(7,{id})" style="cursor:pointer">7</a></li>
+                                        <li><a href="#" onClick="doVote(8,{id})" style="cursor:pointer">8</a></li>
+                                        <li><a href="#" onClick="doVote(9,{id})" style="cursor:pointer">9</a></li>
+                                        <li><a href="#" onClick="doVote(10,{id})" style="cursor:pointer">10</a></li>
+                                    </ul>
+                                    <br> {_lang_voter} <span class="badge">{vote_klicks}</span>
+                                    <br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Schlieﬂen</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+        </tr>
+        <tr>
+            <td>{_lang_author}</td>
+            <td>{creater}</td>
+        </tr>
+        <tr>
+            <td>{_lang_date}</td>
+            <td>{datum}</td>
+        </tr>
+        <tr>
+            <td width="110">{_lang_size}</td>
+            <td>{size}</td>
+        </tr>
+        <tr>
+            <td>{_lang_downloads}
+                <br>Hits</td>
+            <td>{downs}
+                <br>{hits}</td>
+        </tr>
+    </table>
+    <p></p>
+    <b><center><a href="index.php?downloads-down-{id}">{_lang_download}</a>{surl}</center></b>
+    <p></p>
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <th class="active">{_lang_desc}</th>
+        </tr>
+        <tr>
+        <td>{ssurl}{descl}</td>
+        </tr>
+    </table>
+</div>

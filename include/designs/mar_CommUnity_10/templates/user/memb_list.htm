@@ -1,0 +1,40 @@
+<div class="com10newsinput">
+<div class="table-responsive">
+<table  class="table  table-bordered table-hover">
+    <thead>
+        <tr class="active">
+    <th>{_lang_name}</th>
+		<th>{_lang_group}</th>
+		<th class="hidden-xsmin">{_lang_rank}</th>
+		<th class="hidden-xsmin">{_lang_regtime}</th>
+		<th class="hidden-xs">{_lang_posts}</th>
+  </tr>
+    </thead>{EXPLODE}
+    <tbody>
+        <tr>
+    <td><a href="index.php?user-details-{UID}">{NAME}</a></td>
+		<td>{GRUPE}</td>
+		<td class="hidden-xsmin">{RANG}</td>
+		<td class="hidden-xsmin">{DATE}</td>
+		<td class="hidden-xs">{POSTS}</td>
+  </tr>{EXPLODE}
+    </tbody>
+</table>
+</div>
+<br>
+<div align="center">{SITELINK}
+<form method="GET" action="index.php">
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input type="hidden" name="user" value="" /><input type="text" name="filtername"  value="{filtername}"  class="form-control" placeholder="Benutzername" />
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" value="{_lang_filter}">Suchen</button>
+      </span>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+</div>

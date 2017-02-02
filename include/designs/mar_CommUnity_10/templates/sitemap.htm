@@ -1,0 +1,16 @@
+<div class="com10newsinput">
+    <div class="list-group">
+        <a class="list-group-item" href="index.php?sitemap-forum"><i class="fa fa-plus-square" aria-hidden="true"></i> {_lang_sitemapforboard}</a>
+        <a class="list-group-item" href="index.php?sitemap-news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> {_lang_sitemapfornews}</a>
+        <a class="list-group-item" href="index.php?sitemap-downloads"><i class="fa fa-cloud-download" aria-hidden="true"></i> {_lang_sitemapfordownloads}</a>
+        <a class="list-group-item" href="index.php?sitemap-links"><i class="fa fa-external-link" aria-hidden="true"></i> {_lang_sitemapforlinks}</a>
+    </div>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <h4><i class="fa fa-sitemap" aria-hidden="true"></i> {site} {_lang_sitemap}</h4>
+    <div class="list-group">
+        {MPL} {_list_links@
+        <a class="list-group-item" href="%1"><i class="fa fa-external-link-square"></i> %2</a>} {MPL}
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{EXPLODE}
+<div class="com10newsinput">
+    <table class="table  table-bordered table-striped">
+        <tr class="active">
+            <td><b><i class="fa fa-external-link" aria-hidden="true"></i> {_lang_category}</b></td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td class="wellsmnews"><a href="index.php?links-{id}">{name}</a> <span class="badge" rel="tooltip" title="{links} Links in der Kategorie">{links}</span>
+                <br><i class="fa fa-angle-right"></i> {desc}</td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>
+<br>
+<br> {EXPLODE}
+<div class="com10newsinput">
+    <table class="table  table-bordered table-striped">
+        <tr class="active">
+            <td class="text-center"><b><i class="fa fa-external-link" aria-hidden="true"></i> {_lang_links}{catname}</b></td>
+            <td></td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td><a target="_blank" href="index.php?links-s{id}">{name}</a>{desc} <span class="badge" rel="tooltip" title="{hits} Klicks">{hits}</span></td>
+            <td class="text-center"><a target="_blank" href="index.php?links-s{id}" rel="tooltip" title="Seite besuchen"><i class="fa fa-home fa-2x"></i></a></td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td><a class="btn btn-primary" href="javascript:history.back(1)">{_lang_back}</a></td>
+    </table>
+</div>

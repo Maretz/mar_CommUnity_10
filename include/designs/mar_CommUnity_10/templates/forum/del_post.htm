@@ -1,0 +1,12 @@
+<form action="index.php?forum-delpost-{tid}-{get3}" method="POST">
+{antispam}
+<div class="alert alert-danger"><p>{_lang_doyoureallydelthispost}</p>
+<p><input type="hidden" value="1" name="delete"><input type="submit" class="btn btn-danger"value="{_lang_yes}">  <input type="button" class="btn btn-primery" value="{_lang_no}" onclick="history.back(-1)"></p></div>
+</form>
+{EXPLODE}
+<div class="alert alert-success"><p>{_lang_thedelwassuccessful}</p>
+<p><a class="btn btn-default" href="index.php?forum-showposts-{tid}">{_lang_thedelwassuccessful2} {_lang_topic}</a></p></div>
+
+
+
+

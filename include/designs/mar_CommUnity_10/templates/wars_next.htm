@@ -1,0 +1,74 @@
+<div class="com10newsinput">
+<table class="table  table-bordered table-hover">
+<h3>{_lang_war} {_lang_against}: {tag}</h3>
+<hr class="hrtop">
+<tr>
+	<td class="active" colspan="2" align="left"><b>&nbsp;{_lang_opponent} {_lang_info}</b></td>
+</tr><tr>
+	<td class="active">{_lang_clancountry}:</td>
+	<td><img src="include/images/flags/{land}" alt="" border="0"></td>
+</tr><tr>
+	<td class="active">{_lang_name}:</td>
+	<td>{gegner}</td>
+</tr><tr>
+	<td class="active">{_lang_homepage}</td>
+	<td><a href="{page}" target="_blank">{page}</a></td>
+</tr><tr>
+	<td class="active">{_lang_mail}</td>
+	<td>{mail}</td>
+</tr><tr>
+	<td class="active">{_lang_icq}</td>
+	<td>{icq}</td>
+</tr><tr>
+	<td class="active" colspan="2" align="left"><b>&nbsp;{_lang_match} {_lang_info}</b></td>
+</tr><tr>
+	<td class="active">{_lang_date}</td>
+	<td><strong>{_lang_On} {datum} {_lang_at} {zeit} {_lang_oclock}</strong></td>
+</tr><tr>
+	<td class="active">{_lang_meetingplace}</td>
+	<td>{wo}</td>
+</tr><tr>
+	<td class="active">{_lang_squad}</td>
+	<td><u><i><b>{team}</b></i></u></td>
+</tr><tr>
+	<td class="active">{_lang_xonx}</td>
+	<td>{mod}</td>
+</tr><tr>
+	<td class="active">{_lang_matchtype}:</td>
+	<td>{mtyp}</td>
+</tr><tr>
+	<td class="active">{_lang_game}:</td>
+	<td>{game}</td>
+</tr><tr>
+	<td class="active">{_lang_remark}:</td>
+	<td>{txt}</td>
+</tr>
+</table>
+</div>
+<div class="com10newsinput">
+<table class="table  table-bordered table-hover"> 
+{EXPLODE}
+<tr class="active">
+	<td><strong>{_lang_present} / {_lang_away}</strong>&nbsp;<span class="label label-success">{_lang_promise}: <strong>{available}</strong></span>&nbsp;<span class="label label-warning">Ben&ouml;tigt: <strong>{needed}</strong></span></td>
+</tr>
+{EXPLODE}
+<tr>
+	<td>
+	<form action="index.php?wars-more-{id}" method="POST"><table><tr><td colspan="3"><input class="form-control" placeholder="Kommentar zur Zu-,Absage" name="kom" size="65" /></td>
+	</tr>
+  <tr>
+  <td><input type="radio" id="zusage" value="zusagen" name="sub" checked /><label for="zusage"  style="cursor: pointer;"> {_lang_promise}</label></td>
+  <td><input type="radio" id="absage" value="absagen" name="sub"  /><label for="absage"  style="cursor: pointer;"> {_lang_cancellation}</label></td>
+  <td align="right"><br><input class="btn btn-primary" type="submit" value="{_lang_formsub}"  /></td>
+  </tr>
+  </table>
+  </form>
+	</td>
+</tr>
+{EXPLODE}
+<tr>
+	<td><b>{name}</b> {_lang_had} {aktion} <u>{_lang_comment}:</u> {kom}</td>
+</tr>
+{EXPLODE}
+</table>
+</div>

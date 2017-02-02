@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="panel-body text-center">
+        {show}
+    </div>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <table class="table  table-bordered table-hover">
+        {EXPLODE}
+        <tr>
+            <td>
+                <table class="table  table-bordered">
+                    <tr>
+                        <td rowspan="2" width="30%" align="center" valign="middle"><a href="index.php?user-details-{uid}">{avatar}</a></td>
+                        <td colspan="4"><a href="index.php?user-details-{uid}">{name}</a></td>
+                    </tr>
+                    <tr>
+                        <td class="hidden-xs text-center">{icq}</td>
+                        <td>{posi}</td>
+                        <td class="hidden-xs text-center">{staat}</td>
+                        <td class="hidden-xsmin">{status}</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td>{name}</td>
+            <td class="hidden-xs text-center">{icq}</td>
+            <td>{posi}</td>
+            <td class="hidden-xs text-center">{staat}</td>
+            <td class="hidden-xsmin">{status}</td>
+            <td align="center"><a href="index.php?user-details-{uid}">{_lang_more}</a></td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>

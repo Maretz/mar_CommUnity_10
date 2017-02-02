@@ -1,0 +1,47 @@
+<div class="com10newsinput">
+<table class="table table-forum">
+{EXPLODE}
+<div class="panel panel-default">
+  <div class="panel-body forenthema">
+<i class="fa fa-caret-down" aria-hidden="true"></i> <a href="index.php?forum-showcat-{cid}">{cname}</a>
+  </div>
+</div>
+<table class="table  table-forum">
+<tr>
+{EXPLODE}
+<tr>
+	  <td colspan="4" class="forenthema-unter"><i class="fa fa-caret-right" aria-hidden="true"></i> <a href="index.php?forum-showcat-{cid}">{cname}</a></td>
+	  </tr>
+{EXPLODE}
+<tr data-toggle="collapse" data-target="#demo{id}" class="accordion-toggle {colorclosetopics2}">
+    <td width="25" class="hidden-xsmin"><i class="fa fa-clipboard clipboard-color pull-left fa-2x" aria-hidden="true"></i> </td>
+    <td class="forumname"><a href="index.php?forum-showtopics-{id}">{name}</a><sup>{ORD}</sup>
+		  <br><span>{besch}</span>
+      <span class="motforum">{mods}</span>
+		</td>
+    <td class="text-center hidden-xsmin hvr-pop thbei"><span style="white-space:nowrap;">{topics} Themen</span><br><span style="white-space:nowrap;">{posts} Beitr&auml;ge</span></td>
+    <td class="text-right"><a rel="tooltip" title="Letzte Antwort"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>
+    </tr>
+    <tr class="{colorclosetopics2}">
+    <td colspan="4" class="hiddenRow"><div id="demo{id}" class="accordian-body collapse lasttopicshowroom">
+    {legend_letzteantwort}
+    {avatar}<a href="index.php?forum-showposts-{tid}-p{page}#{pid}" rel="tooltip" title="{topic}">{topic}</a>
+		    <br>
+			  <span><strong>{erst}</strong> {datums}</span>
+			  </div>
+			  </td>
+			  </tr>
+{EXPLODE}
+</table>
+<div class="panel panel-default">
+  <div class="panel-body">
+<i rel="tooltip" title="{_lang_newposts}" class="fa fa-plus-circle colorplus" aria-hidden="true"></i>
+<i rel="tooltip" title="{_lang_topicclosed}"class="fa fa-lock colorclose" aria-hidden="true"></i>
+<span style="float:right">
+<a href="index.php?forum-markallasread" rel="tooltip" title="{_lang_markallasread}"><i class="fa fa-times"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-augt" rel="tooltip" title="{_lang_newtopicssincelastvisit}"><i class="fa fa-comments-o"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-aubt" rel="tooltip" title="{_lang_topicwithnoreply}"><i class="fa fa-comment-o"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-aeit" rel="tooltip" title="{_lang_ownposts}"><i class="fa fa-user"></i></a>&nbsp;</span>
+  </div>
+</div>
+</div>

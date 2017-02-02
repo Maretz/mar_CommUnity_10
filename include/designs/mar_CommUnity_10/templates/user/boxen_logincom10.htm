@@ -1,0 +1,61 @@
+<div class="panel panel-com10 panel-com10-visible hidden-xs">
+  <div class="panel-heading">
+    <h3 class="panel-title">{AVATAR} {NAME}</h3>
+  </div>
+  <div class="panel-body">
+   <div class="btn-group" role="group"  data-toggle="tooltip" data-placement="top" title="User Menu">
+    <button type="button" class="btn btn-com10 dropdown-toggle hvr-pop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="dropdown-menu userdropspancolor" role="menu" aria-labelledby="dLabel">
+<li><a href="index.php?user-8"><i class="fa fa-cogs userdropspan" aria-hidden="true"></i>Profil editieren</a></li>
+<li>{PROFILANSICHT}</li>
+<li><a href="index.php?forum-privmsg"><i class="fa fa-envelope-o userdropspan" aria-hidden="true"></i>Mein Postfach</a></li>
+<li><a href="?search-aeit"><i class="fa fa-user-circle-o userdropspan" aria-hidden="true"></i>Meine Beitr&auml;ge ({POSTS})</a></li>
+<li><a href="index.php?forum-augt"><i class="fa fa-clipboard userdropspan" aria-hidden="true"></i>Neue Beitr&auml;ge ({LPOSTS})</a></li>
+<li class="divider"></li>
+<li><a href="javascript:location.reload()" target="_self"><i class="fa fa-refresh userdropspan" aria-hidden="true"></i>Neu laden</a><li>
+<li><a href="index.php?user-3"><i class="fa fa-sign-out userdropspan" aria-hidden="true"></i><strong>Abmelden</strong></a><li>
+{ADMIN}
+    </ul>
+      </div>  
+  {NACHRICHTEN}
+  {NEWBEITRAG}
+  {UGALLERY}
+  </div>
+</div>                      
+{EXPLODE}
+<div class="com10login">
+<strong><a data-toggle="modal" data-target=".bs-example-modal">Anmelden</a> oder <a href="index.php?user-regist">Registrieren</a></strong>
+</div>
+<div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="ilchlogin" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content newsteilenmodal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-sign-in" aria-hidden="true"></i> Anmelden</h4>
+      </div>
+      <div class="modal-body">
+<form method="POST" class="form-horizontal"  role="form">
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+  <input type="text" name="name" onFocus="if (value == '{NAME}') {value = ''}" onBlur="if (value == '') {value = '{NAME}'}" value="{NAME}" class="form-control">
+</div>
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+  <input type="password" name="pass" onFocus="if (value == '{PASS}') {value = ''}" onBlur="if (value == '') {value = '{PASS}'}" value="{PASS}" class="form-control">
+</div>
+<div class="input-group">
+<input type="hidden" name="wdlink" value="{wdlink}" />
+<input class="btn btn-primary" type="submit" name="user_login_sub" value="Login"><span style="margin-left:6px;margin-top:3px;">{regist}</span>
+</div>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Schlieﬂen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

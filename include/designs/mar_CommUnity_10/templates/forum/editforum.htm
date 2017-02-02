@@ -1,0 +1,36 @@
+<div class="com10newsinput">
+<form action="index.php?forum-editforum-{id}" method="POST" class="form-horizontal">
+{antispam}
+<table class="table table-forum">
+ <thead> 
+	  <tr class="table-topic">
+		  <th class="colorthematopic">{_lang_topic}</td>
+      <th class="colorthematopic2 text-center hidden-xsmin">{_lang_update}</td>
+      <th></th>
+      </tr>
+                 </thead> 
+<tbody>
+{EXPLODE}
+  <tr>
+    <td class="forumname"><a href="index.php?forum-showposts-{id}">{name}</a> <span class="badge badgemin" rel="tooltip" data-placement="top" title="{_lang_answers}">{rep}</span><br>
+    <span>{_lang_author}: {erst}</span></td>
+		<td class="text-center hidden-xsmin"><small>{date} Uhr</small></td>
+    <td >
+    <div class="checkbox">
+  <label>
+    <input type="checkbox" name="in[{id}]" value="yes">
+  </label>
+</div>
+</td>
+  </tr>
+{EXPLODE}
+</table>
+<tbody>
+<div class="text-right">
+<input class="btn btn-primary btn-xs" type="submit" name="del" value="{_lang_delete}" />
+<input class="btn btn-primary btn-xs" type="submit" name="shift" value="{_lang_shift}" />
+<input class="btn btn-primary btn-xs" type="submit" name="status" value="{_lang_status} {_lang_change}" />
+</div>
+</form>
+{MPL}
+</div>

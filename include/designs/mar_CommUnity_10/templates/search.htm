@@ -1,0 +1,78 @@
+<div class="com10newsinput">
+    <form action="index.php?search" method="GET" class="form-horizontal" role="form">
+        <table class="table">
+            <tr>
+                <td>
+                    <h4><i class="fa fa-search"></i> <b>Suche</b></h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="eingabefeldbeitrag" class="col-sm-2 control-label">Beitrag</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="search" value="" class="form-control" id="eingabefeldbeitrag" placeholder="Suchwort">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eingabefeldautor" class="col-sm-2 control-label">Autor</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="autor" value="" class="form-control" id="eingabefeldautor" placeholder="Autor">
+                        </div>
+                    </div>
+                </td>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Bereich</label>
+                            <div class="col-sm-10">
+                                <label class="radio-inline">
+                                    <input type="radio" name="in" value="1" {checked1} /> Forum
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="in" value="2" {checked2} /> News
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="in" value="3" {checked3} /> Downloads
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Zeitlich eingrenzen</label>
+                            <div class="col-xs-4">
+                                <select class="form-control" name="days">{days}</select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr height="14">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="btn btn-primary" type="submit" value="{_lang_search}" />
+                    </td>
+                </tr>
+        </table>
+    </form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <div style="float: left">{MPL}</div>
+    <div style="float: right; text-align:right;"><span class="badge pull-right">Gefunden&nbsp;:&nbsp;{gAnz}</span></div>
+    <br>
+    <br>
+    <table class="table  table-bordered table-hover">
+        {EXPLODE}
+        <tr class="wellsmnews">
+            <td><strong>{titel}</strong>
+                <br>von {autor}</td>
+            <td class="text-center"><a href="?{link}" rel="tooltip" title="zum Beitrag"><i class="fa fa-external-link fa-lg"></i></a></td>
+        </tr>{EXPLODE}
+    </table>
+    {MPL}
+</div>

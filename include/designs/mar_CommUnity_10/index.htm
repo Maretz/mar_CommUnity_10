@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{TITLE}</title>
+
+    <link href="include/designs/mar_CommUnity_10/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+
+    <link href="include/designs/mar_CommUnity_10/bootstrap-3.3.5/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="include/designs/mar_CommUnity_10/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans|Oswald|Hind" rel="stylesheet">
+
+    <link href="include/bootstrap/ekko-lightbox.css" rel="stylesheet">
+
+    <link href="include/designs/mar_CommUnity_10/style.css" rel="stylesheet">
+
+    <!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
+    <!-- ACHTUNG: Respond.js funktioniert nicht, wenn du die Seite über file:// aufrufst -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand slidebuttonmobilout" href="index.php?"><img style="width: 80px;" src="include/designs/mar_CommUnity_10/img/logo.png" alt="">{SITENAME}</a>
+                <div class="com10loginmobil visible-xs-block">{_boxes_login2_com10}</div>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {_list_menunr5@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">%1 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            %2
+                        </ul>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9 col-sm-push-3 colorcontent">
+                <p class="pull-right visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs sidebarbutton" data-toggle="offcanvas" title="Toggle sidebar"><i class="fa fa-angle-double-right fa-2x colorbutcom10"></i></button>
+                </p>
+                <div class="com10header"><img class="hidden-xs" src="include/designs/mar_CommUnity_10/img/header.png" alt=""><span class="visible-xs-block"><h3>{SITENAME}</h3></span></div>
+                <div class="hmenuilch"><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a> &raquo; {HMENU}</div>
+                {EXPLODE}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        {_boxes_lastnews_com10}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        {_boxes_newscomment_com10}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-sm-pull-9 sidebar-offcanvas" id="sidebar">
+                {_boxes_login_com10}
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        <li class="active tabone">
+                            <a href="#pane1" data-toggle="tab"></a>
+                        </li>
+                        <li class="tabtwo">
+                            <a href="#pane2" data-toggle="tab"></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="pane1" class="tab-pane active fade in">
+                            {_list_menunr1@
+                            <div class="panel panel-com10">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">%1</h3>
+                                </div>
+                                <div class="panel-body">
+                                    %2
+                                </div>
+                            </div>
+                            }
+                        </div>
+                        <div id="pane2" class="tab-pane fade">
+                            {_list_menunr2@
+                            <div class="panel panel-com10">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">%1</h3>
+                                </div>
+                                <div class="panel-body">
+                                    %2
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="footerhr">
+        <footer class="container-fluid text-center">
+            <div>
+                <p>All Rights by {SITENAME}
+                    <br>
+                    <span>CMS by Ilch.de - Maretz.eu Designs</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap.js"></script>
+
+    <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap-datepicker.js " charset="UTF-8"></script>
+    <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap-datepicker.de.min.js" charset="UTF-8"></script>
+
+    <script src="include/bootstrap/js/bootstrap.file-input.js"></script>
+    <script src="include/bootstrap/js/ekko-lightbox.js"></script>
+    <script src="include/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="include/bootstrap/js/bootstrap-tooltip.js"></script>
+
+    <script>
+        (function blink() {
+            $('.login_blink_PM,.login_blink_beitrag,.festthema').fadeOut(500).fadeIn(500, blink);
+        })();
+        $(document).ready(function() {
+            $('[data-toggle="offcanvas"]').click(function() {
+                $('.row-offcanvas').toggleClass('active')
+            });
+        });
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $('#meinModal').on('shown.bs.modal', function() {
+            $('#meinEingabefeld').focus()
+        });
+        $(document).ready(function() {
+            $('body').tooltip({
+                selector: "[data-tooltip=tooltip]",
+                container: "body"
+            });
+        });
+    </script>
+</body>
+
+</html>
+<!-- 
+{_list_hmenupoint@<a target="%1" href="%2">%3</a>}
+{_list_hmenubegi@ <li>}
+{_list_hmenuende@ </li>}
+{_list_vmenupoint@<a target="%1" class="list-group-item hvr-pop" href="%2">%3</a>}
+{_list_vmenubegi@ <div class="list-group listilchvertical">}
+{_list_vmenuende@ </div>}//-->

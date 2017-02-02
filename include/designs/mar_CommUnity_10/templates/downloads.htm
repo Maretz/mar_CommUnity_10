@@ -1,0 +1,92 @@
+{EXPLODE}
+<div class="com10newsinput">
+    <table width="100%" class="table table-bordered table-hover">
+        <tr class="">
+            <th class="text-center"><b>{_lang_category}</b></th>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td class="wellsmnews"><a href="index.php?downloads-{id}">{name}</a> <span class="badge" rel="tooltip" title="Anzahl der Dateien">{files}</span>
+                <br><span class="smalfont">&raquo;&nbsp;{desc}</span></td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>
+<br>
+<br> {EXPLODE}
+<div class="com10newsinput">
+    <table width="100%" class="table table-bordered table-hover">
+        <tr>
+            <th class="text-center"><b><a href="index.php?downloads-{cid}-position{POM}">{_lang_files}</b></a>
+            </th>
+            <th class="text-center hidden-xs"><a href="index.php?downloads-{cid}-date{DAM}">{_lang_date}</a></th>
+            <th class="text-center"><a href="index.php?downloads-{cid}-downs{DOM}">{_lang_downs}</a></th>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td><a href="index.php?downloads-show-{id}">{ssurl}{name} {version}</a>
+                <br /><span class="smalfont">&raquo;&nbsp;{desc}</span></td>
+            <td class="text-center hidden-xs">{datum}</td>
+            <td class="text-center">{downs}</td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <form action="index.php?downloads-upload" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+        <fieldset>
+            <legend><b>{_lang_fileup}</b></legend>
+            <div class="form-group">
+                <label for="eingabefeldnamedl" class="col-sm-2 control-label">Datei Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" value="" class="form-control" id="eingabefeldnamedl" placeholder="Datei Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefeldautordl" class="col-sm-2 control-label">Autor</label>
+                <div class="col-sm-10">
+                    <input type="text" name="autor" value="" maxlength="50" class="form-control" id="eingabefeldautordl" placeholder="Autor">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefeldurldl" class="col-sm-2 control-label">{_lang_linkor}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="url" value="" maxlength="50" class="form-control" id="eingabefeldurldl" placeholder="Url Download">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefeldurlsearch" class="col-sm-2 control-label">{_lang_upload}</label>
+                <div class="col-sm-10">
+                    <input class="btn btn-primary" type="file" title="Datei suchen" name="file" id="eingabefeldurlsearch">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefelddemodl" class="col-sm-2 control-label">{_lang_demolink}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="surl" value="" maxlength="100" class="form-control" id="eingabefelddemodl" placeholder="Demo Link">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefeldbilddl" class="col-sm-2 control-label">{_lang_preview}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="ssurl" value="" maxlength="100" class="form-control" id="eingabefeldbilddl" placeholder="Vorschau Bild">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eingabefeldbeschdl" class="col-sm-2 control-label">kurze Beschr.</label>
+                <div class="col-sm-10">
+                    <input type="text" name="desc" value="" maxlength="100" class="form-control" id="eingabefeldbeschdl" placeholder="kurze Beschreibung">
+                </div>
+            </div>
+            <textarea class="form-control" rows="3" name="descl" placeholder="Beschreibung"></textarea>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Absenden" name="sub">
+            <br>
+        </fieldset>
+    </form>
+</div>
+<script>
+    $('input[type=file]').bootstrapFileInput();
+    $('.file-inputs').bootstrapFileInput();
+</script>

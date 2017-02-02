@@ -1,0 +1,40 @@
+<table class="table  table-bordered">
+  <tr class="active">
+    <td colspan="2"><b>Clankasse</b><span style="float:right"><button rel="tooltip" title="Kontodaten einsehen" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Kontodaten</button></span></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      {_lang_balance} {_lang_whole}: {saldo}, Plus: {plus}, Minus: {minus}<br />
+      {_lang_balance} {jahr}: {Jsaldo}, Plus: {Jplus}, Minus: {Jminus}<br />
+      {_lang_balance} {month}: {Msaldo}, Plus: {Mplus}, Minus: {Mminus}
+      </td>   
+  </tr>
+  <tr class="active">
+    <td><b><a href="index.php?kasse-m{pm}-y{py}" rel="tooltip" title="Monat zurück"><i class="fa fa-arrow-left"></i></a>&nbsp;Buchungen {month}&nbsp;<a href="index.php?kasse-m{nm}-y{ny}" rel="tooltip" title="Monat vor"><i class="fa fa-arrow-right"></i></a></b></td>
+</tr><tr>
+    <td valign="top">
+    <table width="100%" class="table  table-bordered">
+    {EXPLODE}<tr class="active">
+      <td><span style="float: left">{betrag} &euro;</span>
+      <span style="float: right">von {name}</span><br />Zweck: {verwendung}</td>
+    </tr>{EXPLODE}
+    </table>
+    </td>
+  </tr>
+</table>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Kontodaten</h4>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:1em">{kontodaten}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

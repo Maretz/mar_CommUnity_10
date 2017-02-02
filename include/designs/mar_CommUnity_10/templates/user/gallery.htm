@@ -1,0 +1,77 @@
+<script type="text/javascript">
+            $(document).ready(function ($) {
+                // delegate calls to data-toggle="lightbox"
+                $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                    event.preventDefault();
+                    return $(this).ekkoLightbox({
+                        onShown: function() {
+                            if (window.console) {
+                                return console.log('Checking our the events huh?');
+                            }
+                        }
+                    });
+                });
+
+                //Programatically call
+                $('#open-image').click(function (e) {
+                    e.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+            });
+        </script>
+<div class="com10newsinput">       
+<legend><i class="fa fa-picture-o" aria-hidden="true"></i> Gallery von {uname}</legend>
+<table class="table  table-bordered">
+    <thead>
+        <tr class="active">
+    <th>Image</th>
+		<th>Info´s</th>
+  </tr>
+    </thead>
+  {EXPLODE}
+    <tbody>
+        <tr><td>
+<div class="row">
+ <div class="col-sm-offset-4 col-sm-3">
+<a href="include/images/usergallery/img_{id}.{endung}" data-toggle="lightbox" data-title="{name}" data-footer="" >
+<img src="include/images/usergallery/img_thumb_{id}.{endung}" class="img-responsive">
+</a>
+</div>
+</div>
+</td>
+<td>{besch}</td>
+ </tr>{EXPLODE}
+</tbody>
+</table>
+<div class="text-center">{MPL}</div>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<form action="index.php?user-usergallery-{uid}" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="gesendet" value="yes" />
+  <fieldset>
+    <legend><i class="fa fa-cloud-upload" aria-hidden="true"></i> {_lang_pictureupload}</legend>
+<div class="form-group">
+    <label for="eingabefeldgallerysearch" class="col-sm-2 control-label">{_lang_upload}</label>
+    <div class="col-sm-10">
+      <input class="btn btn-primary" type="file" title="Bild suchen"  name="file" id="eingabefeldgallerysearch">
+    </div>
+  </div>
+  <br>
+  <br>
+<div class="form-group">
+    <label for="eingabefeldgallerybesch" class="col-sm-2 control-label">Beschreibung</label>
+    <div class="col-sm-10">
+      <input type="text" name="text" class="form-control" id="eingabefeldgallerybesch" placeholder="Beschreibung">
+    </div>
+  </div>
+<input class="btn btn-primary" type="submit" value="{_lang_formsub}"><br>
+  </fieldset>
+</form>
+<script type="text/javascript">
+$('input[type=file]').bootstrapFileInput();
+$('.file-inputs').bootstrapFileInput();
+        </script>
+</div>
+{EXPLODE}
+{x}

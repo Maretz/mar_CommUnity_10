@@ -1,0 +1,71 @@
+<div class="com10newsinput">
+<table class="table  table-bordered">
+  <tr>
+	  <th colspan="2" height="20" class="active">
+		  <b>{_lang_preview}</b>
+		</th>
+	</tr><tr>
+    <td>{txt}</td>
+  </tr>
+</table>
+</div>
+{EXPLODE}
+<script language="JavaScript" type="text/javascript">
+<!--
+  function form_check() {
+	  document.form.submit.disabled = true;
+ 	  document.form.submit.style.background = '#FF0000';
+    document.form.submit.value = '{_lang_send}...';
+    return true;
+	}
+//-->
+</script>
+<div class="com10newsinput">
+<form action="index.php?forum-newtopic-{fid}" method="POST" name="form" onSubmit="return form_check()" class="form-horizontal" role="form">
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+<legend><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {_lang_writeanewtopic}</legend>
+  <div class="form-group">
+    <label for="eingabefeldfthema" class="col-sm-2 control-label">Thema</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="eingabefeldfthema" placeholder="Titel zum Thema" value="{topic}" maxlength="40" tabindex="1" name="topic">
+    </div>
+  </div>
+{name}
+<table class="table  table-bordered">
+  <tr>
+	</tr><tr>
+	  <td>
+      <!-- BB Code START -->{__BBCodeButtons__}<!-- BB Code START -->
+		</td>
+	</tr><tr>
+    <td>
+		  <textarea cols="75" rows="15" name="txt" class="form-control" tabindex="3">{txt}</textarea>
+    </td>
+  </tr>
+  <tr>
+  	  <td>
+  	  <div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
+  	  </td>
+  	  </tr>
+  	  <tr>
+    <td>
+     <div class="checkbox">
+  <label>
+      <input id="topic_alert" type="checkbox" value="yes" name="topic_alert"> <strong><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Mail bei Antwort erhalten</strong>
+  </label>
+  </div>
+</td>
+</tr>
+</table>
+<br>
+{antispam}
+<table class="table">
+<tr>
+<td>
+<button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning btn-sm accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button>
+<span class="pull-right"><input type="submit" class="btn btn-primary btn-sm" name="priview" value="{_lang_preview}" accesskey='v' />&nbsp;<input type="submit" class="btn btn-primary btn-sm" name="submit" value="{_lang_formsub}" accesskey='s' /></span>
+</td>
+</tr>
+</table>
+</form>
+</div>

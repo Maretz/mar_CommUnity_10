@@ -1,0 +1,55 @@
+<div class="com10newsinput">
+    <form action="index.php?awaycal" method="POST" class="form-horizontal" role="form">
+        <input type="hidden" name="ch" value="{id}" />
+        <h4>{_lang_dateform}</h4>
+        <hr class="hrtop">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{_lang_from}</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type='text' class="form-control" name="von" value="{von}" data-provide="datepicker" placeholder="{von}" required="required">                      
+                    <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>                 
+                </div>
+                <span id="hilfeText" class="help-block text-right">Format yyyy-mm-dd</span> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{_lang_to}</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type='text' class="form-control" name="bis" value="{bis}" data-provide="datepicker" placeholder="{bis}" required="required">                   
+                    <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
+                </div>
+                <span id="hilfeText" class="help-block text-right">Format yyyy-mm-dd</span> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{_lang_ground}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" rows="4" name="betreff" placeholder="{_lang_ground}">{betreff}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-6">
+                <input class="btn btn-primary" type="submit" value="Absenden">
+            </div>
+        </div>
+    </form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <table width="100%" class="table  table-bordered">
+        <tr class="active">
+            <td><strong>{_lang_datemanage}</strong></td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td><span class="text-right">{_lang_from}: {von} - {bis},&nbsp; <u>{status}</u></span>
+                <b>{name}</b>
+                <hr style="width: 200px;" align="left"> {betreff}
+            </td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>          

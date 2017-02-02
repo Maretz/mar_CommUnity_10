@@ -1,0 +1,97 @@
+<div class="com10newsinput">
+<table class="table  table-bordered table-hover">
+	<h3>{_lang_war} {_lang_against}: {tag}</h3>
+<hr class="hrtop">	
+<tr>
+	<td class="active text-left" colspan="2"><b>&nbsp;{_lang_opponent} {_lang_info}</b></td>
+</tr><tr>
+	<td class="active">{_lang_clancountry}:</td>
+	<td><img src="include/images/flags/{land}" alt="" border="0"></td>
+</tr><tr>
+	<td class="active">{_lang_name}:</td>
+	<td>{gegner}</td>
+</tr><tr>
+	<td class="active">{_lang_homepage}</td>
+	<td><a href="{page}" target="_blank">{page}</a></td>
+</tr><tr>
+	<td class="active">{_lang_mail}</td>
+	<td>{mail}</td>
+</tr><tr>
+	<td class="active">{_lang_icq}</td>
+	<td>{icq}</td>
+</tr><tr>
+	<td class="active text-left" colspan="2"><b>&nbsp;{_lang_match} {_lang_info}</b></td>
+</tr><tr>
+	<td class="active">{_lang_date}</td>
+	<td><strong>{datum} {_lang_at} {zeit} {_lang_oclock}</strong></td>
+</tr><tr>
+	<td class="active">{_lang_squad}</td>
+	<td><u><i><b>{team}</b></i></u></td>
+</tr><tr>
+	<td class="active">{_lang_member}</td>
+	<td>{memberliste}</td>
+</tr><tr>
+	<td class="active">{_lang_xonx}</td>
+	<td>{mod}</td>
+</tr><tr>
+	<td class="active">{_lang_matchtype}:</td>
+	<td>{mtyp}</td>
+</tr><tr>
+	<td class="active">{_lang_game}:</td>
+	<td>{game}</td>
+</tr><tr>
+	<td class="active">{_lang_report}:</td>
+	<td>{txt}</td>
+</tr><tr>
+	<td class="active text-left" colspan="2"><b>&nbsp;{_lang_result}</b></td>
+</tr><tr>
+	<td class="active">{_lang_the} {team} {_lang_had}:</td>
+	<td>{wlp}</td>
+</tr><tr>
+	<td class="active text-left" colspan="2"><b>&nbsp;{_lang_round} {_lang_info}</b></td>
+</tr><tr>
+	<td class="active text-left" colspan="2">
+		<table class="table  table-bordered">
+		<tr class="active">
+			<td width="100">{_lang_map}/{_lang_round}</td>
+			<td width="70">{gegner}</td>
+			<td width="70">{team}</td>
+		</tr>
+		{ergliste}
+		<tr class="Cnorm">
+			<td width="100">{_lang_whole}</td>
+			<td width="70">{opp}</td>
+			<td width="70">{owp}</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<form action="index.php?wars-more-{id}" method="POST">
+<input type="hidden" name="kommentar_fuer_last_wars" value="yes" />
+<table class="table  table-bordered">
+	<h4>{_lang_addcomment}</h4>
+<hr class="hrtop">	
+<tr>
+	<td>
+<textarea class="form-control" rows="3" name="text" placeholder="Kommentar eingeben"></textarea><br>
+<input class="btn btn-primary text-left" type="submit" value="{_lang_formsub}">
+</td>
+</tr>
+</table>
+<br>
+<table class="table  table-bordered">
+<tr>
+	<td class="active">{_lang_comments}</td>
+</tr>
+{EXPLODE}
+<tr>
+	<td><strong>{name}</strong>:&nbsp;{text}</td>
+</tr>
+{EXPLODE}
+</table>
+</form>
+</div>

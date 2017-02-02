@@ -1,0 +1,61 @@
+<div class="com10newsinput">
+<form action="index.php?user-regist-2" method="POST">
+<h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {_lang_attentionplease}</h4>
+<hr class="hrtop">
+    {regeln}
+<br>
+<br>
+<input type="submit" class="btn btn-primary" value="{_lang_readandok}" name="Yes">
+</form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+{FEHLER}
+<form action="index.php?user-regist-2" method="POST" class="form-horizontal" role="form">
+    <input type="hidden" value="Gelesen und einverstanden" name="checked">
+<h4>{_lang_REGISTER}</h4>
+<hr class="hrtop">
+<div class="row">
+  <div class="col-md-8">
+<div class="form-group">
+    <label for="eingabefeldregistnick" class="col-sm-2 control-label">{_lang_nickname}</label>
+    <div class="col-sm-10">
+      <input type="text" name="nutz" value="{name}" maxlength="15" class="form-control" id="eingabefeldregistnick">
+    </div>
+  </div>
+<div class="form-group">
+    <label for="eingabefeldregistmail" class="col-sm-2 control-label">{_lang_mail}</label>
+    <div class="col-sm-10">
+      <input type="text" maxlength="100" value="{email}" name="email" class="form-control" id="eingabefeldregistmail">
+    </div>
+  </div>
+{EXPLODE}
+<div class="form-group">
+    <label for="eingabefeldregistpassword" class="col-sm-2 control-label">{_lang_password}</label>
+    <div class="col-sm-10">
+      <input type="password" name="pass" class="form-control" id="eingabefeldregistpassword">
+    </div>
+  </div>
+{EXPLODE}
+<div class="form-group">
+    <label for="eingabefeldregistAntispam" class="col-sm-2 control-label">Antispam</label>
+    <div class="col-sm-10">
+      <br>{antispam}
+    </div>
+  </div>
+<div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+<a class="btn btn-primary" href="javascript:history.back(1)">{_lang_back}</a>  <input type="submit" class="btn btn-primary"name="register" value="{_lang_register}">
+    </div>
+  </div>
+</div></div>
+</form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<legend>{_lang_hello} {NAME}</legend>
+{_lang_yourregistrationwassuccessful}!<br><br>
+{_lang_amailhasbeensenttoyouwithmailandpass}!<br><br>
+{_lang_afteryoureceivedthemail} <a href="index.php?user-2">{_lang_login2}</a>
+</div>

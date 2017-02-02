@@ -1,0 +1,47 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(){
+	if(document.form.ALL){
+		var c = document.form.ALL.checked;
+	}
+	for (var i=0;i<document.form.elements.length;i++){
+		var e = document.form.elements[i];
+		if(e.name != 'ALL') {
+			if((e.checked!=c)&&(e.type=="checkbox")){
+			 e.click();
+			 e.checked = c;
+			}
+		}
+	}
+}
+//-->
+</SCRIPT>
+<div class="com10newsinput">
+<table width="100%" class="table"><tr><td width="50%">
+<a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-showsend">{_lang_outbox}</a></td><td width="50%" class="text-right">
+<a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-new">{_lang_writemessage}</a></td></tr></table>
+<form action="index.php?forum-privmsg-delete" method="POST" name="form">
+<table width="100%" class="table table-bordered table-hover">
+  <tr class="active">
+	  <th><a href="index.php?forum-privmsg-{ad}1"><b>{_lang_messagetitle}</b></a></th>
+		<th><a href="index.php?forum-privmsg-{ad}2"><b>{_lang_sender}</b></a></th>
+		<th class="hidden-xs"><a href="index.php?forum-privmsg-{ad}3"><b>{_lang_time}</b></a></th>
+		<th width="15" class="text-right"><input name="ALL" type="checkbox" value="CHECK ALL" onClick="CheckAll();" /></th>
+	</tr>
+	{EXPLODE}
+  <tr>
+	  <td><a href="index.php?forum-privmsg-showmsg-{ID}">{BET} &nbsp;{NEW}</a></td>
+    <td>von {ABS}</td>
+    <td class="hidden-xs"><a href="#" rel="tooltip" title="Gesendet um {time} Uhr">{date}</a></td>
+    <td class="text-right"><input type="checkbox" name="delids[]" value="{ID}"></td>
+  </tr>
+	{EXPLODE}
+  <tr>
+	  <td colspan="4" class="text-right">
+      <input type="submit" class="btn btn-danger btn-xs" value="{_lang_delete}" />
+      <i class="fa fa-reply fa-flip-vertical"></i>
+		</td>
+  </tr>
+</table>
+</form>
+</div>

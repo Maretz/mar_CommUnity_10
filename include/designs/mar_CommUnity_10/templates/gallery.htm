@@ -1,0 +1,89 @@
+{EXPLODE}
+<div class="com10newsinput">
+    <table width="100%" class="table table-bordered">
+        <tr class="active">
+            <td class="text-left"><i class="fa fa-picture-o"></i> <b>{_lang_category}</b></td>
+        </tr>
+        {EXPLODE}
+        <tr>
+            <td class="wellsmnews"><a href="index.php?gallery-{id}">{name}</a> <span class="badge" rel="tooltip" title="Anzahl {_lang_pictures}">{gallery}</span>
+                <br><small>&raquo;&nbsp;{besch}</small></td>
+        </tr>
+        {EXPLODE}
+    </table>
+</div>
+<br />
+<br /> {EXPLODE}
+<div class="com10newsinput">
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <td colspan="{imgperline}" class="active text-center"><b>{cname}</b></td>
+        </tr>
+        {EXPLODE}
+        <td width="{width}%" valign="top" align="center" class="imgresponsiv">
+            <div onmouseover="hiddpos('infodiv{id}')" id="infodiv{id}" style="position:absolute;display:none; width:200px; height:200px;z-index:1001;">
+                <ul class="list-group">
+                    <a href="#" class="list-group-item active"><strong>{_lang_filename}:</strong> {datei_name}</a>
+                    <li class="list-group-item"><strong>{_lang_seen}:</strong> {klicks}</li>
+                    <li class="list-group-item"><strong>{_lang_voting}:</strong> {vote_wertung}</li>
+                    <li class="list-group-item"><strong>{_lang_comments}:</strong> {anz_koms}</li>
+                    <li class="list-group-item"><strong>{_lang_desc}:</strong>
+                        <br>{besch}</li>
+                </ul>
+            </div>
+            <table class="table" border="0" cellspacing="1" cellpadding="0">
+                <tr class="text-center">
+                    <td onmouseout="hiddpos('infodiv{id}')" onmouseover="alertpos('infodiv{id}')">
+                        <a href="index.php?gallery-show-{cat}-p{bildr}" onClick="return oeffneFenster({bildr},{cat});" target="_blank"><img src="include/images/gallery/img_thumb_{id}.{endung}" border="0" alt="{datei_name}" title="&nbsp;" /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <a href="index.php?gallery-showOrig-{id}-{endung}" target="_blank" rel="tooltip" title="Bild normal"><i class="fa fa-picture-o"></i></a>&nbsp;&nbsp;<a href="index.php?gallery-show-{cat}-p{bildr}" target="_blank" rel="tooltip" title="Bild bewerten"><i class="fa fa-star-o" aria-hidden="true"></i></a>&nbsp;&nbsp;<a class="ilch-none" href="index.php?gallery-show-{cat}-p{bildr}" target="_blank" rel="tooltip" title="{_lang_comments}: {anz_koms}"><i class="fa fa-comments-o" aria-hidden="true"><sup>{anz_koms}</sup></i></a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        {EXPLODE}
+        </tr>
+    </table>
+    <center>{MPL}</center>
+</div>
+<script language="JavaScript" type="text/javascript">
+    <!--
+    function oeffneFenster(bildr, cat) {
+        var fenster = window.open('index.php?gallery-show-' + cat + '-p' + bildr, 'showBild', 'scrollbars=yes,height=600,width={breite},left=200,status=yes,resizable=yes');
+        fenster.focus();
+        return (false);
+    }
+
+    // manage div ...
+    document.onmousemove = checkPosition;
+
+    function checkPosition(e) {
+        if (document.all) {
+            mausX = event.clientX + document.body.scrollLeft;
+            mausY = event.clientY + document.body.scrollTop;
+        } else {
+            mausX = e.pageX;
+            mausY = e.pageY;
+        }
+
+    }
+
+    function alertpos(dname) {
+        if (document.layers) {
+            document.layers[0].left = mausX;
+            document.layers[0].top = mausY;
+        } else if (document.getElementById) {
+            document.getElementById(dname).style.left = mausX + "-25px";
+            document.getElementById(dname).style.top = mausY + "-1px";
+        }
+        document.getElementById(dname).style.display = "inline";
+    }
+
+    function hiddpos(dname) {
+        document.getElementById(dname).style.display = "none";
+    }
+    //-->
+</script>

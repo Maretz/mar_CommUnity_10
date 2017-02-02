@@ -1,0 +1,100 @@
+<div class="com10newsinput">
+<table class="table table-condensed table-bordered">
+<tr class="active">
+	<td class="text-center">{_lang_whole}</td>
+	<td class="text-center">{_lang_win}</td>
+	<td class="text-center">{_lang_los}</td>
+	<td class="text-center">{_lang_pat}</td>
+</tr><tr>
+	<td class="text-center"><font class="textalter">{GES}</font></td>
+	<td class="text-center"><font color="#34AD00">{WIN}</font></td>
+	<td class="text-center"><font color="#FF4242">{LOS}</font></td>
+	<td class="text-center"><font color="#CCAA00">{PAT}</font></td>
+</tr>
+</table>
+</div>
+<div class="com10newsinput">
+<table class="table table-condensed table-bordered">
+	<h4>{_lang_nextwars}</h4>
+	<hr class="hrtop">
+<tr class="active">
+	<td><b>{_lang_date}</b></td>
+	<td><b>{_lang_opponent}</b></td>
+	<td class="hidden-xsmin"><b>{_lang_squad}</b></td>
+	<td></td>
+</tr>
+{EXPLODE}
+<tr>
+	<td>{time}</td>
+	<td><a href="{page}" target="_blank">{gegner}</a></td>
+	<td class="hidden-xsmin">{team}</td>
+	<td class="text-center"><a href="index.php?wars-more-{id}" rel="tooltip" title="{_lang_more}"><i class="fa fa-info-circle fa-lg"></i></a></td>
+</tr>
+{EXPLODE}
+</table>
+</div>
+{EXPLODE}
+<script type="text/javascript">
+function loadLWPage(page){
+	var f = document.forms['lwf'];
+	f.elements['page'].value = page;
+	f.submit();
+	return false;
+}
+</script>
+<div class="com10newsinput">
+<form action="?wars-last" method="post" name="lwf">
+<input type="hidden" name="page" value="0" />
+<input type="hidden" name="che" value="1">
+<table width="100%" class="table table-bordered table-hover">
+<h4>{_lang_lastwars}</h4>
+<hr class="hrtop">
+<tr>
+	<td>Team:</td>
+	<td colspan="2"><select name="tid"><option value="">-- ( alle ) --</option> {tid}</select></td>
+</tr>
+<tr>
+	<td>{_lang_result}:</td>
+	<td colspan="2"><select name="wlp"><option value="">-- ( alle ) --</option>{wlp}</select>
+	</td>
+</tr>
+<tr>
+	<td>Game:</td>
+	<td colspan="2"><select name="spiel"><option value="">-- ( alle ) --</option> {game}</select></td>
+</tr>
+<tr>
+	<td>Typ:</td>
+	<td colspan="2"><select name="typ"><option value="">-- ( alle ) --</option> {typ}</td>
+</tr>
+<tr>
+<td></td><td colspan="2"><input class="btn btn-primary" type="Submit" name="Go" value="Go"></td>
+</tr>
+</table>
+</form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<table class="table table-bordered table-hover">
+<h4>{_lang_lastwars}</h4>
+<hr class="hrtop">
+<tr class="active">
+	<td class="hidden-xsmin"><b>{_lang_date}</b></td>
+	<td><b>{_lang_opponent}</b></td>
+	<td class="hidden-xsmin"><b>{_lang_squad}</b></td>
+	<td class="hidden-xsmin"><b>{_lang_matchtype}</b></td>
+	<td><b>{_lang_result}</b></td>
+	<td></td>
+</tr>
+{EXPLODE}
+<tr>
+	<td class="hidden-xsmin">{time}</td>
+	<td><img src="include/images/flags/{land}" alt="" /> <a href="{page}" target="_blank">{gegner}</a></td>
+	<td class="hidden-xsmin">{team}</td>
+	<td class="hidden-xsmin">{mtyp}</td>
+  <td><div style="border: solid #{farbe2} 1px; margin: 0px;text-align:center;background-color: #{farbe}; color:#000000">{erg}</div></td>
+	<td><a href="index.php?wars-more-{id}" rel="tooltip" title="{_lang_more}"><i class="fa fa-info-circle fa-lg"></i></a></td>
+</tr>
+{EXPLODE}
+</table>
+<div class="text-center">{MPL}</div>
+</div>

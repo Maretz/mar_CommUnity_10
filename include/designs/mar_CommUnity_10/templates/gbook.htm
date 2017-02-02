@@ -1,0 +1,188 @@
+<div class="com10newsinput">
+    <table class="table">
+        <tr>
+            <td width="50%" class="text-left">
+                <a class="btn btn-primary">{_lang_entries} <span class="badge">{EINTRAGE}</span></a>
+            </td>
+            <td width="50%" class="text-right">
+                <a class="btn btn-primary" href="index.php?gbook-1">{_lang_insert}</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<br> {EXPLODE}
+<div class="com10newsinput">
+    <table class="table table-bordered">
+        <tr class="active">
+            <td><b>{NAME}</b><span class="pull-right">
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-bars"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right text-center" role="menu">
+                    <li><a href="#">Eintrag vom:<br>{DATE}</a></li>
+                    <li>{MAIL}</li>
+                    <li>{PAGE}</li>
+                    <li>{koms}</li>
+                </ul>
+</div>
+</span>
+</td>
+</tr>
+<tr>
+<td>{TEXT}</td>
+</tr>
+</table>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<div align="center">{SITELINK}</div>
+</div>
+{EXPLODE}
+
+<!-- G &auml; S T E B U C H   E N T E R   F O R M U L A R -->
+
+<script language="JavaScript" type="text/javascript">
+    <!--
+
+    var ErlaubteAnzahl = {
+        TXTL
+    };
+
+    function checkg() {
+        if (document.form.txt.value.length > ErlaubteAnzahl) {
+            alert('Du hast mehr als ' + ErlaubteAnzahl + ' Zeichen verwendet');
+            return false;
+        } else {
+            var fehler = '';
+            if (document.form.txt.value.length == 0) {
+                fehler += 'Bitte einen Text eingeben';
+            }
+            if (document.form.name.value.length == 0) {
+                if (fehler != '') {
+                    fehler += "\n";
+                }
+                fehler += 'Bitte einen Namen eingeben';
+            }
+            if (fehler != '') {
+                alert(fehler);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    function RestlicheZeichenErmitteln(d) {
+        Laenge = document.form.txt.value.length;
+        if (Laenge > ErlaubteAnzahl) {
+            document.form.txt.value = document.form.txt.value.substring(0, ErlaubteAnzahl);
+            RestlicheZeichen = 0;
+        } else {
+            RestlicheZeichen = ErlaubteAnzahl - Laenge;
+        }
+        document.form.Laenge.value = RestlicheZeichen;
+    }
+
+    //-->
+</script>
+<div class="com10newsinput">
+    <script type='text/javascript' src='include/includes/js/bbcode.js'></script>
+    <form action="index.php?gbook-2" onsubmit="return checkg()" method="POST" name="form">
+        <legend>{_lang_insert}</legend>
+        <table class="table  table-bordered table-striped">
+            <tr>
+                <td>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-male gbookaddon"></i></span>
+                        <input type="text" value="{uname}" tabindex="1" name="name" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope-o gbookaddon"></i></span>
+                        <input type="text" name="mail" tabindex="2" class="form-control" placeholder="E-Mail">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-home gbookaddon"></i></span>
+                        <input type="text" name="page" tabindex="3" class="form-control" placeholder="Webseite">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>
+                    <!-- BB Code START -->{__BBCodeButtons__}
+                    <!-- BB Code START -->
+                    <br>
+                    <textarea class="form-control" placeholder="Dein Eintrag" onblur="RestlicheZeichenErmitteln(this);" onchange="RestlicheZeichenErmitteln(this);" onfocus="RestlicheZeichenErmitteln(this);" onkeydown="RestlicheZeichenErmitteln(this);" onkeyup="RestlicheZeichenErmitteln(this);" cols="50" rows="10" tabindex="4" name="txt"></textarea>
+                    <br>Noch
+                    <input size="3" name="Laenge" value="{TXTL}"> {_lang_signs}
+                </td>
+</tr>
+<tr>
+<td>
+<div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
+</td>
+            </tr>
+<tr>
+            <td>
+<button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning btn-sm accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button>
+                <span class="pull-right"><input type="submit" class="btn btn-primary" value="{_lang_formsub}" tabindex="5" accesskey="s"></span>
+            </td>
+        </tr>
+        </table>
+{ANTISPAM}
+    </form>
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+    <table class="table table-bordered">
+        <tr class="active">
+            <td><b>{name}</b><span style="float:right;">
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-bars"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right text-center" role="menu">
+                    <li class="text-center">{datum}</li>
+                    <li class="text-center">{mail}</li>
+                    <li class="text-center">{page}</li>
+                </ul>
+</div>
+</td>
+</tr>
+<tr>
+    <td colspan="3">{text}</td>
+</tr>
+<tr>
+    <td><a class="btn btn-primary" href="index.php?gbook">&laquo; zur&uuml;ck</a></td>
+</tr>
+</table>
+<br />
+<table class="table table-bordered">
+    <tr class="active">
+        <td>
+            <form action="index.php?gbook-show-{id}" method="POST">
+                <fieldset>
+                    <h4>{_lang_writecomment}</h4>
+                    <hr class="hrtop">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="name" value="{uname}" readonly> &nbsp; {ANTISPAM} &nbsp;</div>
+                    </div>
+                    <textarea class="form-control" rows="3" name="text" placeholder="Kommentar eingeben"></textarea>
+                    <br>
+                    <input type="submit" class="btn btn-primary text-left" value="{_lang_enter}">
+                </fieldset>
+            </form>
+            <br /> {EXPLODE}
+            <div class="well well-sm wellsmnews">
+                <span class="badge"># {zahl}</span> von {name}
+                <br> {text}
+            </div>
+
+            {EXPLODE}
+        </td>
+    </tr>
+</table>
+</div>

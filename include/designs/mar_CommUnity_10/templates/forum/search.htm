@@ -1,0 +1,33 @@
+<div class="com10newsinput">
+<div>
+<a href="index.php?forum-markallasread" rel="tooltip" title="{_lang_markallasread}"><i class="fa fa-times"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-augt" rel="tooltip" title="{_lang_newtopicssincelastvisit}"><i class="fa fa-comments-o"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-aubt" rel="tooltip" title="{_lang_topicwithnoreply}"><i class="fa fa-comment-o"></i></a>&nbsp;&nbsp;
+<a href="index.php?forum-aeit" rel="tooltip" title="{_lang_ownposts}"><i class="fa fa-user"></i></a>
+<span class="badge badgemin pull-right">Gesamt: {gAnz}</span>
+</div>
+<br>
+<table class="table table-forum">
+{EXPLODE}
+  <tr>
+    <td class="forumname">{avatar}<small>{author}</small><br><a href="index.php?{link}">{titel}</a> {ord}</td>
+  </tr>
+  {EXPLODE}
+</table>
+{MPL}
+</div>
+{EXPLODE}
+<div class="com10newsinput">
+<form action="index.php?forum-aeit" method="post" class="form-horizontal" role="form">
+<div class="row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" value="{_lang_ownposts} {_lang_from} :">{_lang_ownposts} {_lang_from} :</button>
+      </span>
+      <input name="name" value="{name}" type="text"  class="form-control" placeholder="Benutzername" />
+    </div>
+  </div></div>
+</form>
+</div>

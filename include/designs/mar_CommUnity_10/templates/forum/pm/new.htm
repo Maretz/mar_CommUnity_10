@@ -1,0 +1,43 @@
+<script language="JavaScript" type="text/javascript">
+<!--
+  function finduser () {
+    var Fenster = window.open ('index.php?search-finduser', 'finduser', 'status=no,scrollbars=yes,height=200,width=350');
+    Fenster.focus();
+    
+    return (false);
+  }
+//-->
+</script>
+<div class="com10newsinput">
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+<form action="index.php?forum-privmsg-new" method="POST" name="form" class="form-horizontal" role="form">
+<br>
+<table width="100%" class="table"><tr><td width="70%" class="text-left">
+<a class="btn btn-primary btn-xs" href="index.php?forum-privmsg">Eingang</a> <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-showsend">Ausgang</a></td><td width="30%" class="text-right">
+<a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-new">PM schreiben</a></span></td></tr></table>
+<table width="100%" class="table table-bordered table-hover">
+  <tr class="active">
+	  <legend><i class="fa fa-commenting-o" aria-hidden="true"></i> {_lang_writenewmessage}</legend>
+<tr>
+		<td>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <a class="btn btn-primary"  href="index.php?search-finduser" onClick="return finduser();">User finden</a>
+      </span>
+      <input name="name" value="{name}" class="form-control" placeholder="Empfänger Name">
+</div>
+<input type="text" tabindex="2" maxlength="50"  name="bet" value="{BET}"  class="form-control" placeholder="Betreff">
+
+</tr></table>
+<table class="table  table-bordered table-hover table-striped">
+<tr>
+  <td width="15%" class="active hidden-xsmin" valign="top">{SMILIES}</td>
+        <td width="85%">
+      <!-- BB Code START -->{__BBCodeButtons__}<!-- BB Code START -->
+<br>
+<textarea name="txt" rows="15" cols="65" tabindex="3" class="form-control" placeholder="Nachricht">{TXT}</textarea><br><input type="submit" class="btn btn-primary" tabindex="4" accesskey="s" value="{_lang_send}" name="sub">
+</td>
+      </tr>
+    </table>
+</form>
+</div>

@@ -1,0 +1,79 @@
+<div class="com10newsinput">
+<table class="table  table-bordered">
+  <tr>
+	  <th class="active">
+		  <b>{_lang_preview}</b>
+		</th>
+	</tr>
+	<tr>
+    <td>{txt}</td>
+  </tr>
+</table>
+</div>
+{EXPLODE}
+<script language="JavaScript" type="text/javascript">
+<!--
+  function form_check() {
+	  document.form.submit.disabled = true;
+ 	  document.form.submit.style.background = '#FF0000';
+    document.form.submit.value = '{_lang_send}...';
+    return true;
+	}
+//-->
+</script>
+<form action="index.php?forum-newpost-{tid}" method="POST" name="form" onSubmit="return form_check()" class="form-horizontal" role="form">
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+<div class="com10newsinput">
+<legend><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {_lang_writeananswer}</legend>
+{name}
+<table class="table  table-bordered">
+	<tr>
+	  <td>
+      <!-- BB Code START -->{__BBCodeButtons__}<!-- BB Code ENDE -->
+		</td>
+	</tr><tr>
+    <td>
+      <textarea name="txt" rows="15" cols="55" class="form-control" tabindex="2">{txt}</textarea>
+    </td>
+  </tr><tr>
+  	  <td>
+  	  <div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
+  	  </td>
+  	  </tr>
+  	  <tr>
+    <td>
+     <div class="checkbox">
+  <label>
+      <input id="topic_alert" type="checkbox" value="yes" name="topic_alert"> <strong><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Mail bei Antwort erhalten</strong>
+  </label>
+  </div>
+</td>
+</tr>
+</table>
+<br>
+{antispam}
+<table class="table">
+<tr>
+<td>
+<button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning btn-sm accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button>
+<span class="pull-right"><input type="submit" class="btn btn-primary btn-sm" name="priview" value="{_lang_preview}" accesskey='v' />&nbsp;<input type="submit" class="btn btn-primary btn-sm" name="submit" value="{_lang_formsub}" accesskey='s' /></span>
+</td>
+</tr></table>
+</form>
+<h5><i class="fa fa-clipboard" aria-hidden="true"></i> {_lang_overvieaboutthelast5posts}</h5>
+<table class="table ilchbilder">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th >Beitrag</th>
+            </tr>
+           </thead> 
+<tbody>
+  {EXPLODE}
+	<tr>
+	  <td>{avatar}<br><strong>{erst}</strong></td>
+    <td><small><strong># {datum} Uhr</strong></small><hr>{txt}</td>
+	</tr>{EXPLODE}
+	</tbody>
+</table>
+</div>

@@ -1,0 +1,35 @@
+<form action="?forum-inform" method="post" class="form-horizontal">
+{POSTID}
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Inhalt melden</h3>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+    <label for="eingabefeldchange" class="col-sm-2 control-label">Senden an:</label>
+    <div class="col-sm-4">
+       <select name="mod" class="form-control" id="eingabefeldchange">
+      <option value="noone">Bitte ausw&auml;hlen</option>
+      {MODS}
+      </select>
+    </div>
+  </div>
+      <div class="form-group">
+    <label for="eingabefeldchangefeld" class="col-sm-2 control-label">Grund:</label>
+    <div class="col-sm-8">
+      <textarea name="reason" class="form-control" rows="5" id="eingabefeldchangefeld" aria-describedby="hilfeText">{TXT}</textarea>
+      <span id="hilfeText" class="help-block"><small>Diese Funktion ist ausschlieﬂlich zu verwenden bei: Spam, Werbung und anderen problematischen Inhalten .(rassistischen, gewaltverherrlichenden, aggressiven, beleidigenden oder sexistischen).</small></span>
+  </div>
+  </div>
+        <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-8">
+    <div class="btn-group">
+      <input type="button" class="btn btn-default" value="Zur&uuml;ck" onClick="history.go(-1);return true;">
+      <input class="btn btn-primary" type="submit"  name="submit" value="Senden">
+        </div>
+        </div>
+  </div>
+  </div>
+</div>
+</form>
