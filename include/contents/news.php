@@ -134,7 +134,6 @@ if ( !is_numeric($menu->get(1)) )  {
 
       $k0m  = db_query("SELECT COUNT(ID) FROM `prefix_koms` WHERE uid = ".$row['id']." AND cat = 'NEWS'");
       $row['kom']  = db_result($k0m,0);
-      $row['privmsgpopup'] = check_for_pm_popup ();
       $row['kate'] = news_find_kat($row['kate']);
       $row['kates'] = $row['kates'];
 # News Teilen Start
