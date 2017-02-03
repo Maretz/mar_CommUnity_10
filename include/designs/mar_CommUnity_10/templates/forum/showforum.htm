@@ -52,13 +52,14 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-body text-left">
-		  <td class="erstezeile"><span class="badge">{gesonline}</span> {_lang_guestsonline,ofthem} <span class="badge">{useronline}</span> {_if_{useronline}=='1'}{_lang_registredand}{/_endif}{_if_{useronline}!='1'}{_lang_registrededand}{/_endif} <span class="badge">{gastonline}</span> {_lang_guests}<br>
+<h4><i class="fa fa-user-circle-o fa-2x text-primary pull-left" style="margin-bottom:20px;" aria-hidden="true"></i> Benutzer Online <span class="badge">{gesonline}</span></h4>
+
+		  {useronline}  {_if_{useronline}=='1'}Mitglied{/_endif}{_if_{useronline}!='1'}Mitglieder{/_endif} und {gastonline} Besucher - Rekord: {max} Besucher
+<br>
 			<br>{userliste}
 <br><br>
-<legend>{_lang_forumselect}</legend><br>
-{_lang_membershaveritten} <span class="badge">{users}</span>&nbsp;&nbsp;
-{_lang_postsin} <span class="badge">{posts}</span>&nbsp;&nbsp;
-{_lang_topics} <span class="badge">{topics}</span>
+<legend><i class="fa fa-bar-chart" aria-hidden="true"></i> {_lang_forumselect}</legend><br>
+{posts} {_lang_postsin} in {topics} {_lang_topics}
   </div>
 </div>
 </div>

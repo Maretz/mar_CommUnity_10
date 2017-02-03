@@ -28,7 +28,7 @@ function news_find_kat ($kat) {
 		}
 
 		if ( !empty( $pfadzumBild ) ) {
-			$kategorie = '<a class="pull-left newskatimg newskatimgpos" href="index.php?news-{id}"><img  rel="tooltip" class="media-object hidden-xsmin newskatimgsize" title="Kategorie: '.$kat.'" src="'.$pfadzumBild.'" alt="'.$kat.'" ></a>
+			$kategorie = '<a class="pull-left newskatimg newskatimgpos" href="index.php?news"><img  rel="tooltip" class="media-object hidden-xsmin newskatimgsize" title="Kategorie: '.$kat.'" src="'.$pfadzumBild.'" alt="'.$kat.'" ></a>
 <div class="newskatimgposunter hidden-xsmin"></div>
 <div>
 <div class="infotextnewspos">';

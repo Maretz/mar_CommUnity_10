@@ -125,7 +125,8 @@ $stats_array = array (
   'gesonline' => $ges_online_user,
   'gastonline' => ges_gast_online(),
   'useronline' => ges_user_online(),
-  'userliste' => user_online_liste()
+  'userliste' => user_online_liste(),
+  'max' => db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0)
 );
 
 $tpl->set_ar_out($stats_array,4);
