@@ -1,7 +1,7 @@
 
 !!! Layout befindet sich noch in Arbeit. Diverse Bereiche sind noch nicht optimal angepasst !!!
 
-
+Online Demo  http://demo.maretz.eu/mar_community_10/
 
 mar_CommUnity_10 BETA
 ===========================
@@ -22,8 +22,6 @@ Dieses Layout sollte auf einer frischen install aufgesetzt werden! Mit bestehend
 5. Standart Designs von Ilch 1.1p Bootstrap können gelöscht werden.
 
 Das Dropdown Menü wird im Adminbereich über Menü 5 erstellt, als horizontale Menüs.
-
-Demoseite folgt......
 
 Ich übernehme keine Haftung für evtl. auftretene Schäden durch dieses Layout.Nutzung ausschließlich auf EIGENE GEFAHR!
 
