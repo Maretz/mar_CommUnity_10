@@ -1,28 +1,29 @@
 <div class="com10newsinput">
-<div class="table-responsive">
-<table  class="table  table-bordered table-hover">
-    <thead>
-        <tr class="active">
-    <th>{_lang_name}</th>
-		<th>{_lang_group}</th>
-		<th class="hidden-xsmin">{_lang_rank}</th>
-		<th class="hidden-xsmin">{_lang_regtime}</th>
-		<th class="hidden-xs">{_lang_posts}</th>
-  </tr>
-    </thead>{EXPLODE}
-    <tbody>
-        <tr>
-    <td><a href="index.php?user-details-{UID}">{NAME}</a></td>
-		<td>{GRUPE}</td>
-		<td class="hidden-xsmin">{RANG}</td>
-		<td class="hidden-xsmin">{DATE}</td>
-		<td class="hidden-xs">{POSTS}</td>
-  </tr>{EXPLODE}
-    </tbody>
+<div class="row rowuserlist">
+{EXPLODE}
+<div class="col-sm-6userlist">
+<div class="userlistbg">
+<table>
+<tr>
+<td class="userlistdtavatar"><a href="index.php?user-details-{UID}">{AVATAR}</a></td>
+<td><a class="userlistbglink" href="index.php?user-details-{UID}">{NAME}</a><span class="label label-primary pull-right label-userlist">{GRUPE}</span><br>
+<div class="dropdown pull-right">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li class="dropdown-header">{_lang_rank}: {RANG}</li>
+    <li class="dropdown-header">{_lang_posts}: {POSTS}</li>
+  </ul>
+</div>
+</td>
+</tr>
 </table>
 </div>
-<br>
-<div align="center">{SITELINK}
+</div>
+{EXPLODE}
+<div class="text-center">{SITELINK}</div>
+</div>
 <form method="GET" action="index.php">
 <div class="row">
   <div class="col-lg-4"></div>
@@ -36,5 +37,4 @@
   </div>
 </div>
 </form>
-</div>
 </div>

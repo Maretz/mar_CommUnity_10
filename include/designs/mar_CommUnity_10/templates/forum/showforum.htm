@@ -52,14 +52,24 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-body text-left">
-<h4><i class="fa fa-user-circle-o fa-2x text-primary pull-left" style="margin-bottom:20px;" aria-hidden="true"></i> Benutzer Online <span class="badge">{gesonline}</span></h4>
+<table>
+<tr>
+<td>
+<h4><i class="fa fa-user-circle-o fa-2x text-primary pull-left" style="margin-bottom:20px;" aria-hidden="true"></i></h4>
+</td>
+<td>
+<h4>Benutzer Online <span class="badge">{gesonline}</span> <span class="badge">Heute: {heute}</span></h4>
 
-		  {useronline}  {_if_{useronline}=='1'}Mitglied{/_endif}{_if_{useronline}!='1'}Mitglieder{/_endif} und {gastonline} Besucher - Rekord: {max} Besucher
-<br>
-			<br>{userliste}
+		  {useronline}  {_if_{useronline}=='1'}Mitglied{/_endif}{_if_{useronline}!='1'}Mitglieder{/_endif} und {gastonline} Besucher <span class="ilchforum_time"><br></span>- Rekord: {max} Besucher ( {timemax} )
+</td>
+</tr>
+<tr>
+<td><br>{userliste}</td>
+</tr>
+</table>
 <br><br>
 <legend><i class="fa fa-bar-chart" aria-hidden="true"></i> {_lang_forumselect}</legend><br>
-{posts} {_lang_postsin} in {topics} {_lang_topics}
+{posts} {_lang_postsin} in {topics} {_lang_topics} <span class="ilchforum_time"><br></span>( &Oslash; {schnitt} {_lang_postsin} am Tag )
   </div>
 </div>
 </div>

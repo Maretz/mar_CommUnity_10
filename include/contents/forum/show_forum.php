@@ -116,7 +116,25 @@ else
 
 # statistic #
 $ges_online_user = ges_online();
-$stats_array = array (
+
+  $ges_visits = db_result(db_query("SELECT SUM(count) FROM prefix_counter"),0);
+  $heute = date ('y-m-d');
+  $time = time();
+  $daysec = 86400;
+  $weekdays = 7;
+  $mth = 30;
+  $day = $time - $daysec;
+  $useroneregist = db_result(db_query('SELECT regist FROM prefix_user WHERE id = 1'),0);
+  $sincesec = $time - $useroneregist;
+  $sinceday = floor($sincesec / $daysec);
+  $dayvisits = floor($ges_visits / $sinceday)+1;
+  $mthvisits = floor($dayvisits * $mth);
+  $schnittpost = db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0) / $sinceday;
+  $schnitt = round($schnittpost, 2);
+  $full = db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0);
+  $maxdate = db_result(db_query('SELECT date FROM `prefix_counter` WHERE count = "'.$full.'"'));
+  $maxdates = date ('d.M.Y', strtotime($maxdate));
+  $stats_array = array (
   'privmsgpopup' => check_for_pm_popup (),
   'topics' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_topics`"),0),
   'posts' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0),
@@ -126,7 +144,10 @@ $stats_array = array (
   'gastonline' => ges_gast_online(),
   'useronline' => ges_user_online(),
   'userliste' => user_online_liste(),
-  'max' => db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0)
+  'max' => db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0),
+  'schnitt' => $schnitt,
+  'heute'  => db_result(db_query("SELECT count FROM prefix_counter WHERE date = '".$heute."'"),0),
+  'timemax'  => $maxdates
 );
 
 $tpl->set_ar_out($stats_array,4);

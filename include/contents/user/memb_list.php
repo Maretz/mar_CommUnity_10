@@ -37,8 +37,8 @@ if(!empty($filtername)){
   $sql_search="";
   $MPL = db_make_sites ($page , "" , $limit , '?user' , 'user' );
 }
-
 $tpl->set_out ( 'SITELINK', $MPL, 0);
+ 
 
 $class = '';
 $erg = db_query("SELECT
@@ -52,7 +52,7 @@ FROM prefix_user
  $sql_search
 ORDER by recht,prefix_user.posts DESC LIMIT ".$anfang.",".$limit);
 while ($row = db_fetch_object($erg)) {
-
+$mortl = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row->name.'"'),0);
 	if ($class == 'Cmite') { $class = 'Cnorm'; } else { $class = 'Cmite'; }
 	$ar = array ( 'NAME' => $row->name,
 	                'RANG' => userrang($row->posts,$row->id),
@@ -60,7 +60,8 @@ while ($row = db_fetch_object($erg)) {
 									'POSTS' => $row->posts,
 									'UID'   => $row->id,
 									'DATE' => date('d.m.Y',$row->regist),
-									'GRUPE' => $row->recht_name
+									'GRUPE' => $row->recht_name,
+									'AVATAR' => (!empty($mortl) AND file_exists($mortl)) ? '<img class="" src="'.$mortl.'" alt="Avatar" />' : '<img class="noavatar" src="include/images/avatars/wurstegal.jpg" />'
 	);
 	$tpl->set_ar_out($ar,1);
 }
