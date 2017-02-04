@@ -89,11 +89,20 @@ border-bottom-right-radius: 50%;
 -moz-box-shadow: 7px 6px 8px 0px rgba(0,0,0,0.5);
 box-shadow: 7px 6px 8px 0px rgba(0,0,0,0.5);
 }
+#toTop-right {
+ display:none;
+ text-decoration:none;
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ outline:none;
+}
 /*
  * Off Canvas
  * --------------------------------------------------
  */
 @media screen and (max-width: 767px) {
+.top,
 #toTop-right{
 display:none!important;
 }
