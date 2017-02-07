@@ -40,6 +40,11 @@ if ($row['staat']) {
 } else {
   $userstaat .= '';
 }
+if ($row['homepage'] < '0') {
+  $userhomepage .= '';
+} else {
+  $userhomepage .= '<a rel="tooltip" title="Webseite" class="btn btn-primary" href="'.$row['homepage'].'" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>';
+}
 
 	$regsek = mktime ( 0,0,0, date('m'), date('d'), date('Y') )  - $row['regist'];
 	$regday = round($regsek / 86400);
@@ -53,7 +58,7 @@ if ($row['staat']) {
 		'postpday' => $postpday,
 		'RANG'    => userrang ($row['posts'],$uid),
 		'AVATA'   => $avatar,
-    'WWW'   => '<a rel="tooltip" title="Webseite" class="btn btn-primary" href="'.$row['homepage'].'" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>',
+    'WWW'   => $userhomepage,
     'USERMAIL'   => $usermail,
     'USERPM'   => $userpm,
     'STAAT'   => $userstaat,
