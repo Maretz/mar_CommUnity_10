@@ -1,30 +1,31 @@
 <div class="com10newsinput">
-<a class="btn btn-primary" href="javascript:history.back(1)">{_lang_back}</a>
-<br>
-<br>
+<table class="useransicht">
+<tr>
+<td class="uatd">{AVATA}</td>
+<td class="text-left">{STAAT} <span class="useransichtname">{NAME}</span>
+<div class="pull-right hidden-xs">
+{WWW}
+{USERMAIL}
+{USERPM}
+{STATUS}
+</div>
+<br><span class="text-warning">{_lang_regsince}</span> {JOINED}<br><span class="text-warning">{_lang_lastactivity}:</span> {LASTAK} Uhr
+<span class="pull-right hidden-xs"><br><button style="margin-top:-20px;" rel="tooltip" title="mehr Infos" type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#userbereichslider" aria-expanded="false" aria-controls="userbereichslider"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></span>
+<div class="pull-right userdailson" style="margin-top:10px;">
+{WWW}
+{USERMAIL}
+{USERPM}
+{STATUS}
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#userbereichslider" aria-expanded="false" aria-controls="userbereichslider"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+</div>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+<div class="collapse" id="userbereichslider">
 <table class="table table-bordered table-hover">
-  <tr > 
-    <th class="active" colspan="3"><b>{_lang_detailsfrom} {NAME}</b></th>
-  </tr><tr>
-    <td>{_lang_nickname}</td>
-    <td>{NAME}</td>
-    <td class="hidden-xsmin" width="30%" rowspan="{rowspan}" valign="top" align="center">
-		  {AVATA}
-			<br /><br />
-			<font class="smalfont">{RANG}</font>
-		</td>
-  </tr><tr>
-    <td >{_lang_regsince}</td>
-    <td>{JOINED}</td>
-  </tr><tr>
-    <td>{_lang_lastactivity}</td>
-    <td>{LASTAK}</td>
-  </tr><tr>
-    <td>{_lang_posts2}</td>
-    <td>{POSTS}, {_lang_perday}: {postpday}</td>
-  </tr>	
 {profilefields}
 </table>
-<br>
-<a class="btn btn-primary" href="javascript:history.back(1)">{_lang_back}</a>
+</div>
 </div>

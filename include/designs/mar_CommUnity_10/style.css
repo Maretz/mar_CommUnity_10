@@ -171,6 +171,137 @@ display:none!important;
   }
 
 }
+/* ------------------- Mitglieder Bereich ------------------- */
+.userlistbg {
+border: 1px solid #ccc;
+border-radius: 1px;
+padding: 10px;
+color: #2f2f2f;
+margin-bottom:0px;
+margin-top: -1px;
+margin-right: -1px;
+background: rgba(240,240,240,1);
+background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,240,240,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#ffffff', GradientType=0 );
+-webkit-box-shadow:inset 0px 0px 0px 2px #fff;
+    -moz-box-shadow:inset 0px 0px 0px 2px #fff;
+    box-shadow:inset 0px 0px 0px 2px #fff;   
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+.userlistbg:hover {
+background: #D6EEFF;
+}
+.useransicht img,
+.userlistbg img {
+border: 2px solid #fff;
+height:60px;
+width: auto;
+box-shadow: 0 0 0 1px #ccc;
+margin-right:6px;
+}
+.uatd {
+width: 70px;
+}
+.col-sm-6userlist {
+float:left;
+width: 50%;
+}
+.rowuserlist {
+padding: 15px;
+}
+.userlistbg table {
+width: 100%;
+background: transparent;
+border: 0;
+text-align:left;
+}
+.userlistbg span {
+color: #707070;
+font-size: 0.875em;
+}
+.useransichtname,
+.userlistbglink,
+.userlistbglink:hover {
+font-family: 'Oswald', sans-serif;
+font-size: 1em;
+color: #AF4600;
+text-decoration: none;
+}
+.userlistdtavatar {
+width: 70px;
+text-align:center;
+}
+.label-userlist {
+color: #fff!important;
+}
+.useransicht {
+background: transparent;
+vertical-align:top;
+width: 100%;
+}
+.useransicht td{
+color: #707070;
+font-size: 1em;
+vertical-align:top;
+padding:4px;
+}
+.useransichtname {
+font-family: 'Oswald', sans-serif;
+font-size: 1.2em;
+color: #AF4600;
+text-decoration: none;
+}
+.userflags {
+height: 15px!important;
+margin-right: 4px!important;
+margin-top: -7px;
+border: 0!important;
+width: auto;
+box-shadow: 0!important;
+}
+.userdailson {
+display:none;
+}
+.userbereich_slider, .userbereich_slide-down {
+  overflow:hidden
+}
+.userbereich_slider > div, .userbereich_slide-down > div {
+  margin-top: -25%;
+  transition: margin-top 0.4s ease-in-out;
+}
+.userbereich_slide-down > div {            
+  margin-top: 0;
+} 
+@media screen and (max-width: 767px) {
+.col-sm-6userlist {
+float:left;
+width: 100%;
+}
+.userdailson {
+display:inline;
+white-space: nowrap;
+}
+}
+@media screen and (max-width: 400px) {
+.useransicht img,
+.userlistbg img {
+border: 2px solid #fff;
+height:50px;
+width: auto;
+box-shadow: 0 0 0 1px #ccc;
+margin-right:6px;
+}
+.uatd {
+width: 55px;
+}
+}
 /* ------------------- Com10 Boxen ------------------- */
 
 .newnewboxout {
