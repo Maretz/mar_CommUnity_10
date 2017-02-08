@@ -51,7 +51,6 @@ function url($teilenurl){
 }
 
 
-
 if ( !is_numeric($menu->get(1)) )  {
   if($menu->get(1) == 'rss' || $menu->get(1) == 'atom')
   {
@@ -128,7 +127,12 @@ if ( !is_numeric($menu->get(1)) )  {
     ORDER BY news_time DESC
     LIMIT ".$anfang.",".$limit;
     #echo '<pre>'.$abf.'</pre>';
-
+/*
+$gesamt = @db_result(db_query("SELECT COUNT(news_id) AS anzahl FROM prefix_news"),0);
+$tpl->set ( 'gesamt', $gesamt);
+$anzahlkat = @db_result(db_query("SELECT COUNT(DISTINCT news_kat) AS anzahl FROM prefix_news"),0);
+$tpl->set ( 'anzahlkat', $anzahlkat);
+*/
     $erg = db_query($abf);
     while ($row = db_fetch_assoc($erg)) {
 
@@ -157,7 +161,6 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
     $tpl->set_out('SITELINK', $MPL,1);
     unset($tpl);
   }
-
 
 
 } else {
@@ -202,14 +205,26 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
 		}
 
 		$tpl = new tpl ( 'news.htm' );
+    $tage = array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+    $tageday = date("w", strtotime($row->news_time));
+    $teilenurl = url($teilenurl); 
 		$ar = array (
+      'DATUM' => date("d. m. Y", strtotime($row->news_time)),
+      'DATUMDAY' => $tage[$tageday],
       'TEXT'  => $textToShow,
 			'KATE'  => $kategorie,
+      'KATES'  => $row->news_kat,
       'NID' => $nid,
       'uname' => $_SESSION['authname'],
       'SMILIES'  => getsmilies(),
 			'ANTISPAM' => (loggedin()?'':get_antispam ('newskom', 0)),
 			'NAME'  => $row->news_title,
+# News Teilen Start
+  'newsteilen' => '<button type="button" class="btn btn-success btn-sm userdropspan" data-toggle="modal" data-target=".newsteilen" data-tooltip="tooltip" title="Teilen"><i class="fa fa-share-alt" aria-hidden="true"></i></button>',
+  'teilenpermalink' => '<label>Permalink</label><input class="form-control" value="' . $teilenurl . '?news-' . $row->news_id . '" readonly="readonly" type="text" onfocus="this.select()"><br>',
+   'teilenbbcode' => '<label>BBCode</label><input class="form-control" value="[url=' . $teilenurl . '?news-' . $row->news_id . ']' . $row->news_title . '[/url]" readonly="readonly" type="text" onfocus="this.select()"><br>',
+   'teilenhtml' => '<label>HTML</label><input class="form-control" value="&lt;a href=&quot;' . $teilenurl . '?news-' . $row->news_id . '&quot;&gt;' . $row->news_title . '&lt;/a&gt;" readonly="readonly" type="text" onfocus="this.select()">',
+# News Teilen Ende  
 		);
 		$tpl->set_ar_out($ar, 2 );
 

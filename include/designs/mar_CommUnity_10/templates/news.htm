@@ -45,17 +45,71 @@ opacity: 1;
 }
 </style>
 {EXPLODE}
+<!--
+Newseintr‰ge: {gesamt} / Kategorien : {anzahlkat}
+-->
 <div class="text-center">{SITELINK}</div>
 {EXPLODE}
 <!-- News Kommentare und Mehr lesen -->
+ <script language="JavaScript">
+ <!--
+ function RestlicheZeichenErmitteln(form)
+ {
+     var ErlaubteAnzahl = 200;
+ 
+     var Laenge = document.form.txt.value.length;
+ 
+     if(Laenge > ErlaubteAnzahl)
+     {
+         document.form.txt.value = document.form.txt.value.substring(0, ErlaubteAnzahl);
+         RestlicheZeichen = 0;
+     }
+     else
+     {
+         RestlicheZeichen = ErlaubteAnzahl-Laenge;
+     }
+ 
+     document.form.Laenge.value = RestlicheZeichen;
+ }
+ //-->
+ </script>
 <div class="com10newsinput">
-    <h4>{NAME}</h4>
-    <hr class="hrtop">
+<div class="media">
+{KATE}
+<h3 class="infotextnews"><span class="infotextnews"><i class="fa fa-user usernewsedit" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{_lang_from} {uname}"></i>&nbsp;&nbsp;{DATUMDAY}, den {DATUM}</span><br>{NAME}<span class="in-xsmin"><br><i class="fa fa-caret-right" aria-hidden="true"></i> {KATES}</span></h3>
+</div>
+</div>
+</div>
+<br>
 {TEXT}
+<hr>
+<span class="pull-right">{newsteilen}</span>
+<span class="hidden-xsmin">
+<i class="fa fa-caret-right" aria-hidden="true" rel="tooltip" title="Kategorie: {KATES}"> {KATES}</i>
+</span>
+<div class="modal fade newsteilen" tabindex="-1" role="dialog" aria-labelledby="newsteilentitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content newsteilenmodal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schlieﬂen"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="newsteilentitle"><i class="fa fa-share-alt" aria-hidden="true"></i> Teilen</h4>
+      </div>
+      <div class="modal-body">
+        <p>{teilenpermalink}
+{teilenbbcode}
+{teilenhtml}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Schlieﬂen</button>
+      </div>
+    </div>
+  </div>
+</div>
 <br style="clear:both;"/>
 <br>
 <div class="text-left"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a></div>
 <hr>
+ <legend><i class="fa fa-commenting-o" aria-hidden="true"></i> <small>{_lang_commentsfor} {NAME}</small></legend>
 	    {EXPLODE}
 	    <form action="index.php?news-{NID}" method="POST" name="form" class="form-horizontal" role="form">
 <script type="text/javascript" src="include/includes/js/bbcode.js"></script>
@@ -69,14 +123,14 @@ opacity: 1;
 <a href="javascript:simple('url')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_url.png" alt="Url" title="{_lang_link}" border="0"></a> 
 </div>
  -->
-          <textarea class="form-control" rows="3" name="txt" tabindex="2"></textarea><br>
+          <textarea class="form-control" rows="3" name="txt" tabindex="2" onblur="RestlicheZeichenErmitteln(this);" onchange="RestlicheZeichenErmitteln(this);" onfocus="RestlicheZeichenErmitteln(this);" onkeydown="RestlicheZeichenErmitteln(this);" onkeyup="RestlicheZeichenErmitteln(this);"></textarea><br>
+Noch <input size="3" name="Laenge" value="200" readonly> Zeichen<br />
   	  <div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
 <br>{ANTISPAM}<br>
  <button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button> <input type="submit" class="btn btn-primary" value="{_lang_enter}"><br>
       </form>
 </div>
-<div class="com10newsinput">   
-<h4><i class="fa fa-commenting-o" aria-hidden="true"></i> {_lang_commentsfor} {NAME}</h4>
+<div class="com10newsinput">  
       {EXPLODE}
      <div class="well well-sm wellsmnews">
 <div class="row">
