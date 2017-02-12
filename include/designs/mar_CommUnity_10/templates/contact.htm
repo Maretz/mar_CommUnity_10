@@ -1,42 +1,54 @@
+<form action="?contact" method="POST" class="form-horizontal">
 <div class="com10newsinput">
     <div class="row">
         <div class="col-md-1 hidden-xs"></div>
         <div class="col-lg-10">
-            <form class="form-inline" action="?contact" method="POST">
-                <fieldset>
-                    <legend>{_lang_whereyouwrite}</legend>
-                    {EXPLODE}
-                    <input id="w{KEY}" {c} type="radio" name="wer" value="{KEY}" style="float:left; " />
-                    <label for="w{KEY}"> &nbsp; {VAL}</label>
-                    <br style="clear:both; " /> {EXPLODE}
-                    <br>
-                    <legend><small>Deine Angaben</small></legend>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-male gbookaddon"></i></span>
-                        <input type="text" value="{name}" class="form-control" placeholder="Name">
-                    </div>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-envelope-o gbookaddon"></i></span>
-                        <input type="text" name="mail" value="{mail}" class="form-control" placeholder="E-Mail">
-                    </div>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-quote-left gbookaddon"></i></span>
-                        <input type="text" name="subject" value="{subject}" class="form-control" placeholder="Betreff">
-                    </div>
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-keyboard-o gbookaddon"></i></span>
-                        <textarea class="form-control" cols="80" rows="5" name="txt" placeholder="Deine Nachricht">{text}</textarea>
-                    </div>
-                    <br> {ANTISPAM}<br>
-                    <input class="btn btn-primary" type="submit" value=" Absenden ">
-                    <br>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    <legend><i class="fa fa-envelope-o" aria-hidden="true"></i> {_lang_whereyouwrite}</legend>
+    {EXPLODE}
+<div class="radio">
+  <label for="w{KEY}">
+    <input id="w{KEY}" {c} type="radio" name="wer" value="{KEY}">
+    {VAL}
+  </label>
 </div>
+    {EXPLODE}
+<br>
+	  <legend><small><i class="fa fa-pencil-square-o" aria-hidden="true"></i> deine Angaben</small></legend>
+  <div class="form-group">
+    <label for="{_lang_name}" class="col-sm-2 control-label">{_lang_name}</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="{_lang_name}" name="name" value="{name}" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{_lang_mail}" class="col-sm-2 control-label">{_lang_mail}</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="{_lang_mail}" name="mail" value="{mail}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{_lang_subject}" class="col-sm-2 control-label">{_lang_subject}</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="{_lang_subject}" name="subject" value="{subject}" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{_lang_message}" class="col-sm-2 control-label">{_lang_message}</label>
+    <div class="col-sm-8">
+      <textarea id="{_lang_message}" rows="4" class="form-control" name="txt" required="required">{text}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      	  {ANTISPAM}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+     <input class="btn btn-primary" type="submit" value=" Absenden ">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</form>

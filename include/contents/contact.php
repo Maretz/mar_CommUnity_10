@@ -46,9 +46,9 @@ if (!empty($_POST['wer']) AND !empty($_POST['mail']) AND !empty($_POST['txt']) A
 
     $subject = "Kontakt: " . $subject;
     if (icmail ($wer,$subject,$text, $name." <".$mail.">")) {
-    	echo $lang['emailsuccessfullsend'];
+    	echo wd('?'.$allgAr['smodul'], $lang['emailsuccessfullsend'].'<br>... weiter zur Startseite');
     } else {
-    	echo 'Der Server konnte die Mail nicht versenden, teilen sie dies ggf. einem Administrator mit.';
+    	echo '<div class="alert alert-danger" role="alert">Der Server konnte die Mail nicht versenden, teilen sie dies ggf. einem Administrator mit.</div>';
     }
     $name = '';
     $mail = '';
@@ -56,7 +56,7 @@ if (!empty($_POST['wer']) AND !empty($_POST['mail']) AND !empty($_POST['txt']) A
     $wer  = '';
     $text = '';
   } else {
-    echo $lang['emailcouldnotsend'];
+    echo '<div class="alert alert-danger" role="alert">'.$lang['emailcouldnotsend'].'</div>';
   }
 }
 
