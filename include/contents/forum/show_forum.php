@@ -5,7 +5,6 @@
 
 defined ('main') or die ( 'no direct access' );
 
-
 $title = $allgAr['title'].' :: Forum';
 $hmenu = $extented_forum_menu.'Forum'.$extented_forum_menu_sufix;
 $design = new design ( $title , $hmenu, 1);
@@ -129,12 +128,21 @@ $ges_online_user = ges_online();
   $sinceday = floor($sincesec / $daysec);
   $dayvisits = floor($ges_visits / $sinceday)+1;
   $mthvisits = floor($dayvisits * $mth);
-  $sincedayone = $sinceday+1;
-  $schnittpost = db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0) / $sincedayone;
+  $schnittpost = db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0) / $sinceday;
   $schnitt = round($schnittpost, 2);
   $full = db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0);
   $maxdate = db_result(db_query('SELECT date FROM `prefix_counter` WHERE count = "'.$full.'"'));
   $maxdates = date ('d.M.Y', strtotime($maxdate));
+if (db_result(db_query("SELECT count FROM prefix_counter WHERE date = '".$heute."'"),0) == 0) {
+  $heuteuser .= '0';
+} else {
+  $heuteuser .= db_result(db_query("SELECT count FROM prefix_counter WHERE date = '".$heute."'"),0);
+}
+if ($schnitt == '1') {
+  $schnitt = $schnitt.' Beitrag';
+} else {
+  $schnitt = $schnitt.' Beitr&auml;ge';
+}
   $stats_array = array (
   'privmsgpopup' => check_for_pm_popup (),
   'topics' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_topics`"),0),
@@ -147,7 +155,7 @@ $ges_online_user = ges_online();
   'userliste' => user_online_liste(),
   'max' => db_result(db_query('SELECT MAX(count) FROM `prefix_counter`'),0),
   'schnitt' => $schnitt,
-  'heute'  => db_result(db_query("SELECT count FROM prefix_counter WHERE date = '".$heute."'"),0),
+  'heute'  => $heuteuser,
   'timemax'  => $maxdates
 );
 
