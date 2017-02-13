@@ -1,7 +1,11 @@
 
-!!! Layout befindet sich noch in Arbeit. Diverse Bereiche sind noch nicht optimal angepasst !!!
+Es wird immer wieder etwas verändert, bzw verbessert. Wer das Template nutzt, sollte hier ab und zu mal reinschauen und seine Version ggf. aktuell zu halten.
+Vorhandene Fehler können mir gerne genannt werden über info@maretz.eu oder auf https://www.maretz.eu.
 
-Online Demo  http://demo.maretz.eu/mar_community_10/
+Mfg Maretz
+
+
+Online Demo  http://demo.maretz.eu/mar_community_10/ ( entspricht dem aktuellen Stand ;) )
 
 mar_CommUnity_10 BETA
 ===========================
