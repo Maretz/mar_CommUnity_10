@@ -1,7 +1,7 @@
 <script language="JavaScript" type="text/javascript">
 <!--
   function finduser () {
-    var Fenster = window.open ('index.php?search-finduser', 'finduser', 'status=no,scrollbars=yes,height=200,width=350');
+    var Fenster = window.open ('index.php?search-finduser', 'finduser', 'status=no,scrollbars=yes,height=300,width=350');
     Fenster.focus();
     
     return (false);
@@ -15,7 +15,7 @@
 <table width="100%" class="table"><tr><td width="70%" class="text-left">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg">Eingang</a> <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-showsend">Ausgang</a></td><td width="30%" class="text-right">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-new">PM schreiben</a></span></td></tr></table>
-<table width="100%" class="table table-bordered table-hover">
+<table width="100%" class="table">
   <tr class="active">
 	  <legend><i class="fa fa-commenting-o" aria-hidden="true"></i> {_lang_writenewmessage}</legend>
 <tr>
@@ -29,15 +29,28 @@
 <input type="text" tabindex="2" maxlength="50"  name="bet" value="{BET}"  class="form-control" placeholder="Betreff">
 
 </tr></table>
-<table class="table  table-bordered table-hover table-striped">
-<tr>
-  <td width="15%" class="active hidden-xsmin" valign="top">{SMILIES}</td>
-        <td width="85%">
+<table class="table">
+<tr class="bbcode-none">
+        <td>
       <!-- BB Code START -->{__BBCodeButtons__}<!-- BB Code START -->
-<br>
-<textarea name="txt" rows="15" cols="65" tabindex="3" class="form-control" placeholder="Nachricht">{TXT}</textarea><br><input type="submit" class="btn btn-primary" tabindex="4" accesskey="s" value="{_lang_send}" name="sub">
+</td>
+</tr>
+<tr>
+<td>
+<textarea name="txt" rows="15" cols="65" tabindex="3" class="form-control" placeholder="Nachricht">{TXT}</textarea>
 </td>
       </tr>
+<tr>
+<td>
+<div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
+</td>
+</tr>
+<tr>
+<td>
+<button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning btn-sm accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button>
+<span class="pull-right"><input type="submit" class="btn btn-primary btn-sm" tabindex="4" accesskey="s" value="{_lang_send}" name="sub"></span>
+</td>
+</tr>
     </table>
 </form>
 </div>

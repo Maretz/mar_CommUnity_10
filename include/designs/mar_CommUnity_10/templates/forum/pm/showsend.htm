@@ -17,22 +17,26 @@ function CheckAll(){
 //-->
 </SCRIPT>
 <div class="com10newsinput">
+<legend><i class="fa fa-comments-o" aria-hidden="true"></i> Postausgang</legend>
 <table width="100%" class="table"><tr><td width="50%">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg">{_lang_inbox}</a></td><td width="50%" class="text-right">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-new">{_lang_writemessage}</a></td></tr></table>
 <form action="index.php?forum-privmsg-delete" method="POST" name="form">
-<table class="table table-bordered table-hover">
-  <tr class="active">
-	  <th><a href="index.php?forum-privmsg-showsend-{ad}1"><b>{_lang_messagetitle}</b></a></th>
-		<th><a href="index.php?forum-privmsg-showsend-{ad}2"><b>{_lang_receiver}</b></a></th>
-		<th class="hidden-xs"><a href="index.php?forum-privmsg-showsend-{ad}3"><b>{_lang_time}</b></a></th>
+<table class="table table-forum">
+        <thead>
+  <tr>
+	  <th><a href="index.php?forum-privmsg-showsend-{ad}1"><i class="fa fa-sort" aria-hidden="true"></i> <b>{_lang_messagetitle}</b></a></th>
+		<th style="white-space: nowrap;"><a href="index.php?forum-privmsg-showsend-{ad}2"><i class="fa fa-sort" aria-hidden="true"></i> <b>{_lang_receiver}</b></a></th>
+		<th class="text-center hidden-xs"><a href="index.php?forum-privmsg-showsend-{ad}3"><i class="fa fa-sort" aria-hidden="true"></i> <b>{_lang_time}</b></a></th>
 		<th width="15" style="text-align: right;"><input name="ALL" type="checkbox" value="CHECK ALL" onClick="CheckAll();" /></th>
 	</tr>
+        </thead>
+<tbody>
 	{EXPLODE}
   <tr>
-	  <td><a href="index.php?forum-privmsg-showmsg-{id}-s">{titel}</a></td>
-    <td>{empf}</td>
-    <td class="hidden-xs"><a href="#" rel="tooltip" title="Gesendet um {time} Uhr">{date}</a></td>
+	  <td class="forumname"><a href="index.php?forum-privmsg-showmsg-{id}-s">{BET}</a><span class="visible-768"><br><small>{date} um {time} Uhr</small></span></td>
+    <td style="vertical-align:middle;">{avatar}{empf}</td>
+    <td class="text-center hidden-xs"><a href="#">{date}<br><small>um {time} Uhr</small></a></td>
     <td class="text-right"><input type="checkbox" name="delsids[]" value="{id}"></td>
   </tr>
 	{EXPLODE}
@@ -42,6 +46,7 @@ function CheckAll(){
       <i class="fa fa-reply fa-flip-vertical"></i>
 		</td>
   </tr>
+</tbody>
 </table>
 </form>
 </div>

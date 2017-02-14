@@ -6,18 +6,17 @@
 	<input type="hidden" name="empfid" value="{sid}">
 	<input type="hidden" name="bet" value="{titel}">
 	<input type="hidden" name="anhang" value="{anhang}">
-  <table class="table table-bordered table-hover">
-    <tr class="active">
-		  <td><b>{titel}</b></td>
-		</tr><tr>
-      <td>{_lang_sentby} <b>{name}</b> {_lang_on} {time}</td>
+  <table class="table">
+<tr>
+      <td class="uatd">{avatar}</td>
+      <td class="forumname"><a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> {titel}</a><br><span>{_lang_sentby} <b>{name}</b> <span class="ilchforum_time"><br></span>{_lang_on} {time} Uhr</span></td>
     </tr><tr>
-		  <td>{txt}</td>
+		  <td colspan="2">{txt}</td>
 	  </tr><tr>
-		  <td>
-			  <input class="btn btn-primary" name="re" type="submit" value="{_lang_answer}">
+		  <td colspan="2">
+			  <input class="btn btn-primary btn-xs" name="re" type="submit" value="{_lang_answer}">
 				   &nbsp;
-				<input class="btn btn-danger" type="button" value="{_lang_delete}" onclick="document.location.href ='?forum-privmsg-delete-{id}'">
+				<input class="btn btn-danger btn-xs" type="button" value="{_lang_delete}" onclick="document.location.href ='?forum-privmsg-delete-{id}'">
 			</td>
   </table>   
 </form>	

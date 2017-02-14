@@ -13,11 +13,11 @@ $design->header();
 
 
 if ( $allgAr['Fpmf'] != 1 ) {
-  echo '<div class="alert alert-info">Private Nachrichten wurden von dem Administrator komplet gesperrt</div>';
-  echo '<br><a class="btn btn-primary" href="javascript:history.back(-1)">zurück</a>';
+  echo '<div class="alert alert-info"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Private Nachrichten wurden vom Administrator komplett gesperrt !';
+  echo '<br><a class="btn btn-default" href="javascript:history.back(-1)">zur&uuml;ck</a></div>';
   $design->footer(1);
 } elseif ( !loggedin() ) {
-  echo '<div class="alert alert-danger">Gäste dürfen keine Privaten Nachrichten Verschicken!</div>';
+  echo '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> G&auml;ste d&uuml;rfen keine Privaten Nachrichten Verschicken!</div>';
   $tpl = new tpl ( 'user/login' );
   $tpl->set_out('WDLINK', 'index.php', 0);
   $design->footer(1);
@@ -41,7 +41,7 @@ case 'new' :
         if (1 == db_result(db_query("SELECT count(*) FROM prefix_user WHERE name = BINARY '".$name."'"),0)) {
           $show_formular = false;
         } else {
-          echo '<div class="alert alert-danger">Dieser Empf&auml;nger konnte nicht gefunden werden</div>';
+          echo '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Dieser Empf&auml;nger konnte nicht gefunden werden</div>';
         }
       }
 
@@ -108,6 +108,8 @@ case 'showmsg' :
 		  if ($row['gelesen'] == 0 AND $menu->get(4) != 's') {
 		    db_query("UPDATE `prefix_pm` SET gelesen = 1 WHERE id = ".$pid);
 		  }
+      $ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['name'].'"'),0);
+      $row['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="showforumavatar pull-left" src="'.$ergava.'" alt="Avatar" />' : '<img class="showforumavatar pull-left" src="include/images/avatars/wurstegal.jpg" />';
 		  $row['time'] = date('d M. Y - H:i',$row['time']);
 			$row['anhang'] = urlencode($row['txt']);
 			$row['txt'] = bbcode(unescape($row['txt']));
@@ -123,7 +125,7 @@ case 'delete' :
       if ( $menu->get(3) != '' AND $menu->get(4) == '') { $_POST['delids'][] = $menu->get(3); }
    elseif ($menu->get(3) != '' AND $menu->get(4) == 's') { $_POST['delsids'][] = $menu->get(3); }
       if ( empty($_POST['delids']) AND empty($_POST['delsids'])) {
-	      echo '<div class="alert alert-info">Es wurde keine Nachricht zum l&ouml;schen gew&auml;hlt<br>';
+	      echo '<div class="alert alert-info">Es wurde keine Nachricht zum l&ouml;schen gew&auml;hlt.<br>';
 		    echo '<a class="btn btn-primary" href="javascript:history.back(-1)">zur&uuml;ck</a></div>';
       } else {
         if ( (empty($_POST['delids']) AND empty($_POST['delsids'])) OR empty($_POST['sub']) ) {
@@ -137,7 +139,7 @@ case 'delete' :
 				    $i++;
 					  echo '<input type="hidden" name="del'.$s.'ids[]" value="'.$a.'">';
 				  }
-				  echo '<br><div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><p>Wollen Sie ';
+				  echo '<br><div class="alert alert-danger"><p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wollen Sie ';
 				  echo ($i > 1 ? 'die ('.$i.') Nachrichten ' : 'die Nachricht ' );
 					echo 'wirklich löschen ?</p><p><input type="submit" class="btn btn-danger" value="Löschen" name="sub">  <input type="button" class="btn btn-primery" value="Nein" onclick="document.location.href =\'?forum-privmsg\'"></p></div></form>';
 
@@ -158,9 +160,9 @@ case 'delete' :
               $i++;
             }
 				  }
-				  echo '<br><div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><p>Es wurd';
+				  echo '<br><div class="alert alert-success"><p>Es wurd';
 				  echo ($i > 1 ? 'en ('.$i.') Nachrichten ' : 'e eine Nachricht ' );
-					echo 'erfolgreich gelöscht.</p><p><a class="btn btn-default" href="index.php?forum-privmsg">zum Nachrichten Eingang</a></p></div>';
+					echo 'erfolgreich gel&ouml;scht.</p><p><a class="btn btn-default" href="index.php?forum-privmsg">zum Nachrichten Eingang</a></p></div>';
 			  }
 			}
   break;
@@ -177,10 +179,12 @@ case 'showsend' :
   $erg = db_query($abf);
   while ($row = db_fetch_assoc($erg)) {
     $class = ( $class == 'Cmite' ? 'Cnorm' : 'Cmite' );
-	$row['class'] = $class;
+    $ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['empf'].'"'),0);
+    $row['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="showforumavatar" src="'.$ergava.'" alt="Avatar" />' : '<img class="showforumavatar" src="include/images/avatars/wurstegal.jpg" />';
+	  $row['class'] = $class;
     $row['date'] = date('d.m.Y',$row['time']);
     $row['time'] = date('H:i',$row['time']);
-    $row['BET'] = (trim($row['titel']) == '' ? ' -- kein Nachrichtentitel -- ' : $row['titel']);
+    $row['BET'] = (trim($row['titel']) == '' ? ' <small class="text-muted">-- kein Nachrichtentitel --</small> ' : $row['titel']);
 	$tpl->set_ar_out($row,1);
   }
   $tpl->out(2);
@@ -197,11 +201,14 @@ default :
       }
       $abf = "SELECT a.titel as BET, a.gelesen as NEW, b.name as ABS, a.id as ID, a.`time` FROM `prefix_pm` a left join prefix_user b ON a.sid = b.id WHERE a.eid = ".$_SESSION['authid']." AND a.status <= 0 ORDER BY $order";
       $erg = db_query($abf);
+
       while ($row = db_fetch_assoc($erg)) {
+        $ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['ABS'].'"'),0);
+        $row['AVATAR']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="showforumavatar pull-left" src="'.$ergava.'" alt="Avatar" />' : '<img class="showforumavatar pull-left" src="include/images/avatars/wurstegal.jpg" />';
         $class = ( $class == 'Cmite' ? 'Cnorm' : 'Cmite' );
-        $row['NEW'] = ($row['NEW'] == 0 ? '<i class="fa fa-hand-o-left"></i>' : '' );
+        $row['NEW'] = ($row['NEW'] == 0 ? 'pmnew' : '' );
         $row['CLASS'] = $class;
-        $row['BET'] = (trim($row['BET']) == '' ? ' -- kein Nachrichtentitel -- ' : $row['BET']);
+        $row['BET'] = (trim($row['BET']) == '' ? ' <small class="text-muted">-- kein Nachrichtentitel --</small> ' : $row['BET']);
         $row['date'] = date('d.m.Y',$row['time']);
         $row['time'] = date('H:i',$row['time']);
         $tpl->set_ar_out($row,1);

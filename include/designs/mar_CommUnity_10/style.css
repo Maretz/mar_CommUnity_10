@@ -1207,6 +1207,13 @@ color: #AF4600;
 font-family: 'Open Sans', sans-serif;
 text-decoration: none;
 }
+.bbcode-none {
+display:inline;
+}
+.pmnew,
+.pmnew:hover {
+background-color: #dff0d8!important;
+} 
 @media (max-width: 1024px) {
     ul.timeline:before {
         left: 40px;
@@ -1293,7 +1300,10 @@ display:none;
 display:inline;
 margin-top:3px;
 font-size: 0.675em;
-}          
+} 
+.bbcode-none {
+display:none!important;
+}        
 }
 
 /* Ilch CMS Configuration - bei jedem Design uebernehmen */

@@ -17,31 +17,33 @@ function CheckAll(){
 //-->
 </SCRIPT>
 <div class="com10newsinput">
+<legend><i class="fa fa-comments-o" aria-hidden="true"></i> Posteingang</legend>
 <table width="100%" class="table"><tr><td width="50%">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-showsend">{_lang_outbox}</a></td><td width="50%" class="text-right">
 <a class="btn btn-primary btn-xs" href="index.php?forum-privmsg-new">{_lang_writemessage}</a></td></tr></table>
 <form action="index.php?forum-privmsg-delete" method="POST" name="form">
-<table width="100%" class="table table-bordered table-hover">
-  <tr class="active">
-	  <th><a href="index.php?forum-privmsg-{ad}1"><b>{_lang_messagetitle}</b></a></th>
-		<th><a href="index.php?forum-privmsg-{ad}2"><b>{_lang_sender}</b></a></th>
-		<th class="hidden-xs"><a href="index.php?forum-privmsg-{ad}3"><b>{_lang_time}</b></a></th>
+<table class="table table-forum">
+        <thead>
+  <tr>
+	  <th colspan="2"><i class="fa fa-sort" aria-hidden="true"></i> <a href="index.php?forum-privmsg-{ad}1"><b>{_lang_messagetitle}</b></a></th>
 		<th width="15" class="text-right"><input name="ALL" type="checkbox" value="CHECK ALL" onClick="CheckAll();" /></th>
 	</tr>
+        </thead>
+<tbody>
 	{EXPLODE}
-  <tr>
-	  <td><a href="index.php?forum-privmsg-showmsg-{ID}">{BET} &nbsp;{NEW}</a></td>
-    <td>von {ABS}</td>
-    <td class="hidden-xs"><a href="#" rel="tooltip" title="Gesendet um {time} Uhr">{date}</a></td>
+  <tr class="{NEW}">
+	  <td class="uatd">{AVATAR}</td>
+	  <td class="forumname"><a href="index.php?forum-privmsg-showmsg-{ID}">{BET}</a><br><small>von <strong>{ABS}</strong> <span class="ilchforum_time"><br></span>am {date} um {time} Uhr</small></td>
     <td class="text-right"><input type="checkbox" name="delids[]" value="{ID}"></td>
   </tr>
 	{EXPLODE}
   <tr>
-	  <td colspan="4" class="text-right">
+	  <td colspan="3" class="text-right">
       <input type="submit" class="btn btn-danger btn-xs" value="{_lang_delete}" />
       <i class="fa fa-reply fa-flip-vertical"></i>
 		</td>
   </tr>
+</tbody>
 </table>
 </form>
 </div>
