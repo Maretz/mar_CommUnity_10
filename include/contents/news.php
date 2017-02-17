@@ -228,7 +228,7 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
 			'NAME'  => $row->news_title,
       'anzcom' => $kom,
 # News Teilen Start
-  'newsteilen' => '<button type="button" class="btn btn-success btn-sm userdropspan" data-toggle="modal" data-target=".newsteilen" data-tooltip="tooltip" title="Teilen"><i class="fa fa-share-alt" aria-hidden="true"></i></button>',
+  'newsteilen' => '<button type="button" class="btn btn-success userdropspan" data-toggle="modal" data-target=".newsteilen" data-tooltip="tooltip" title="Teilen"><i class="fa fa-share-alt" aria-hidden="true"></i></button>',
   'teilenpermalink' => '<label>Permalink</label><input class="form-control" value="' . $teilenurl . '?news-' . $row->news_id . '" readonly="readonly" type="text" onfocus="this.select()"><br>',
    'teilenbbcode' => '<label>BBCode</label><input class="form-control" value="[url=' . $teilenurl . '?news-' . $row->news_id . ']' . $row->news_title . '[/url]" readonly="readonly" type="text" onfocus="this.select()"><br>',
    'teilenhtml' => '<label>HTML</label><input class="form-control" value="&lt;a href=&quot;' . $teilenurl . '?news-' . $row->news_id . '&quot;&gt;' . $row->news_title . '&lt;/a&gt;" readonly="readonly" type="text" onfocus="this.select()">',
