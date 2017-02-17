@@ -20,6 +20,12 @@ color: #84beed;
 table {
 background-color: #fff;
 }
+.commenttable {
+width: 100%;
+background: transparent;
+border: 0;
+text-align:left;
+}
 .sidebarbutton {
 margin-top: 3px;
 margin-right: 2px;
@@ -171,6 +177,67 @@ display:none!important;
   }
 
 }
+/* ------------------- Datum News ------------------- */
+.datumformat {
+position:relative;
+height:55px;
+width: 55px;
+padding-top:2px;
+padding-left:5px;
+top:-5px;
+right:5px;
+border: 2px solid #fff;
+ -webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+z-index:1;
+background: rgba(240,240,240,1);
+background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,240,240,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#ffffff', GradientType=0 );
+box-shadow: 0px 0px 0px 5px rgba(0,0,0,0.1);
+}
+.datumformat span {
+position:absolute;
+font-size:30px;
+font-family: 'Hind', sans-serif;
+color: #70C3FF;
+z-index:1;
+}
+.datumformat span span {
+position:absolute;
+font-size:12px;
+color:#2f2f2f;
+left:2px;
+top: 30px;
+letter-spacing: 2px;
+z-index:2;
+}
+.datumformat span span span{
+position:absolute;
+transform: rotate(-90deg);
+font-size:18px;
+color: #FF8D42;
+left:20px;
+top: -18px;
+letter-spacing: 0px;
+z-index:3;
+}
+.infotextnewsoben {
+padding-top: 10px;
+}
+.wellsmnews {
+margin-bottom: 2px;
+}
+@media screen and (max-width: 400px) {
+.infotextnewsoben {
+padding-top: 0;
+}
+}
 /* ------------------- Mitglieder Bereich ------------------- */
 .userlistbg {
 border: 1px solid #ccc;
@@ -305,25 +372,17 @@ width: 55px;
 /* ------------------- Com10 Boxen ------------------- */
 
 .newnewboxout {
-border: 1px solid #ccc;
-border-radius: 3px;
-padding: 6px;
-color: #2f2f2f;
+padding: 0px;
+color: #ccc;
 font-family: 'Hind', sans-serif;
-background: rgba(240,240,240,1);
-background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,240,240,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
-background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-background: -o-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#ffffff', GradientType=0 );
--webkit-box-shadow:inset 0px 0px 0px 2px #fff;
-    -moz-box-shadow:inset 0px 0px 0px 2px #fff;
-    box-shadow:inset 0px 0px 0px 2px #fff;   
 }
 .newnewboxout table {
 background-color: transparent;
+border-top: 0!important;
+}
+.newnewbox > tr > td {
+border-color: #222!important;
+border: 0px!important;
 }
 .commentboxavatar img {
 width: 50px;
@@ -378,7 +437,7 @@ margin-top:10px;
 border: 1px solid #ccc;
 background-color:#222;
 color: #fafafa;
-padding:5px;
+padding:2px;
 }
 .panel-com10 > .panel-heading {
 background-color:#fafafa;
@@ -999,6 +1058,9 @@ box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
             border-top-left-radius: 48%;
             border-bottom-right-radius: 48%;
             border-bottom-left-radius: 48%;
+           -webkit-box-shadow: 6px 9px 20px 0px rgba(0,0,0,0.75);
+           -moz-box-shadow: 6px 9px 20px 0px rgba(0,0,0,0.75);
+           box-shadow: 6px 9px 20px 0px rgba(0,0,0,0.75);
         }
 
         .timeline > li.timeline-inverted > .timeline-panel {

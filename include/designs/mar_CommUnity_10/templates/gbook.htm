@@ -109,11 +109,14 @@
             </tr>
         </table>
         <table class="table table-bordered table-striped">
-            <tr>
+            <tr class="bbcode-none">
                 <td>
                     <!-- BB Code START -->{__BBCodeButtons__}
                     <!-- BB Code START -->
-                    <br>
+</td>
+</tr>
+<tr>
+<td>
                     <textarea class="form-control" placeholder="Dein Eintrag" onblur="RestlicheZeichenErmitteln(this);" onchange="RestlicheZeichenErmitteln(this);" onfocus="RestlicheZeichenErmitteln(this);" onkeydown="RestlicheZeichenErmitteln(this);" onkeyup="RestlicheZeichenErmitteln(this);" cols="50" rows="10" tabindex="4" name="txt"></textarea>
                     <br>Noch
                     <input size="3" name="Laenge" value="{TXTL}"> {_lang_signs}
@@ -127,7 +130,7 @@
 <tr>
             <td>
 <button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning btn-sm accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button>
-                <span class="pull-right"><input type="submit" class="btn btn-primary" value="{_lang_formsub}" tabindex="5" accesskey="s"></span>
+                <span class="pull-right"><input type="submit" class="btn btn-primary btn-sm" value="{_lang_formsub}" tabindex="5" accesskey="s"></span>
             </td>
         </tr>
         </table>

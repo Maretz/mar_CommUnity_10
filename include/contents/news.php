@@ -114,6 +114,7 @@ if ( !is_numeric($menu->get(1)) )  {
     $abf = "SELECT
       a.news_title as title,
       a.news_id as id,
+      a.news_time,
       DATE_FORMAT(a.news_time,'%d. %m. %Y') as datum,
       DATE_FORMAT(a.news_time,'%W') as dayofweek,
       a.news_kat as kate,
@@ -140,6 +141,9 @@ $tpl->set ( 'anzahlkat', $anzahlkat);
       $row['kom']  = db_result($k0m,0);
       $row['kate'] = news_find_kat($row['kate']);
       $row['kates'] = $row['kates'];
+$row['datumtag'] = date("d", strtotime($row['news_time']));
+$row['datummonat'] = date("M", strtotime($row['news_time']));
+$row['datumjahr'] = date("Y", strtotime($row['news_time']));
 # News Teilen Start
 $row['teilenurl'] = url($row['teilenurl']); 
 $row['newsteilen'] = '<button type="button" class="btn btn-success btn-sm userdropspan" data-toggle="modal" data-target=".newsteilen'.$row['id'].'" data-tooltip="tooltip" title="Teilen"><i class="fa fa-share-alt" aria-hidden="true"></i></button>';
@@ -207,7 +211,10 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
 		$tpl = new tpl ( 'news.htm' );
     $tage = array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
     $tageday = date("w", strtotime($row->news_time));
-    $teilenurl = url($teilenurl); 
+    $teilenurl = url($teilenurl);
+    $countcomment = $row->news_id;
+    $k0m  = db_query("SELECT COUNT(ID) FROM `prefix_koms` WHERE uid = ".$countcomment." AND cat = 'NEWS'");
+    $kom  = db_result($k0m,0);
 		$ar = array (
       'DATUM' => date("d. m. Y", strtotime($row->news_time)),
       'DATUMDAY' => $tage[$tageday],
@@ -219,6 +226,7 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
       'SMILIES'  => getsmilies(),
 			'ANTISPAM' => (loggedin()?'':get_antispam ('newskom', 0)),
 			'NAME'  => $row->news_title,
+      'anzcom' => $kom,
 # News Teilen Start
   'newsteilen' => '<button type="button" class="btn btn-success btn-sm userdropspan" data-toggle="modal" data-target=".newsteilen" data-tooltip="tooltip" title="Teilen"><i class="fa fa-share-alt" aria-hidden="true"></i></button>',
   'teilenpermalink' => '<label>Permalink</label><input class="form-control" value="' . $teilenurl . '?news-' . $row->news_id . '" readonly="readonly" type="text" onfocus="this.select()"><br>',
@@ -239,10 +247,12 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
 		  $zahl = $ergAnz1;
 		  while ($row1 = db_fetch_assoc($erg1)) {
         $row1['text'] = bbcode(trim($row1['text']));
+        $ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row1['name'].'"'),0);
+        $row1['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="showforumavatar" src="'.$ergava.'" alt="Avatar" />' : '<img class="showforumavatar" src="include/images/avatars/wurstegal.jpg" />';
         if (has_right(-7, 'news')) {
           $row1['text'] .= '&nbsp;&nbsp;<a href="?news-'.$nid.'-d'.$row1['id'].'" rel="tooltip" title="l&ouml;schen" /><i class="fa fa-trash-o"></i></a>';
         }
-        $tpl->set_ar_out( array('NAME' => $row1['name'], 'TEXT' => $row1['text'], 'ZAHL' => $zahl ) , 4 ); 
+        $tpl->set_ar_out( array('AVATAR' => $row1['avatar'], 'NAME' => $row1['name'], 'TEXT' => $row1['text'], 'ZAHL' => $zahl ) , 4 ); 
         $zahl--;
 		  }
     }

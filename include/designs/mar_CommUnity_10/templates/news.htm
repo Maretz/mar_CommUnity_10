@@ -1,8 +1,10 @@
 <div class="com10newsinput slidebuttonin{id}">
 <div class="media">
 {kate}
-<h3 class="infotextnews"><span class="infotextnews"><i class="fa fa-user usernewsedit" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{_lang_from} {username}"></i>&nbsp;&nbsp;{datum}</span><br>{title}<span class="in-xsmin"><br><i class="fa fa-caret-right" aria-hidden="true"></i> {kates}</span></h3>
+<div class="datumformat pull-right"><span>{datumtag}<span><strong>{datummonat}</strong><span>{datumjahr}</span></span></span></div>
+<h3 class="infotextnews infotextnewsoben" style="max-width: 80%;">{title}<span class="in-xsmin"><br><i class="fa fa-caret-right" aria-hidden="true"></i> {kates}</span></h3>
 </div>
+<br>
 <br>{text}
 <br>
 <hr>
@@ -51,28 +53,6 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 <div class="text-center">{SITELINK}</div>
 {EXPLODE}
 <!-- News Kommentare und Mehr lesen -->
- <script language="JavaScript">
- <!--
- function RestlicheZeichenErmitteln(form)
- {
-     var ErlaubteAnzahl = 200;
- 
-     var Laenge = document.form.txt.value.length;
- 
-     if(Laenge > ErlaubteAnzahl)
-     {
-         document.form.txt.value = document.form.txt.value.substring(0, ErlaubteAnzahl);
-         RestlicheZeichen = 0;
-     }
-     else
-     {
-         RestlicheZeichen = ErlaubteAnzahl-Laenge;
-     }
- 
-     document.form.Laenge.value = RestlicheZeichen;
- }
- //-->
- </script>
 <div class="com10newsinput">
 <div class="media">
 {KATE}
@@ -82,9 +62,8 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 </div>
 <br>
 {TEXT}
+<span class="hidden-xsmin  text-muted">
 <hr>
-<span class="pull-right">{newsteilen}</span>
-<span class="hidden-xsmin">
 <i class="fa fa-caret-right" aria-hidden="true" rel="tooltip" title="Kategorie: {KATES}"> {KATES}</i>
 </span>
 <div class="modal fade newsteilen" tabindex="-1" role="dialog" aria-labelledby="newsteilentitle">
@@ -107,13 +86,12 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 </div>
 <br style="clear:both;"/>
 <br>
-<div class="text-left"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a></div>
-<hr>
- <legend><i class="fa fa-commenting-o" aria-hidden="true"></i> <small>{_lang_commentsfor} {NAME}</small></legend>
+<div class="text-left"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a><span class="pull-right">{newsteilen}</span></div>
+<br>
+ <legend><small>Kommentare <span class="badge">{anzcom}</span></small></legend>
 	    {EXPLODE}
 	    <form action="index.php?news-{NID}" method="POST" name="form" class="form-horizontal" role="form">
 <script type="text/javascript" src="include/includes/js/bbcode.js"></script>
-          <legend>{_lang_writecomment}</legend>
           <input type="text" name="name" class="form-control" value="{uname}" /><br>
       <!-- 
 <div style="margin-bottom:5px;">
@@ -123,8 +101,8 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 <a href="javascript:simple('url')"><img style="margin-left:5px;" src="include/images/icons/bbcode/bbcode_url.png" alt="Url" title="{_lang_link}" border="0"></a> 
 </div>
  -->
-          <textarea class="form-control" rows="3" name="txt" tabindex="2" onblur="RestlicheZeichenErmitteln(this);" onchange="RestlicheZeichenErmitteln(this);" onfocus="RestlicheZeichenErmitteln(this);" onkeydown="RestlicheZeichenErmitteln(this);" onkeyup="RestlicheZeichenErmitteln(this);"></textarea><br>
-Noch <input size="3" name="Laenge" value="200" readonly> Zeichen<br />
+          <textarea class="form-control" rows="3" name="txt" tabindex="2" required="required"></textarea>
+<br>
   	  <div id="smiliest" class="accordian-body collapse">{SMILIES}</div>
 <br>{ANTISPAM}<br>
  <button type="button" data-toggle="collapse" data-target="#smiliest" class="btn btn-warning accordion-toggle" rel="tooltip" title="Smilies"><i class="fa fa-smile-o" aria-hidden="true"></i> Smilies</button> <input type="submit" class="btn btn-primary" value="{_lang_enter}"><br>
@@ -133,10 +111,12 @@ Noch <input size="3" name="Laenge" value="200" readonly> Zeichen<br />
 <div class="com10newsinput">  
       {EXPLODE}
      <div class="well well-sm wellsmnews">
-<div class="row">
-  <div class="col-md-1 newscommentcom10"><strong># {ZAHL}</strong></div>
-  <div class="col-md-11"><small>von {NAME}</small><br>{TEXT}</div>
-</div>
+<table class="commenttable">
+<tr>
+  <td class="uatd">{AVATAR}</td>
+  <td><small class="text-muted">von {NAME}</small><br>{TEXT}</td>
+</tr>
+</table>
       </div>
       {EXPLODE}
       <br><br><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a>
