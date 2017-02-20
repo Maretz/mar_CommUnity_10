@@ -58,7 +58,23 @@ function getAvatar($id){
 			  $row['ORD'] = forum_get_ordner($row['time'],$row['id'],$fid);
 			  $row['colorclosetopics']  = '';
       }
-			$row['date'] = date('d.m.y - H:i',$row['time']);
+      $times = $row['time'];
+  if(date("d.m.Y",$times) == date("d.m.Y")) 
+   {
+   $row['date'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
+   } 
+elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
+   {
+   $row['date'] = "Gestern ".date("H:i",$times)." Uhr";
+   }
+elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*48))
+   {
+   $row['date'] = "vor 2 Tagen ";
+   }
+else 
+   {
+   $row['date'] = "".date("d. M. Y",$times)."";
+   }
 			$ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['last'].'"'),0);
 			$row['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="pull-left showforumavatar" src="'.$ergava.'" alt="Avatar" />' : '<img class="pull-left showforumavatar" src="include/images/avatars/wurstegal.jpg" />';
 			$ergava2 = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['erst'].'"'),0);

@@ -177,6 +177,50 @@ display:none!important;
   }
 
 }
+/* ------------------- Drashboard ------------------- */
+.drashboardin {
+margin-top:5px;
+border-radius:3px;
+border: 1px solid #ccc;
+-webkit-box-shadow:inset 0px 0px 0px 2px #f0f0f0;
+-moz-box-shadow:inset 0px 0px 0px 2px #f0f0f0;
+box-shadow:inset 0px 0px 0px 2px #f0f0f0;
+background: rgba(255,255,255,1);
+padding: 5px;
+overflow: hidden;
+width: 100%;
+max-height:70px;
+color: #545454;
+}
+.drashboardavatar {
+border: 2px solid #fff;
+height:50px;
+width: auto;
+box-shadow: 0 0 0 1px #ccc;
+}
+.drashboardin .drashboardimg {
+display:none;
+}
+.drashboardweiter {
+position:relative;
+float:right;
+width: 20px;
+height:20px;
+right: -20px;
+top: -15px;
+}
+.drashboardlink,
+.drashboardlink:hover {
+font-family: 'Fjalla One', sans-serif;
+font-size: 1em;
+color: #AF4600;
+text-decoration: none;
+}
+@media screen and (max-width: 400px) {
+.drashboardin {
+max-height:90px;
+}
+}
 /* ------------------- Datum News ------------------- */
 .datumformat {
 position:relative;

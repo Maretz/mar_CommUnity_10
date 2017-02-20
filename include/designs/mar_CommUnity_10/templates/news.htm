@@ -8,10 +8,10 @@
 <br>{text}
 <br>
 <hr>
-<span class="hidden-xsmin" rel="tooltip" title="Kategorie: {kates}"><i class="fa fa-caret-right" aria-hidden="true"></i> {kates}</span>
-<div class="pull-right slidebutton{id} slidebuttonmobilout"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info btn-sm userdropspan" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}{newsteilen}{readwholenews}
+<span class="hidden-xsmin" rel="tooltip" title="Kategorie: {kates}"><i class="fa fa-file-text" aria-hidden="true"></i>  {kates}</span>
+<div class="pull-right slidebutton{id} slidebuttonmobilout"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}#comments" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info btn-sm userdropspan" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}<a class="btn btn-default btn-sm userdropspan" href="index.php?user-details-{autorid}" rel="tooltip" title="von {username}"><i class="fa fa-user-o" aria-hidden="true"></i></a>{newsteilen}{readwholenews}
 </div>
-<div class="pull-right slidebuttonmobil"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info userdropspan btn-sm" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}{newsteilen}{readwholenews}
+<div class="pull-right slidebuttonmobil"><a class="btn btn-primary userdropspan btn-sm" href="index.php?news-{id}#comments" data-toggle="tooltip" data-placement="top" title="{kom} {_if_{kom}=='1'}{_lang_comment}{_else_}{_lang_comments}{/_endif}"><i class="fa fa-comments-o" aria-hidden="true"></i><sup style="margin-left:3px;">{kom}</sup></a>{_if_{SESSION_AUTHRIGHT}<='-7'}<a href="admin.php?news-edit-{id}" class="btn btn-info userdropspan btn-sm" data-toggle="tooltip" data-placement="top" title="News bearbeiten"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{/_endif}<a class="btn btn-default btn-sm userdropspan" href="index.php?user-details-{autorid}" rel="tooltip" title="von {username}"><i class="fa fa-user-o" aria-hidden="true"></i></a>{newsteilen}{readwholenews}
 </div>
 </div>
 </div>
@@ -62,7 +62,7 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 </div>
 <br>
 {TEXT}
-<span class="hidden-xsmin  text-muted">
+<span class="hidden-xsmin text-muted">
 <hr>
 <i class="fa fa-caret-right" aria-hidden="true" rel="tooltip" title="Kategorie: {KATES}"> {KATES}</i>
 </span>
@@ -86,7 +86,7 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
 </div>
 <br style="clear:both;"/>
 <br>
-<div class="text-left"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a><span class="pull-right">{newsteilen}</span></div>
+<div class="text-left" id="comments"><a class="btn btn-primary" href="index.php?news"><b>&laquo;</b> {_lang_back}</a><span class="pull-right">{newsteilen}</span></div>
 <br>
  <legend><small>Kommentare <span class="badge">{anzcom}</span></small></legend>
 	    {EXPLODE}
@@ -113,7 +113,7 @@ Newseinträge: {gesamt} / Kategorien : {anzahlkat}
      <div class="well well-sm wellsmnews">
 <table class="commenttable">
 <tr>
-  <td class="uatd">{AVATAR}</td>
+  <td class="uatd" style="vertical-align:top">{AVATAR}</td>
   <td><small class="text-muted">von {NAME}</small><br>{TEXT}</td>
 </tr>
 </table>

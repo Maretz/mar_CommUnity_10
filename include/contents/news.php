@@ -119,6 +119,7 @@ if ( !is_numeric($menu->get(1)) )  {
       DATE_FORMAT(a.news_time,'%W') as dayofweek,
       a.news_kat as kate,
       a.news_kat as kates,
+      a.user_id as ersteller,
       a.news_text as text,
       b.name as username
     FROM prefix_news as a
@@ -141,6 +142,7 @@ $tpl->set ( 'anzahlkat', $anzahlkat);
       $row['kom']  = db_result($k0m,0);
       $row['kate'] = news_find_kat($row['kate']);
       $row['kates'] = $row['kates'];
+      $row['autorid'] = $row['ersteller'];
 $row['datumtag'] = date("d", strtotime($row['news_time']));
 $row['datummonat'] = date("M", strtotime($row['news_time']));
 $row['datumjahr'] = date("Y", strtotime($row['news_time']));
@@ -215,6 +217,7 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
     $countcomment = $row->news_id;
     $k0m  = db_query("SELECT COUNT(ID) FROM `prefix_koms` WHERE uid = ".$countcomment." AND cat = 'NEWS'");
     $kom  = db_result($k0m,0);
+    $autor  = $row->user_id;
 		$ar = array (
       'DATUM' => date("d. m. Y", strtotime($row->news_time)),
       'DATUMDAY' => $tage[$tageday],
@@ -222,7 +225,7 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
 			'KATE'  => $kategorie,
       'KATES'  => $row->news_kat,
       'NID' => $nid,
-      'uname' => $_SESSION['authname'],
+      'uname' => db_result(db_query("SELECT name FROM prefix_user WHERE id = '$autor'"),0),
       'SMILIES'  => getsmilies(),
 			'ANTISPAM' => (loggedin()?'':get_antispam ('newskom', 0)),
 			'NAME'  => $row->news_title,
