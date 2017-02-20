@@ -26,6 +26,20 @@ WHERE ((" . $_SESSION['authright'] . " <= b.view AND b.view < 1)
 ORDER BY c.id DESC
 LIMIT 0,7");
 echo '<legend>Letzte Forum Aktivit&auml;ten</legend>';
+if (loggedin()) {
+    $admin = '';
+    if (user_has_admin_right($menu, false)) {
+        $admin = '<br><a href="admin.php?forum">neues Forum erstellen</a>';
+    }
+}
+if ( @db_num_rows($erg) == 0 ) {
+    echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
+    echo '<table class="commenttable">';
+    echo '<tr>';
+    echo '<td style="text-align:center;">kein Forumeintrag vorhanden'.$admin.'</td>';
+    echo '</tr>';
+    echo '</table></div>';
+} 
 while ($row = db_fetch_assoc($erg)) {
     $times = $row['time'];
     if (date("d.m.Y", $times) == date("d.m.Y")) {
@@ -82,7 +96,12 @@ if (loggedin()) {
     }
 }
 if (@db_num_rows($erg2) == 0) {
-    echo 'kein Newseintrag vorhanden<br>' . $admin;
+        echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
+        echo '<table class="commenttable">';
+        echo '<tr>';
+        echo '<td class="text-center">kein Newseintrag vorhanden<br>' . $admin .'</td>';
+        echo '</tr>';
+        echo '</table></div>';
 } else {
     while ($row = db_fetch_object($erg2)) {
         $comavatar2   = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "' . $row->username . '"'), 0);
@@ -140,6 +159,7 @@ if (db_num_rows($comErg) > 0) {
         echo '</table></div>';
     }
 } else {
+    echo '<br><legend>Letzte Kommentare</legend>';
     echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
     echo '<table class="commenttable">';
     echo '<tr>';
