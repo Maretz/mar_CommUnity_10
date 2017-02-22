@@ -83,9 +83,9 @@ while($row = db_fetch_assoc($erg)) {
 # forum Teilen Start
 $row['teilenurl'] = url($row['teilenurl']); 
 $row['forumteilen'] = '<a href="" rel="tooltip" title="Teilen" data-toggle="modal" data-target=".forumteilen'.$row['i'].'"><i class="fa fa-share-alt" aria-hidden="true"></i></a>';
-$row['teilenpermalink'] = '<label>Permalink</label><input class="form-control" value="' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '#' . $row['id'] . '" readonly="readonly" type="text" onfocus="this.select()"><br>';
-$row['teilenbbcode'] = '<label>BBCode</label><input class="form-control" value="[url=' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '#' . $row['id'] . ']' . $aktTopicRow['name'] . '[/url]" readonly="readonly" type="text" onfocus="this.select()"><br>';
-$row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;a href=&quot;' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '#' . $row['id'] . '&quot;&gt;' . $aktTopicRow['name'] . '&lt;/a&gt;" readonly="readonly" type="text" onfocus="this.select()">';
+$row['teilenpermalink'] = '<label>Permalink</label><input class="form-control" value="' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '-p' . $row['page'] . '#' . $row['id'] . '" readonly="readonly" type="text" onfocus="this.select()"><br>';
+$row['teilenbbcode'] = '<label>BBCode</label><input class="form-control" value="[url=' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '-p' . $row['page'] . '#' . $row['id'] . ']' . $aktTopicRow['name'] . '[/url]" readonly="readonly" type="text" onfocus="this.select()"><br>';
+$row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;a href=&quot;' . $row['teilenurl'] . '?forum-showposts-' . $row['TID'] . '-p' . $row['page'] . '#' . $row['id'] . '&quot;&gt;' . $aktTopicRow['name'] . '&lt;/a&gt;" readonly="readonly" type="text" onfocus="this.select()">';
 # forum Teilen Ende 
 
 
