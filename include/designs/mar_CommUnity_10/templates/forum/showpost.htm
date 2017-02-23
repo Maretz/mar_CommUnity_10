@@ -22,7 +22,7 @@
   <ul class="dropdown-menu pull-right text-center" role="menu">
     {change}
     <li><a href="index.php?forum-newpost-{TID}-z{id}"><i class="fa fa-quote-right userdropspan" aria-hidden="true"></i>{_lang_quote}</a></li>
-    <li><a href="?forum-inform-p{id}"><i class="fa fa-exclamation-triangle userdropspan" aria-hidden="true"></i>Beitrag melden</a></li>
+    {_if_{SESSION_AUTHRIGHT}<='-1'}<li><a href="?forum-inform-p{id}"><i class="fa fa-exclamation-triangle userdropspan" aria-hidden="true"></i>Beitrag melden</a></li>{/_endif}
     {delete}
   </ul>
 </div><br>
