@@ -7,7 +7,7 @@
 </table>
 <div class="text-right">{ANTWORTEN}</div>    
 	{EXPLODE}   
-      <ul class="timeline">
+      <ul class="timeline" id="{id}">
         <li class="timeline-inverted">
           <div class="timeline-badge">{avatar}</div>
           <div class="timeline-panel boxshadow">
@@ -22,7 +22,7 @@
   <ul class="dropdown-menu pull-right text-center" role="menu">
     {change}
     <li><a href="index.php?forum-newpost-{TID}-z{id}"><i class="fa fa-quote-right userdropspan" aria-hidden="true"></i>{_lang_quote}</a></li>
-    {_if_{SESSION_AUTHRIGHT}<='-1'}<li><a href="?forum-inform-p{id}"><i class="fa fa-exclamation-triangle userdropspan" aria-hidden="true"></i>Beitrag melden</a></li>{/_endif}
+    <li><a href="?forum-inform-p{id}"><i class="fa fa-exclamation-triangle userdropspan" aria-hidden="true"></i>Beitrag melden</a></li>
     {delete}
   </ul>
 </div><br>
@@ -36,7 +36,7 @@
             <div class="timeline-body">
           <p>{txt}
 					        {sig}</p>
-             <div class="text-right"><a href="index.php?forum-showposts-{TID}-p{page}#{id}" rel="tooltip" title="{i}. Post in diesem Thema"># {i}</a><span style="margin-left:8px;">{forumteilen}</span><a style="margin-left:8px;" rel="tooltip" title="nach oben" href="#" class="top"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>  
+             <div class="text-right"><a href="index.php?forum-showposts-{TID}-p{page}#{id}" rel="tooltip" title="{i}. Post in diesem Thema"># {i}</a><span style="margin-left:8px;">{forumteilen}</span><a style="margin-left:8px;" rel="tooltip" title="nach oben" href="#" class="top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a></div>  
                     </div>
           </div>
         </li>
