@@ -161,10 +161,22 @@ if ($schnitt == '1') {
 } else {
   $schnitt = $schnitt.' Beitr&auml;ge';
 }
+$topiclist = db_result(db_query("SELECT COUNT(ID) FROM `prefix_topics`"),0);
+if ($topiclist == '1') {
+  $topicliste = $topiclist.' Thema';
+} else {
+  $topicliste = $topiclist.' Themen';
+}
+$postslist = db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0);
+if ($postslist == '1') {
+  $postsliste = $postslist.' Beitrag';
+} else {
+  $postsliste = $postslist.' Beitr&auml;ge';
+}
   $stats_array = array (
   'privmsgpopup' => check_for_pm_popup (),
-  'topics' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_topics`"),0),
-  'posts' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0),
+  'topics' => $topicliste,
+  'posts' => $postsliste,
   'users' => db_result(db_query("SELECT COUNT(ID) FROM `prefix_user`"),0),
   'istsind' => ( $ges_online_user > 1 ? 'sind' : 'ist' ),
   'gesonline' => $ges_online_user,
