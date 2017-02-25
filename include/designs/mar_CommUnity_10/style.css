@@ -989,6 +989,9 @@ display:none!important;
 
 /* ------------------- Forum Ansicht ------------------- */
 
+#smiliest img {
+max-height:30px;
+}
 .timeline img {
 max-width: 100%!important;
 height: auto!important;
