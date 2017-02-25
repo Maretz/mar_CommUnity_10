@@ -63,7 +63,22 @@ while ($r = db_fetch_assoc($erg1) ) {
   $r['topic']  = html_enc_substr($r['topic'],0,200);
   $r['ORD']    = forum_get_ordner($r['time'],$r['id']);
   $r['mods']   = getmods($r['id']);
-
+  if($r['topics'] == '1') 
+   {
+   $r['topics'] = $r['topics'] .' Thema';
+   } 
+else 
+   {
+   $r['topics']  = $r['topics'] .' Themen';
+   }
+  if($r['posts'] == '1') 
+   {
+   $r['posts'] = $r['posts'] .' Beitrag';
+   } 
+else 
+   {
+   $r['posts']  = $r['posts'] .' Beitr&auml;ge';
+   }
 $times = $r['time'];
   if(date("d.m.Y",$times) == date("d.m.Y")) 
    {

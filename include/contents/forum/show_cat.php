@@ -57,14 +57,46 @@ while ($r = db_fetch_assoc($erg1) ) {
   $r['topic']  = html_enc_substr($r['topic'],0,200);
   $r['ORD']    = forum_get_ordner($r['time'],$r['id']);
   $r['mods']   = getmods($r['id']);
-  $r['datum']  = date('d.m.y - H:i', $r['time']);
+  if($r['topics'] == '1') 
+   {
+   $r['topics'] = $r['topics'] .' Thema';
+   } 
+else 
+   {
+   $r['topics']  = $r['topics'] .' Themen';
+   }
+  if($r['posts'] == '1') 
+   {
+   $r['posts'] = $r['posts'] .' Beitrag';
+   } 
+else 
+   {
+   $r['posts']  = $r['posts'] .' Beitr&auml;ge';
+   }
+$times = $r['time'];
+  if(date("d.m.Y",$times) == date("d.m.Y")) 
+   {
+   $r['datum'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
+   } 
+elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
+   {
+   $r['datum'] = "Gestern ".date("H:i",$times)." Uhr";
+   }
+elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*48))
+   {
+   $r['datum'] = "vor 2 Tagen ";
+   }
+else 
+   {
+   $r['datum'] = "".date("d. M. Y",$times)."";
+   }
     if($r['topics'] == 0) 
    {
    $r['datums'] = '<a href="index.php?forum-newtopic-'.$r['id'].'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Thema erstellen</a>';
    } 
 else 
    {
-   $r['datums']  = ' # '.$r['datum'].' Uhr';
+   $r['datums']  = '- '. $r['datum'];
    }
      if($r['ORD'] == '<i class="fa fa-plus-circle colorplus" aria-hidden="true"></i>') 
    {

@@ -164,6 +164,11 @@ $row['teilenhtml'] = '<label>HTML</label><input class="form-control" value="&lt;
       $row['text'] = bbcode($row['text']);
       $tpl->set_ar_out($row,0);
     }
+	  if ( $MPL < '0' ) {
+     $MPL = $MPL;
+} else {
+     $MPL = '<div class="well well-sm text-center">'.$MPL.'</div>';
+}
     $tpl->set_out('SITELINK', $MPL,1);
     unset($tpl);
   }

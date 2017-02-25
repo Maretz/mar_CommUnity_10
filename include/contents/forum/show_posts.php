@@ -65,7 +65,21 @@ while($row = db_fetch_assoc($erg)) {
 	$row['sig'] = ( empty($row['sig']) ? '' : '<br><br><div class="well well-sm wellsmnews">'.bbcode($row['sig']).'</div>' );
 	$row['TID'] = $tid;
 	$row['class'] = $class;
-	$row['date'] = date ('d.m.Y - H:i:s', $row['time'] );
+
+$times = $row['time'];
+  if(date("d.m.Y",$times) == date("d.m.Y")) 
+   {
+   $row['date'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
+   } 
+elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
+   {
+   $row['date'] = "Gestern ".date("H:i",$times)." Uhr";
+   }
+else 
+   {
+   $row['date'] = "".date("d. M. Y  - H:i",$times)." Uhr";
+   }
+
 	$row['delete'] = '';
 	$row['change'] = '';
 
@@ -79,6 +93,7 @@ while($row = db_fetch_assoc($erg)) {
 	$row['txt']    = (isset($_GET['such']) ? markword(bbcode ($row['txt']),$_GET['such']) : bbcode ($row['txt']) );
 	$row['i']      = $i;
     $row['page']   = $page;
+
 
 # forum Teilen Start
 $row['teilenurl'] = url($row['teilenurl']); 
