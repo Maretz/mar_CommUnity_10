@@ -5,7 +5,7 @@
 
 defined ('main') or die ( 'no direct access' );
 
-
+setlocale(LC_TIME, "de_DE");
 $title = $allgAr['title'].' :: Forum :: Private Nachrichten';
 $hmenu  = $extented_forum_menu.'<a class="smalfont" href="index.php?forum">Forum</a><b> &raquo; </b><a class="smalfont" href="index.php?forum-privmsg">Private Nachrichten</a>'.$extented_forum_menu_sufix;
 $design = new design ( $title , $hmenu, 1);
@@ -110,7 +110,52 @@ case 'showmsg' :
 		  }
       $ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['name'].'"'),0);
       $row['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="showforumavatar pull-left" src="'.$ergava.'" alt="Avatar" />' : '<img class="showforumavatar pull-left" src="include/images/avatars/wurstegal.jpg" />';
-		  $row['time'] = date('d M. Y - H:i',$row['time']);
+    $times = $row['time'];
+$diff = time() - $row['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+$zeitposts = strftime("(%H:%M Uhr)", $times);
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde '. $zeitposts;
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden '. $zeitposts;
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $row['time'] = $Stunde;
+            } else {
+                $row['time'] = strftime("Heute, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $row['time'] = $Stunde;
+            } else {
+                $row['time'] = strftime("Gestern, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $row['time'] = strftime("%d. %b. %Y - %H:%M Uhr", $times);
+        }
 			$row['anhang'] = urlencode($row['txt']);
 			$row['txt'] = bbcode(unescape($row['txt']));
 			if ($menu->get(4) == 's') {
@@ -209,8 +254,52 @@ default :
         $row['NEW'] = ($row['NEW'] == 0 ? 'pmnew' : '' );
         $row['CLASS'] = $class;
         $row['BET'] = (trim($row['BET']) == '' ? ' <small class="text-muted">-- kein Nachrichtentitel --</small> ' : $row['BET']);
-        $row['date'] = date('d.m.Y',$row['time']);
-        $row['time'] = date('H:i',$row['time']);
+    $times = $row['time'];
+$diff = time() - $row['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+$zeitposts = strftime("(%H:%M Uhr)", $times);
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde '. $zeitposts;
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden '. $zeitposts;
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $row['time'] = $Stunde;
+            } else {
+                $row['time'] = strftime("Heute, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $row['time'] = $Stunde;
+            } else {
+                $row['time'] = strftime("Gestern, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $row['time'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $row['time'] = strftime("%d. %b. %Y - %H:%M Uhr", $times);
+        }
         $tpl->set_ar_out($row,1);
       }
       $tpl->out(2);

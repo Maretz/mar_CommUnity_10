@@ -4,7 +4,7 @@
 
 
 defined ('main') or die ( 'no direct access' );
-
+setlocale(LC_TIME, "de_DE");
 # check ob ein fehler aufgetreten ist.
 check_forum_failure($forum_failure);
 
@@ -66,19 +66,52 @@ while($row = db_fetch_assoc($erg)) {
 	$row['TID'] = $tid;
 	$row['class'] = $class;
 
-$times = $row['time'];
-  if(date("d.m.Y",$times) == date("d.m.Y")) 
-   {
-   $row['date'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
-   } 
-elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
-   {
-   $row['date'] = "Gestern ".date("H:i",$times)." Uhr";
-   }
-else 
-   {
-   $row['date'] = "".date("d. M. Y  - H:i",$times)." Uhr";
-   }
+    $times = $row['time'];
+$diff = time() - $row['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+$zeitposts = strftime("(%H:%M Uhr)", $times);
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde '. $zeitposts;
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden '. $zeitposts;
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = strftime("Heute, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = strftime("Gestern, %H:%M Uhr", $times);
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $row['date'] = strftime("%d. %B %Y - %H:%M Uhr", $times);
+        }
 
 	$row['delete'] = '';
 	$row['change'] = '';

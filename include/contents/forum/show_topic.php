@@ -5,7 +5,7 @@
 
 defined ('main') or die ( 'no direct access' );
 
-
+setlocale(LC_TIME, "de_DE");
 # check ob ein fehler aufgetreten ist.
 check_forum_failure($forum_failure);
 
@@ -58,23 +58,51 @@ function getAvatar($id){
 			  $row['ORD'] = forum_get_ordner($row['time'],$row['id'],$fid);
 			  $row['colorclosetopics']  = '';
       }
-      $times = $row['time'];
-  if(date("d.m.Y",$times) == date("d.m.Y")) 
-   {
-   $row['date'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
-   } 
-elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
-   {
-   $row['date'] = "Gestern ".date("H:i",$times)." Uhr";
-   }
-elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*48))
-   {
-   $row['date'] = "vor 2 Tagen ";
-   }
-else 
-   {
-   $row['date'] = "".date("d. M. Y",$times)."";
-   }
+    $times = $row['time'];
+$diff = time() - $row['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde';
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden';
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = strftime("Heute, %H:%M Uhr", $times);;
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = "Gestern, " . date("H:i", $times) . " Uhr";
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $row['date'] = strftime("%d. %B %Y", $times);
+        }
 			$ergava = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['last'].'"'),0);
 			$row['avatar']  = (!empty($ergava) AND file_exists($ergava)) ? '<img class="pull-left showforumavatar" src="'.$ergava.'" alt="Avatar" />' : '<img class="pull-left showforumavatar" src="include/images/avatars/wurstegal.jpg" />';
 			$ergava2 = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "'.$row['erst'].'"'),0);

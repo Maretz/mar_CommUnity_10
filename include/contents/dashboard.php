@@ -2,7 +2,7 @@
 #   Dashboard by Maretz.eu Ilch CMS
 
 defined('main') or die('no direct access');
-
+setlocale(LC_TIME, "de_DE");
 $title  = $allgAr['title'] . ' :: Dashboard';
 $hmenu  = 'Dashboard';
 $design = new design($title, $hmenu);
@@ -24,7 +24,7 @@ WHERE ((" . $_SESSION['authright'] . " <= b.view AND b.view < 1)
      OR sg.fid IS NOT NULL
      OR -9 >= " . $_SESSION['authright'] . ")
 ORDER BY c.id DESC
-LIMIT 0,7");
+LIMIT 0,5");
 echo '<legend>Letzte Forum Aktivit&auml;ten</legend>';
 if (loggedin()) {
     $admin = '';
@@ -42,15 +42,51 @@ if ( @db_num_rows($erg) == 0 ) {
 } 
 while ($row = db_fetch_assoc($erg)) {
     $times = $row['time'];
-    if (date("d.m.Y", $times) == date("d.m.Y")) {
-        $row['date'] = "Heute " . date("H:i", $times) . " Uhr";
-    } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
-        $row['date'] = "Gestern " . date("H:i", $times) . " Uhr";
-    } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
-        $row['date'] = "vor 2 Tagen ";
-    } else {
-        $row['date'] = "" . date("d. m. Y", $times) . "";
-    }
+$diff = time() - $row['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde';
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden';
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = strftime("Heute, %H:%M Uhr", $times);;
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $row['date'] = $Stunde;
+            } else {
+                $row['date'] = "Gestern, " . date("H:i", $times) . " Uhr";
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $row['date'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $row['date'] = strftime("%d. %B %Y", $times);
+        }
+
     $autorid        = @db_result(db_query('SELECT id FROM prefix_user WHERE name = "' . $row['autor'] . '"'), 0);
     $comavatar      = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "' . $row['last'] . '"'), 0);
     $row['avatar']  = (!empty($comavatar) AND file_exists($comavatar)) ? '<img class="drashboardavatar" src="' . $comavatar . '" alt="Avatar" />' : '<img class="drashboardavatar" src="include/images/avatars/wurstegal.jpg" />';
@@ -75,8 +111,8 @@ while ($row = db_fetch_assoc($erg)) {
 
 
 $abf = 'SELECT
-          a.news_kat as kate,
-          DATE_FORMAT(a.news_time,"%d. %m. %Y") as datumnews, 
+          a.news_kat as kate, 
+          a.news_time,
           a.news_title as title,
           a.news_id as id, 
           a.news_text as txt,    
@@ -104,6 +140,51 @@ if (@db_num_rows($erg2) == 0) {
         echo '</table></div>';
 } else {
     while ($row = db_fetch_object($erg2)) {
+    $newstimestramp = new DateTime($row->news_time);
+    $timesnews = $newstimestramp->getTimestamp();
+$diffnews = time() - $timesnews; 
+$fullHoursnews = intval($diffnews/60/60); 
+$Minutesnews = intval(($diffnews/60)-(60*$fullHoursnews));
+if ($Minutesnews == 0) {
+$Minutesnews = 'gerade eben';
+} elseif ($Minutesnews == 1) {
+$Minutesnews = 'vor einer Minute';
+} else {
+$Minutesnews = 'vor '. $Minutesnews .' Minuten';
+}
+if ($fullHoursnews == 0) {
+$Stundenews = $Minutesnews;
+} elseif ($fullHoursnews == 1) {
+$Stundenews = 'vor einer Stunde';
+} else {
+$Stundenews = 'vor '. $fullHoursnews .' Stunden';
+}
+$wochentagnews = strftime("%A", $timesnews); 
+
+            if (date("d.m.Y", $timesnews) == date("d.m.Y")) {
+                if ($fullHoursnews < 12) {
+                    $row->newnewstime = $Stundenews;
+                } else {
+                    $row->newnewstime = "Heute, " . date("H:i", $timesnews) . " Uhr";
+                }
+            } elseif (date("d.m.Y", $timesnews) == date("d.m.Y", time() - 60 * 60 * 24)) {
+                if ($fullHoursnews < 12) {
+                    $row->newnewstime = $Stundenews;
+                } else {
+                    $row->newnewstime = "Gestern, " . date("H:i", $timesnews) . " Uhr";
+                }
+            } elseif (date("d.m.Y", $timesnews) == date("d.m.Y", time() - 60 * 60 * 48)) {
+                $row->newnewstime = "$wochentagnews, " . date("H:i", $timesnews) . " Uhr";
+            } elseif (date("d.m.Y", $timesnews) == date("d.m.Y", time() - 60 * 60 * 72)) {
+                $row->newnewstime = "$wochentagnews, " . date("H:i", $timesnews) . " Uhr";
+            } elseif (date("d.m.Y", $timesnews) == date("d.m.Y", time() - 60 * 60 * 96)) {
+                $row->newnewstime = "$wochentagnews, " . date("H:i", $timesnews) . " Uhr";
+            } elseif (date("d.m.Y", $timesnews) == date("d.m.Y", time() - 60 * 60 * 120)) {
+                $row->newnewstime = "$wochentagnews, " . date("H:i", $timesnews) . " Uhr";
+            } else {
+                $row->newnewstime = strftime("%d. %B %Y", $timesnews);
+            }
+
         $comavatar2   = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "' . $row->username . '"'), 0);
         $row->avatar2 = (!empty($comavatar2) AND file_exists($comavatar2)) ? '<img class="drashboardavatar" src="' . $comavatar2 . '" alt="Avatar" />' : '<img class="drashboardavatar" src="include/images/avatars/wurstegal.jpg" />';
         $row->text    = bbCode($row->txt);
@@ -114,7 +195,7 @@ if (@db_num_rows($erg2) == 0) {
         echo '<table class="commenttable">';
         echo '<tr>';
         echo '<td style="vertical-align:top;width:55px;">' . $row->avatar2 . '</td>';
-        echo '<td style="vertical-align:top;"><span class="drashboardweiter">' . $row->right . '</span><a class="drashboardlink" href="?user-details-' . $row->userid . '">' . $row->username . '</a> <small>- ' . $row->datumnews . '</small><br>
+        echo '<td style="vertical-align:top;"><span class="drashboardweiter">' . $row->right . '</span><a class="drashboardlink" href="?user-details-' . $row->userid . '">' . $row->username . '</a> <small>- ' . $row->newnewstime . '</small><br>
 ' . $row->titl . '</td></tr><tr><td colspan="2"><div class="drashboardin">' . $row->text . '</div></td>';
         echo '</tr>';
         echo '</table></div>';
@@ -128,19 +209,86 @@ $comErg = db_query($comAbf);
 if (db_num_rows($comErg) > 0) {
     echo '<br><legend>Letzte Kommentare</legend>';
     while ($comRow = db_fetch_object($comErg)) {
+            $diffkom      = time() - $comRow->time;
+            $fullHourskom = intval($diffkom / 60 / 60);
+            $Minuteskom   = intval(($diffkom / 60) - (60 * $fullHourskom));
+            if ($Minuteskom == 0) {
+                $Minuteskom = '- gerade eben';
+            } elseif ($Minuteskom == 1) {
+                $Minuteskom = '- vor einer Minute';
+            } else {
+                $Minuteskom = '- vor ' . $Minuteskom . ' Minuten';
+            }
+            if ($fullHourskom == 0) {
+                $Stundenkom = $Minuteskom;
+            } elseif ($fullHourskom == 1) {
+                $Stundenkom = '- vor einer Stunde';
+            } else {
+                $Stundenkom = '- vor ' . $fullHourskom . ' Stunden';
+            }
+            $wochentagkom = strftime("- %A", $time);
+            
+            if (date("d.m.Y", $comRow->time) == date("d.m.Y")) {
+                if ($fullHourskom < 12) {
+                    $komtime = $Stundenkom;
+                } else {
+                    $komtime = "- Heute, " . date("H:i", $comRow->time) . " Uhr";
+                }
+            } elseif (date("d.m.Y", $comRow->time) == date("d.m.Y", time() - 60 * 60 * 24)) {
+                if ($fullHourskom < 12) {
+                    $komtime = $Stundenkom;
+                } else {
+                    $komtime = "- Gestern, " . date("H:i", $comRow->time) . " Uhr";
+                }
+            } elseif (date("d.m.Y", $comRow->time) == date("d.m.Y", time() - 60 * 60 * 48)) {
+                $komtime = "$wochentagkom, " . date("H:i", $comRow->time) . " Uhr";
+            } elseif (date("d.m.Y", $comRow->time) == date("d.m.Y", time() - 60 * 60 * 72)) {
+                $komtime = "$wochentagkom, " . date("H:i", $comRow->time) . " Uhr";
+            } elseif (date("d.m.Y", $comRow->time) == date("d.m.Y", time() - 60 * 60 * 96)) {
+                $komtime = "$wochentagkom, " . date("H:i", $comRow->time) . " Uhr";
+            } elseif (date("d.m.Y", $comRow->time) == date("d.m.Y", time() - 60 * 60 * 120)) {
+                $komtime = "$wochentagkom, " . date("H:i", $comRow->time) . " Uhr";
+            } else {
+                $komtime = strftime("- %d. %B %Y", $comRow->time);
+            }
+            if ($comRow->time == 0) {
+                $komtime = '';
+            }
+  $cid = escape($menu->get(2), 'integer');
         if ($comRow->cat == 'NEWS') {
             $link        = 'index.php?news-' . $comRow->uid . '#comments';
             $namekate    = 'die News';
             $nameeintrag = @db_result(db_query('SELECT news_title FROM prefix_news WHERE news_id = "' . $comRow->uid . '"'), 0);
+            $namekat     = '';
         } elseif ($comRow->cat == 'GBOOK') {
             $link        = 'index.php?gbook-show-' . $comRow->uid;
             $namekate    = 'den G&auml;stebucheintrag von';
             $nameeintrag = @db_result(db_query('SELECT name FROM prefix_gbook WHERE id = "' . $comRow->uid . '"'), 0);
+            $namekat     = '';
         } elseif ($comRow->cat == 'WARSLAST') {
             $link        = 'index.php?wars-more-' . $comRow->uid;
             $namekate    = 'den War gegen';
             $nameeintrag = @db_result(db_query('SELECT gegner FROM prefix_wars WHERE id = "' . $comRow->uid . '"'), 0);
-        }
+            $nameeintragtag = @db_result(db_query('SELECT tag FROM prefix_wars WHERE id = "' . $comRow->uid . '"'), 0);
+        if ($nameeintrag == '0') {
+            $nameeintrag = $nameeintragtag;
+         } else {
+            $nameeintrag = $nameeintrag;
+         }
+        } elseif ($comRow->cat == 'GALLERYIMG') {                
+                $namekate    = 'das Bild ';
+                $endung = @db_result(db_query('SELECT endung FROM prefix_gallery_imgs WHERE id = "' . $comRow->uid . '"'), 0);
+                $namebild = @db_result(db_query('SELECT datei_name FROM prefix_gallery_imgs WHERE id = "' . $comRow->uid . '"'), 0);
+                $nameeintrag = $namebild.'.'.$endung;           
+                $bildid      = @db_result(db_query('SELECT cat FROM prefix_gallery_imgs WHERE datei_name = "' . $namebild . '"'), 0);
+                $link        = 'index.php?gallery-' . $bildid ;
+                $namekat     = @db_result(db_query('SELECT name FROM prefix_gallery_cats WHERE id = "' . $bildid . '"'), 0);
+                if ($bildid  == '0') {
+                $namekat     = '';
+                } else {
+                $namekat     = 'in der Kategorie <b>'. $namekat .'</b>';
+              }
+            }
         $name        = $comRow->name;
         $comavatar   = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "' . $name . '"'), 0);
         $text        = bbcode($comRow->text);
@@ -148,22 +296,22 @@ if (db_num_rows($comErg) > 0) {
         $right       = '<a class="drashboardlink" data-toggle="tooltip" data-placement="top"  title="zum Kommentar" href="' . $link . '"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
         $userid      = @db_result(db_query('SELECT id FROM prefix_user WHERE name = "' . $name . '"'), 0);
         $nameeintarg = @db_result(db_query('SELECT id FROM prefix_user WHERE name = "' . $name . '"'), 0);
-        $titel       = 'Hat ' . $namekate . ' <a class="drashboardlink" href="' . $link . '">' . $nameeintrag . '</a> kommentiert.';
+        $titel       = 'Hat ' . $namekate . ' <a class="drashboardlink" href="' . $link . '">' . $nameeintrag . '</a> ' . $namekat . ' kommentiert.';
         echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
         echo '<table class="commenttable">';
         echo '<tr>';
         echo '<td style="vertical-align:top;width:55px;">' . $avatars . '</td>';
-        echo '<td style="vertical-align:top;"><span class="drashboardweiter">' . $right . '</span><a class="drashboardlink" href="?user-details-' . $userid . '">' . $name . '</a><br>
+        echo '<td style="vertical-align:top;"><span class="drashboardweiter">' . $right . '</span><a class="drashboardlink" href="?user-details-' . $userid . '">' . $name . '</a>  <span class="smalfont">' . $komtime . '</span><br>
 ' . $titel . '</td></tr><tr><td colspan="2"><div class="drashboardin">' . $text . '</div></td>';
         echo '</tr>';
         echo '</table></div>';
     }
 } else {
-    echo '<br><legend>Letzte Kommentare</legend>';
+    echo '<br><legend>legend>Letzte Kommentare</legend>';
     echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
     echo '<table class="commenttable">';
     echo '<tr>';
-    echo '<td style="text-align:center;">Keine Kommentare vorhanden.</td>';
+    echo '<td class="text-center">Keine Kommentare vorhanden.</td>';
     echo '</tr>';
     echo '</table></div>';
 }

@@ -4,7 +4,7 @@
 
 
 defined ('main') or die ( 'no direct access' );
-
+setlocale(LC_TIME, "de_DE");
 error_reporting(0);
 $title = $allgAr['title'].' :: Forum';
 $hmenu = $extented_forum_menu.'Forum'.$extented_forum_menu_sufix;
@@ -80,22 +80,50 @@ else
    $r['posts']  = $r['posts'] .' Beitr&auml;ge';
    }
 $times = $r['time'];
-  if(date("d.m.Y",$times) == date("d.m.Y")) 
-   {
-   $r['datum'] = "<b style=\"color:#ff0000;\">Heute</b> ".date("H:i",$times)." Uhr";        
-   } 
-elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*24))
-   {
-   $r['datum'] = "Gestern ".date("H:i",$times)." Uhr";
-   }
-elseif (date("d.m.Y",$times) == date("d.m.Y",time()-60*60*48))
-   {
-   $r['datum'] = "vor 2 Tagen ";
-   }
-else 
-   {
-   $r['datum'] = "".date("d. M. Y",$times)."";
-   }
+$diff = time() - $r['time']; 
+$fullHours = intval($diff/60/60); 
+$Minutes = intval(($diff/60)-(60*$fullHours));
+if ($Minutes == 0) {
+$Minutes = 'gerade eben';
+} elseif ($Minutes == 1) {
+$Minutes = 'vor einer Minute';
+} else {
+$Minutes = 'vor '. $Minutes .' Minuten';
+}
+if ($fullHours == 0) {
+$Stunde = $Minutes;
+} elseif ($fullHours == 1) {
+$Stunde = 'vor einer Stunde';
+} else {
+$Stunde = 'vor '. $fullHours .' Stunden';
+}
+
+ 
+$wochentag = strftime("%A", $times); 
+
+        if (date("d.m.Y", $times) == date("d.m.Y")) {
+            if ($fullHours < 12) {
+                $r['datum'] = $Stunde;
+            } else {
+                $r['datum'] = strftime("Heute, %H:%M Uhr", $times);;
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 24)) {
+            if ($fullHours < 12) {
+                $r['datum'] = $Stunde;
+            } else {
+                $r['datum'] = "Gestern, " . date("H:i", $times) . " Uhr";
+            }
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 48)) {
+            $r['datum'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 72)) {
+            $r['datum'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 96)) {
+            $r['datum'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } elseif (date("d.m.Y", $times) == date("d.m.Y", time() - 60 * 60 * 120)) {
+            $r['datum'] = "$wochentag, " . date("H:i", $times) . " Uhr";
+        } else {
+            $r['datum'] = strftime("%d. %B %Y", $times);
+        }
 
   if($r['topics'] == 0) 
    {
