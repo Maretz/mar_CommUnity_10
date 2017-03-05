@@ -13,9 +13,15 @@ background: linear-gradient(to right,  #1e5799 0%,#84beed 28%,#155487 28%,#7db9e
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
 }
 footer {
-  padding: 30px 0;
-  font-size: 1.2em;
+padding: 30px 0;
+font-size: 1.2em;
 color: #84beed;
+}
+footer a{
+color: #84beed;
+}
+footer a:hover{
+color: #B0CFE8;
 }
 table {
 background-color: #fff;
@@ -277,9 +283,15 @@ padding-top: 10px;
 .wellsmnews {
 margin-bottom: 2px;
 }
+.titlenewsweite {
+max-width: 80%;
+}
 @media screen and (max-width: 400px) {
 .infotextnewsoben {
 padding-top: 0;
+}
+.titlenewsweite {
+max-width: 75%;
 }
 }
 /* ------------------- Mitglieder Bereich ------------------- */
