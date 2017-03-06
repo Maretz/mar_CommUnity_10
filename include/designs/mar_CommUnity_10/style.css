@@ -160,12 +160,12 @@ display:none!important;
 @media screen and (max-width: 400px) {
   .row-offcanvas-right
   .sidebar-offcanvas {
-    right: -76%; /* 6 columns */
+    right: -74%; /* 6 columns */
   }
 
   .row-offcanvas-left
   .sidebar-offcanvas {
-    left: -76%; /* 6 columns */
+    left: -74%; /* 6 columns */
   }
 
   .row-offcanvas-right.active {
@@ -876,6 +876,14 @@ background: -moz-linear-gradient(left,  #1e5799 0%,#7db9e8 100%);
 background: -webkit-linear-gradient(left,  #1e5799 0%,#7db9e8 100%);
 background: linear-gradient(to right,  #1e5799 0%,#7db9e8 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
+}
+}
+@media screen and (max-width: 400px) {
+.container-fluid {
+  padding-right: 2px;
+  padding-left: 2px;
+  margin-right: auto;
+  margin-left: auto;
 }
 }
 /* ------------------- Com10 login-Userpanel ------------------- */
