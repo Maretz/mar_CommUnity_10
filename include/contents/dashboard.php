@@ -209,9 +209,9 @@ $comErg = db_query($comAbf);
 if (db_num_rows($comErg) > 0) {
     echo '<br><legend>Letzte Kommentare</legend>';
     while ($comRow = db_fetch_object($comErg)) {
-            $diffkom      = time() - $comRow->time;
-            $fullHourskom = intval($diffkom / 60 / 60);
-            $Minuteskom   = intval(($diffkom / 60) - (60 * $fullHourskom));
+            $diffkom3      = time() - $comRow->time;
+            $fullHourskom = intval($diffkom3 / 60 / 60);
+            $Minuteskom   = intval(($diffkom3 / 60) - (60 * $fullHourskom));
             if ($Minuteskom == 0) {
                 $Minuteskom = '- gerade eben';
             } elseif ($Minuteskom == 1) {
@@ -226,7 +226,7 @@ if (db_num_rows($comErg) > 0) {
             } else {
                 $Stundenkom = '- vor ' . $fullHourskom . ' Stunden';
             }
-            $wochentagkom = strftime("- %A", $time);
+            $wochentagkom = strftime("- %A", $comRow->time);
             
             if (date("d.m.Y", $comRow->time) == date("d.m.Y")) {
                 if ($fullHourskom < 12) {

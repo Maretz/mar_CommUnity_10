@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{TITLE}</title>
-
     <link href="include/designs/mar_CommUnity_10/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
-
     <link href="include/designs/mar_CommUnity_10/bootstrap-3.3.5/css/bootstrap-datepicker.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="include/designs/mar_CommUnity_10/font-awesome-4.7.0/css/font-awesome.min.css">
-
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans|Oswald|Hind" rel="stylesheet">
-
     <link href="include/bootstrap/ekko-lightbox.css" rel="stylesheet">
-
     <link href="include/designs/mar_CommUnity_10/style.css" rel="stylesheet">
-
     <!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
     <!-- ACHTUNG: Respond.js funktioniert nicht, wenn du die Seite über file:// aufrufst -->
     <!--[if lt IE 9]>
@@ -26,7 +18,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
@@ -66,7 +57,7 @@
                 <div class="row">
 <div class="col-md-12">
 <div class="com10newsinput">
-{_boxes_last24h}
+{_boxes_news_static}
 </div>
 </div>
 </div>
@@ -84,19 +75,33 @@
                     </ul>
                     <div class="tab-content">
                         <div id="pane1" class="tab-pane active fade in">
-                            {_list_menunr1@
                             <div class="panel panel-com10">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">%1</h3>
+                                    <h3 class="panel-title">Kategorien</h3>
                                 </div>
                                 <div class="panel-body">
-                                    %2
+                                    {_boxes_newskat}
                                 </div>
                             </div>
-                            }
+                            <div class="panel panel-com10">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Letzte Kommentare</h3>
+                                </div>
+                                <div class="panel-body">
+                                    {_boxes_newscomments}
+                                </div>
+                            </div>
+                          <div class="panel panel-com10">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Letzte News</h3>
+                                </div>
+                                <div class="panel-body">
+                                    {_boxes_latestnews}
+                                </div>
+                            </div>
                         </div>
                         <div id="pane2" class="tab-pane fade">
-                            {_list_menunr2@
+                            {_list_menunr1@
                             <div class="panel panel-com10">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">%1</h3>
@@ -121,18 +126,14 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
     <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap.js"></script>
-
     <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap-datepicker.js " charset="UTF-8"></script>
     <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/bootstrap-datepicker.de.min.js" charset="UTF-8"></script>
     <script src="include/designs/mar_CommUnity_10/bootstrap-3.3.5/js/scroll-top.js"></script>
-
     <script src="include/bootstrap/js/bootstrap.file-input.js"></script>
     <script src="include/bootstrap/js/ekko-lightbox.js"></script>
     <script src="include/bootstrap/js/bootstrap-popover.js"></script>
     <script src="include/bootstrap/js/bootstrap-tooltip.js"></script>
-
     <script>
         (function blink() {
             $('.login_blink_PM,.login_blink_beitrag,.festthema').fadeOut(500).fadeIn(500, blink);
@@ -160,7 +161,6 @@
    });
     </script>
 </body>
-
 </html>
 <!-- 
 {_list_hmenupoint@<a target="%1" href="%2">%3</a>}

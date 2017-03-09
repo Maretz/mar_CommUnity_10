@@ -183,6 +183,19 @@ display:none!important;
   }
 
 }
+/* ------------------- Statistiken ------------------- */
+.statistictable {
+width: 100%;
+background: transparent;
+border: 0;
+text-align:left;
+}
+.statistictable td {
+vertical-align:top;
+}
+.statisticsimg {
+width: 50px;
+}
 /* ------------------- Drashboard ------------------- */
 .drashboardin {
 margin-top:5px;
@@ -426,7 +439,55 @@ width: 55px;
 }
 }
 /* ------------------- Com10 Boxen ------------------- */
-
+.boxenin {
+width: 100%;
+text-align:left;
+}
+.bagesboxenin {
+float:right;
+color: # #fff;
+background: #4583B4;
+}
+.boxenintable {
+width: 100%;
+background: transparent;
+border: 0;
+text-align:left;
+}
+.boxenintable a{
+color:#67a4d3;
+text-decoration: none;
+}
+.boxenintable a:hover {
+color:#B1C3D1;
+}
+.boxenintable td {
+vertical-align:top;
+}
+.boxenintableavatar {
+width: 40px;
+height:40px;
+border: 2px solid #ccc;
+}
+.bineavatartd {
+width: 45px;
+}
+.boxeninend {
+border-bottom: 1px solid #4583B4;
+padding-bottom:4px;
+}
+.boxeninstart{
+padding-top:4px;
+}
+.boxeninvorschau {
+margin-top:5px;
+padding: 5px;
+overflow: hidden;
+width: 100%;
+max-height:60px;
+color: #D3D3D3;
+}
+/* ------------------- Com10 Boxen old------------------- */
 .newnewboxout {
 border: 1px solid #ccc;
 border-radius: 3px;
