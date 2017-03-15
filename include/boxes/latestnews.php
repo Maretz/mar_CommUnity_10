@@ -84,7 +84,7 @@ if (@db_num_rows($erg) == 0) {
         }
         echo '<tr>';
         echo '<td class="bineavatartd boxeninstart"><img class="boxenintableavatar" src="' . $row->katen . '" alt=""></td>';
-        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> ' . $row->kate . '</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . $row->title . '</a><br /><small><i class="fa fa-clock-o" aria-hidden="true"></i> ' . $row->newnewstime . '</small></td>';
+        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> ' . $row->kate . '</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . $row->title . '</a><br /><small><a href="?user-details-'. $row->userid .'">'. $row->username .'</a> - ' . $row->newnewstime . '</small></td>';
         echo '</tr><tr><td class="' . $boxeninend . '" colspan="2"></td>';
         echo '</tr>';
     }

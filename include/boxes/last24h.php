@@ -9,14 +9,7 @@ $ges_useronline = db_result(db_query("SELECT count(id) FROM `prefix_user`  WHERE
 echo "<legend>Benutzer, die in den letzten 24 Stunden online waren <span class=\"badge\">$ges_useronline </span></legend>";
 $userout = array();
 while($row = db_fetch_object($erg)) {
-  if($row->recht == '-9') 
-   {
-   $row->name = '<a rel="tooltip" title="Administrator" style="color: #ff0000;" href="?user-details-'. $row->id .'"><strong>'. $row->name .'</strong></a>';        
-   } 
-else
-   {
-   $row->name = '<a href="?user-details-'. $row->id .'">'. $row->name .'</a>'; 
-   }
+$row->name = '<a href="?user-details-'. $row->id .'">'. $row->name .'</a>'; 
 $userout[] = $row->name;
 }
 echo implode(", ", $userout);

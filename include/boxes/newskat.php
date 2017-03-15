@@ -13,7 +13,7 @@ if (@db_num_rows($erg) == 0) {
         $newskat   = $row->news_kat;
         #$newskaturl = str_replace(' ', '_', $newskat);
         $newsinkat = db_result(db_query("SELECT COUNT(news_id) FROM prefix_news WHERE news_kat LIKE '$newskat%' ORDER by news_kat DESC"), 0);
-        echo $row->news_kat . '</a><span class="badge bagesboxenin">' . $newsinkat . '</span><br />';
+        echo $row->news_kat . '<span class="badge bagesboxenin">' . $newsinkat . '</span><br />';
     }
     echo '</div>';
 }

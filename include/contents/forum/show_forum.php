@@ -159,6 +159,7 @@ else
    {
    $r['legend_letzteantwort']  = '<legend><i class="fa fa-clock-o" aria-hidden="true"></i> Letzte Antwort</legend>';
    }
+  $r['erstid'] = @db_result(db_query('SELECT id FROM prefix_user WHERE name = "'.$r['erst'].'"'),0);
   $tpl->set_ar ($r);
   
   if ($r['cid'] <> $xcid) {
