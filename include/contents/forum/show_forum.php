@@ -188,6 +188,9 @@ $ges_online_user = ges_online();
   $useroneregist = db_result(db_query('SELECT regist FROM prefix_user WHERE id = 1'),0);
   $sincesec = $time - $useroneregist;
   $sinceday = floor($sincesec / $daysec);
+if ($sinceday  == '0') {
+    $sinceday  = '1';
+}
   $dayvisits = floor($ges_visits / $sinceday)+1;
   $mthvisits = floor($dayvisits * $mth);
   $schnittpost = db_result(db_query("SELECT COUNT(ID) FROM `prefix_posts`"),0) / $sinceday;
