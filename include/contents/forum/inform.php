@@ -13,8 +13,8 @@ $design->header();
  
 $postid = ($menu->getA(2) == 'p' ? $menu->getE(2) : '');
 if (isset($_POST['submit'])) $postid = $_POST['postid'];
-if (empty($postid) OR @db_result(db_query("SELECT COUNT(*) FROM `prefix_posts` WHERE id = $postid"),0) != 1) echo 'Diese Seite wurde falsch aufgerufen!<br /><br />
-  <a href="javascript:history.back()">zur&uuml;ck</a>';
+if (empty($postid) OR @db_result(db_query("SELECT COUNT(*) FROM `prefix_posts` WHERE id = $postid"),0) != 1) 
+echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Diese Seite wurde falsch aufgerufen!<br /><br /><a class="btn btn-default" href="javascript:history.back()">zur&uuml;ck</a></div>';
 else {
 $frm = db_fetch_object(db_query("SELECT tid,fid,erst,erstid,time FROM `prefix_posts` WHERE id = $postid"));
   if (isset($_POST['submit']) AND $_POST['mod'] != 'noone'){
@@ -24,10 +24,10 @@ $frm = db_fetch_object(db_query("SELECT tid,fid,erst,erstid,time FROM `prefix_po
      vom ".date('d.m.Y - H:i',$frm->time)."\n
     Kommentar: {$_POST['reason']}\n";
     sendpm($_SESSION['authid'],$_POST['mod'],'Forumsbenachrichtigung',$pmtxt);
-    echo '<a href="http://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'].'?forum-showposts-'.$frm->tid.'">Zur&uuml;ck zum Thema</a>';   
+    echo '<div class="alert alert-success" role="alert"><i class="fa fa-check" aria-hidden="true"></i> Vielen Dank f&uuml;r die Benachichtigung. Wir werden uns umgehend diesem Thema annehmen.<br /><br /><a class="btn btn-default" href="http://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'].'?forum-showposts-'.$frm->tid.'">Zur&uuml;ck zum Thema</a></div>';   
     }    
   else {
-    if (isset($_POST['submit']) AND $_POST['mod'] != 'noone') echo 'Du musst einen Adressat ausw&auml;hlen<br />';
+    if (isset($_POST['submit']) AND $_POST['mod'] != 'none') echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Bitte w&auml;hlen sie einen Adressat aus.</div>';
     $mods = '';
     $rechte = array();
     $sql = db_query("SELECT name,id FROM `prefix_grundrechte` WHERE id <= -7");
