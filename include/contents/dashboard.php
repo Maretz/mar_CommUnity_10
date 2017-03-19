@@ -307,7 +307,7 @@ if (db_num_rows($comErg) > 0) {
         echo '</table></div>';
     }
 } else {
-    echo '<br><legend>legend>Letzte Kommentare</legend>';
+    echo '<br><legend>Letzte Kommentare</legend>';
     echo '<div class="well wellsmnews" style="margin-bottom:-2px;border-radius: 0;">';
     echo '<table class="commenttable">';
     echo '<tr>';
