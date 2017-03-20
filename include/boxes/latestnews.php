@@ -1,6 +1,6 @@
 <?php
 defined('main') or die('no direct access');
-
+setlocale(LC_TIME, "de_DE");
 $abf = 'SELECT
           a.news_kat as kate,
           a.news_time,      
@@ -22,7 +22,7 @@ if (loggedin()) {
     }
 }
 if (@db_num_rows($erg) == 0) {
-    echo '<span class="text-center">kein Newseintrag vorhanden</span><br>' . $admin . '</span>';
+    echo '<span class="text-center">kein Newseintrag vorhanden<br />' . $admin . '</span>';
 } else {
     echo '<table class="boxenintable">';
     while ($row = db_fetch_object($erg)) {
@@ -82,9 +82,18 @@ if (@db_num_rows($erg) == 0) {
         } else {
             $boxeninend = 'boxeninend';
         }
+
+        function shortText($string,$lenght) {
+        if(strlen($string) > $lenght) {
+        $string = substr($string,0,$lenght)."...";
+        $string_ende = strrchr($string, " ");
+        $string = str_replace($string_ende," ...", $string);
+        }
+        return $string;
+        } 
         echo '<tr>';
         echo '<td class="bineavatartd boxeninstart"><img class="boxenintableavatar" src="' . $row->katen . '" alt=""></td>';
-        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> ' . $row->kate . '</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . $row->title . '</a><br /><small><a href="?user-details-'. $row->userid .'">'. $row->username .'</a> - ' . $row->newnewstime . '</small></td>';
+        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> ' . $row->kate . '</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . shortText($row->title,45) . '</a><br /><small><a href="?user-details-'. $row->userid .'">'. $row->username .'</a> - ' . $row->newnewstime . '</small></td>';
         echo '</tr><tr><td class="' . $boxeninend . '" colspan="2"></td>';
         echo '</tr>';
     }
