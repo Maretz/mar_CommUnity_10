@@ -81,9 +81,11 @@ $wochentag = strftime("%A", $times);
 	$row['ORD']  = forum_get_ordner($row['time'],$row['id'],$row['fid']);
   $comavatar      = @db_result(db_query('SELECT avatar FROM prefix_user WHERE name = "' . $row['last'] . '"'), 0);
   $row['avatar']  = (!empty($comavatar) AND file_exists($comavatar)) ? '<img class="boxenintableavatar" src="' . $comavatar . '" alt="Avatar" />' : '<img class="boxenintableavatar" src="include/images/avatars/wurstegal.jpg" />';
+  $textsize  = 23;
+  $textsize2  = 8;
 echo'<tr>';	
-echo '<td style="vertical-align:middle;" class="bineavatartd boxeninstart">'. $row['avatar'] .'</td>';
-echo '<td><small><span class="text-warning">Forum:</span> '.((strlen($row['top'])<35) ? $row['top'] : substr($row['top'],0,35).' ...').'</small><br /><a href="?forum-showposts-'.$row['id'].'-p'.$row['page'].'#'.$row['pid'].'">'.((strlen($row['name'])<40) ? $row['name'] : substr($row['name'],0,40).' ...').'</a><br /><small><span class="text-warning">'.$row['last'].'</span> * '.$row['date'].'</small></td>';
+echo '<td class="bineavatartd boxeninstart">'. $row['avatar'] .'</td>';
+echo '<td><small><span class="text-warning">Forum:</span> '.((strlen($row['top'])<$textsize) ? $row['top'] : substr($row['top'],0,$textsize).' ...').'</small><br /><a href="?forum-showposts-'.$row['id'].'-p'.$row['page'].'#'.$row['pid'].'">'. $row['name'] .'</a><br /><small>'. $row['last'] .' <span class="ilchforum_time"><br></span>* '.$row['date'].'</small></td>';
 echo '</tr><tr><td class="' . $boxeninend . '" colspan="2"></td>';
 echo '</tr>';
 }

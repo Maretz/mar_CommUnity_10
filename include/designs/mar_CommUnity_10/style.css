@@ -441,8 +441,8 @@ width: 55px;
 /* ------------------- Com10 Boxen ------------------- */
 .toptopicbox {
 display:inline-block;
-height:30px;
-width: 30px;
+height:40px;
+width: 40px;
 border: 2px solid #fff;
  -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -459,11 +459,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', end
 box-shadow: 0px 0px 0px 5px rgba(0,0,0,0.1);
 color: #FF8D42;
 text-align:center;
-margin-right:6px;
+margin-right:5px;
 }
 .toptopicbox > div {
-font-size: 8px;
-margin-top: -4px;
+font-size: 9px;
 color: #2f2f2f;
 }
 .boxenin {
@@ -1533,7 +1532,9 @@ font-size: 0.875em;
 } 
 .bbcode-none {
 display:none!important;
-}        
+}  
+.forumfontinfo {
+display:none;     
 }
 
 /* Ilch CMS Configuration - bei jedem Design uebernehmen */

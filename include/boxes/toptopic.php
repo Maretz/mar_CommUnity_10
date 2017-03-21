@@ -80,8 +80,8 @@ $wochentag = strftime("%A", $times);
 	$row['page'] = ceil ( ($row['rep']+1)  / $allgAr['Fpanz'] );
 	$row['ORD']  = forum_get_ordner($row['time'],$row['id'],$row['fid']);
 echo'<tr>';	
-echo '<td style="vertical-align:middle;" class="boxeninstart"><div class="toptopicbox"><strong>'. $row['rep'] .'</strong><div>Reply</div></div></td>';
-echo '<td><small><span class="text-warning">Forum:</span> '.((strlen($row['top'])<35) ? $row['top'] : substr($row['top'],0,35).' ...').'</small><br /><a href="?forum-showposts-'.$row['id'].'-p'.$row['page'].'#'.$row['pid'].'">'.((strlen($row['name'])<40) ? $row['name'] : substr($row['name'],0,40).' ...').'</a></td>';
+echo '<td class="boxeninstart"><div class="toptopicbox"><strong>'. $row['rep'] .'</strong><div>Reply</div></div></td>';
+echo '<td><small><span class="text-warning">Forum:</span> '.((strlen($row['top'])<23) ? $row['top'] : substr($row['top'],0,23).' ...').'</small><br /><a href="?forum-showposts-'.$row['id'].'">'.$row['name'].'</a></td>';
 echo '</tr><tr><td class="' . $boxeninend . '" colspan="2"></td>';
 echo '</tr>';
 }
