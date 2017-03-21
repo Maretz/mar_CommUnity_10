@@ -43,14 +43,25 @@ function url($teilenurl){
 }
 
 $class = '';
-
+$postreply = db_result(db_query("SELECT COUNT(tid) FROM prefix_posts WHERE tid LIKE '$tid%' ORDER by tid DESC"), 0) - 1;
+$posthits = db_result(db_query("SELECT hit FROM prefix_topics WHERE id='$tid%'"), 0);
+$usernumb = db_result(db_query("SELECT COUNT(DISTINCT erst) FROM prefix_posts WHERE tid LIKE '$tid%' ORDER by erst DESC"), 0);
+if ($postreply == 1) {
+$postreplyfont = 'Antwort';
+} else {
+$postreplyfont = 'Antworten';
+}
 $tpl = new tpl ( 'forum/showpost' );
 $ar = array (
   'SITELINK' => $MPL,
   'tid' => $tid,
 	'ANTWORTEN' => $antworten,
 	'TOPICNAME' => $aktTopicRow['name'],
-	'USERNAME' => $aktTopicRow['erst']
+	'USERNAME' => $aktTopicRow['erst'],
+	'USERNUMB' => $usernumb,
+	'POSTREPLY' => $postreply,
+	'POSTHITS' => $posthits,
+	'POSTREPLYFONT' => $postreplyfont
 		
 	);
 $tpl->set_ar_out($ar,0);
