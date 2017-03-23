@@ -2,7 +2,7 @@
 
 defined('main') or die('no direct access');
 
-$sql = "SELECT name, id, cat as dlcat FROM `prefix_downcats` ORDER by pos DESC";
+$sql = "SELECT name, id, cat as dlcat FROM `prefix_downcats` ORDER by pos ASC";
 
 $erg = db_query($sql);
 if (@db_num_rows($erg) == 0) {
