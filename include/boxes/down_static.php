@@ -81,5 +81,6 @@ echo '<td>
 echo '<tr><td colspan="2"><br>' . $useronlinelist . '<br><br></td>';
 echo '</tr><tr>';
 echo '<td colspan="2"><legend><i class="fa fa-bar-chart" aria-hidden="true"></i> Downloads Statistik</legend></td></tr>';
+echo '<tr><td colspan="2">'. $downautor .''. $countdownsin .' in '. $countdownkat .' <span class="ilchforum_time"><br></span>- '. $downupload  .' Gesamtgr&ouml;&szlig;e<br />'.$summedown .' ( '.$schnittdowns .' ) <span class="ilchforum_time"><br></span>- '. $votedown .'</td>';
 echo '</tr></table>';
 ?> 
