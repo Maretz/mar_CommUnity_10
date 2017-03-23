@@ -83,17 +83,9 @@ if (@db_num_rows($erg) == 0) {
             $boxeninend = 'boxeninend';
         }
 
-        function shortText($string,$lenght) {
-        if(strlen($string) > $lenght) {
-        $string = substr($string,0,$lenght)."...";
-        $string_ende = strrchr($string, " ");
-        $string = str_replace($string_ende," ...", $string);
-        }
-        return $string;
-        } 
         echo '<tr>';
         echo '<td class="bineavatartd boxeninstart"><img class="boxenintableavatar" src="' . $row->katen . '" alt=""></td>';
-        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> ' . $row->kate . '</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . shortText($row->title,45) . '</a><br /><small><a href="?user-details-'. $row->userid .'">'. $row->username .'</a> - ' . $row->newnewstime . '</small></td>';
+        echo '<td class="boxenstart"><small><i class="fa fa-caret-right" aria-hidden="true"></i> '.((strlen($row->kate)<23) ? $row->kate : substr($row->kate,0,23).' ...').'</small><br /><a class="bilink" href="index.php?news-' . $row->id . '">' . $row->title . '</a><br /><small><a href="?user-details-'. $row->userid .'">'. $row->username .'</a> - ' . $row->newnewstime . '</small></td>';
         echo '</tr><tr><td class="' . $boxeninend . '" colspan="2"></td>';
         echo '</tr>';
     }
