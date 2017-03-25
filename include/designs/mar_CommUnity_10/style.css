@@ -415,6 +415,10 @@ display:none;
 .userbereich_slide-down > div {            
   margin-top: 0;
 } 
+.btn-group-plaze {
+text-align:right;
+margin-bottom: 6px;
+}
 @media screen and (max-width: 767px) {
 .col-sm-6userlist {
 float:left;
@@ -436,6 +440,10 @@ margin-right:6px;
 }
 .uatd {
 width: 55px;
+}
+.btn-group-plaze {
+text-align:center;
+margin-bottom: 6px;
 }
 }
 /* ------------------- Com10 Boxen ------------------- */
