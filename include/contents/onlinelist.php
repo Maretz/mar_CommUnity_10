@@ -14,8 +14,11 @@ echo '<div class="btn-group-plaze"><div class="btn-group">
 $dif = date('Y-m-d H:i:s', time() - USERUPTIME);
 $useron = db_result(db_query("SELECT COUNT(uid)  FROM `prefix_online` WHERE uid > 0 and uptime > '" . $dif . "'"), 0);
 echo'<legend>Benutzer Online <span class="badge">'. $useron .'</span></legend>';
-echo '<div class="row rowuserlist">';
 $erg = db_query("SELECT * FROM prefix_online WHERE uid>0 and uptime > '" . $dif . "' ORDER BY uid DESC");
+if (@db_num_rows($erg) == 0) {
+    echo '<div class="text-center text-muted"><small>Im Moment ist kein Benutzer online.</small><br /><br /></div>';
+} else {
+echo '<div class="row rowuserlist">';
 while ($row = db_fetch_assoc($erg)) {
 $row['user']  = @db_result(db_query('SELECT name FROM prefix_user WHERE id = "' . $row['uid'] . '"'), 0);
 $comavatar = @db_result(db_query('SELECT avatar FROM prefix_user WHERE id = "' . $row['uid'] . '"'), 0);
@@ -67,11 +70,15 @@ echo '</tr></table>';
 echo '</div></div>';
 }
 echo '</div>';
+}
 $dif = date('Y-m-d H:i:s', time() - USERUPTIME);
 $guest = db_result(db_query("SELECT COUNT(uid)  FROM `prefix_online` WHERE uid = 0 and uptime > '" . $dif . "'"), 0);
 echo'<legend>G&auml;ste <span class="badge">'. $guest .'</span></legend>';
-echo '<div class="row rowuserlist">';
 $erg = db_query("SELECT * FROM prefix_online WHERE uid=0 and uptime > '" . $dif . "' ORDER BY uid DESC");
+if (@db_num_rows($erg) == 0) {
+    echo '<div class="text-center text-muted"><small>Im Moment ist kein Gast online.</small><br /></div>';
+} else {
+echo '<div class="row rowuserlist">';
 while ($row = db_fetch_assoc($erg)) {
 $row['user']  = 'Gast';
 $row['avatar']  = '<img src="include/images/avatars/wurstegal.jpg" />';
@@ -122,6 +129,7 @@ echo '</tr></table>';
 echo '</div></div>';
 }
 echo '</div>';
+}
 echo '</div>';
 $design->footer();
 

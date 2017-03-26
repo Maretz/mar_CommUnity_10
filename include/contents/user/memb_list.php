@@ -29,7 +29,8 @@ $tpl = new tpl ( 'user/memb_list.htm' );
 if(isset($_GET['filtername']) AND !empty($_GET['filtername'])){
   $filtername = escape($_GET['filtername'], 'string');
 }
-
+$gesamt = @db_result(db_query("SELECT count(ID) FROM prefix_user"),0);
+$tpl->set ( 'gesamt', $gesamt);
 if(!empty($filtername)){
   $sql_search=" WHERE prefix_user.name LIKE '%".$filtername."%'";
   $MPL = db_make_sites ($page , $sql_search , $limit , '?user-filtername-'.$filtername , 'user' );
